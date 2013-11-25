@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project name="LoginNotification" basedir="." default="dist">
+    <property name="src.dir" value="src"/>
+    <property name="web.dir" value="."/>
+    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+    <property name="name" value="loginNotification"/>
+
+    <path id="master-classpath">
+        <fileset dir="${web.dir}/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${build.dir}"/>
+    </path>
+
+    <target name="dist">
+        <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}" debug="on">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+        <delete file="${web.dir}/${name}.war"/>
+        <war warfile="${web.dir}/${name}.war" webxml="${web.dir}/WEB-INF/web.xml"> 
+		    <lib dir="${web.dir}/WEB-INF/lib">
+		    	<exclude name="catalina.jar"/>
+		    	<exclude name="servlet-api-2.5.jar"/>
+		    	<exclude name="tomcat-coyote.jar"/>
+		    </lib>
+		    <classes dir = "${web.dir}/WEB-INF/classes"/>
+        	<fileset dir="${web.dir}">
+              <include name="WEB-INF/rsa_pkcs8_private_key.pem" />
+        	  <include name="WEB-INF/template/*" />
+          	</fileset>
+			<fileset dir="${web.dir}/jsp">
+              <include name="*" />
+          	</fileset>
+		 </war> 
+		 <copy todir="D:/apache-tomcat-7.0.32/webapps" overwrite="true">
+           <fileset dir="${web.dir}">
+              <include name="${name}.war" />
+          </fileset>
+       </copy>
+    </target>
+ 
+    <target name="clean" description="Clean output directories">
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+</project>

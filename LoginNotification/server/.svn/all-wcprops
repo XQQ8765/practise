@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/LoginNotification/!svn/ver/3/server
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/LoginNotification/!svn/ver/1/server/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/LoginNotification/!svn/ver/1/server/.project
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/LoginNotification/!svn/ver/1/server/build.xml
+END

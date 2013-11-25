@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/LoginNotification/!svn/ver/2/extension
+END
+notification.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/LoginNotification/!svn/ver/1/extension/notification.js
+END
+background.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/LoginNotification/!svn/ver/1/extension/background.html
+END
+loginDetection.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/LoginNotification/!svn/ver/1/extension/loginDetection.js
+END
+dataExchange.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/LoginNotification/!svn/ver/2/extension/dataExchange.js
+END
+jquery-2.0.3.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/LoginNotification/!svn/ver/1/extension/jquery-2.0.3.min.js
+END
+icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/LoginNotification/!svn/ver/1/extension/icon.png
+END
+loginDetection.css
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/LoginNotification/!svn/ver/1/extension/loginDetection.css
+END
+manifest.json
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/LoginNotification/!svn/ver/2/extension/manifest.json
+END

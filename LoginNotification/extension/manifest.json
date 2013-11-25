@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Anaqua Login Notification",
+  "description": "detect https://dell.anaqua.com/anaqua/Public/Login.aspx login",
+  "icons": { "64": "icon.png" },
+  "version": "1.0.0",
+  
+  "background": {"page": "background.html"},
+
+  "content_scripts": [
+    {
+      "matches": ["https://dell.anaqua.com/anaqua/Public/Login.aspx"],
+      "js": ["jquery-2.0.3.min.js", "loginDetection.js"],
+       "css": ["loginDetection.css"]
+    }
+  ],
+
+  "web_accessible_resources":["icon.png"],
+
+  "permissions": [
+	"notifications",
+	"http://zhu10514:8081/loginNotification/*"
+  ]
+}
