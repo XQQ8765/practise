@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "ImmediateSearch",
+  "description": "Do an immediate search on the browser",
+  "icons": { "64": "icon.png" },
+  "version": "1.0.0",
+  
+  "background": {"page": "background.html"},
+
+  "content_scripts": [
+    {
+      "matches": ["http://localhost/examples/"],
+      "js": ["jquery-2.0.3.min.js", "jquery.hotkeys.js", "immediateSearch.js"]
+    }
+  ],
+
+  "web_accessible_resources":["icon.png"],
+
+  "permissions": [
+	"notifications",
+	"tabs",
+	"http://www.google.com.hk/*"
+  ]
+}

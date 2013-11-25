@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <script src="jquery-2.0.3.min.js"></script>
+        <script src="jquery.hotkeys.js"></script>
+		<script>
+			function getSelectedText() {
+				if (window.getSelection()) {//Chrome, Fixfox, Standard
+					return window.getSelection().toString();
+				} else {//IE
+					return document.selection.createRange();
+				}
+			}
+			function doSearch(searchContent) {
+				var searchUrl='http://www.google.com.hk/#newwindow=1&q='+searchContent+'&safe=strict';
+				alert('searchUrl='+searchUrl);
+				searchUrl="http://www.163.com";
+				$.get(searchUrl, function(data){
+    				alert("Data Loaded: " + data);
+ 				}).error(function() {
+					alert('woops'); // or whatever
+				});
+				
+			}
+			function performWhenKeyDown() {
+				//alert('alt+s');
+				//var selectedText = document.selection.createRange();
+				var selectedText = getSelectedText();
+				//alert("selectedText:"+selectedText);
+				doSearch(selectedText);
+				return false;
+			}
+			function domo(){
+				$(document).bind('keydown', 'Alt+s',function (evt){ return performWhenKeyDown();});
+			}
+            $(document).ready(domo);
+		</script>
+	</head>
+	<body>
+	Test... Alt+S
+	Apple-IPad
+	Apache
+	Tomcat
+	</body>
+</html>
