@@ -8,7 +8,7 @@ function getSelectedText() {
 function doSearch(searchContent) {
 	var searchUrl='http://www.google.com.hk/#newwindow=1&q='+searchContent+'&safe=strict';
 	alert('searchUrl='+searchUrl);
-	alert('chrome create tab');
+	alert('chrome create tab: chrome.tabs:'+chrome.tabs);
 	chrome.tabs.create({
 	    url: searchUrl 
 	}, function(){alert("created new tab");});

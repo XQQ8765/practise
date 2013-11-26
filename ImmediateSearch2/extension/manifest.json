@@ -11,6 +11,7 @@
   "content_scripts": [
     {
       "matches": ["http://localhost/examples/"],
+      "matches": ["http://www.google.com.hk/*"],
       "js": ["jquery-2.0.3.min.js", "jquery.hotkeys.js", "immediateSearch.js"]
     }
   ],
