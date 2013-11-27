@@ -10,7 +10,11 @@
 	"page": "background.html",
 	"scipts": ["background.js"]
 	},
-
+  "page_action" :
+  {
+    "default_icon" : "icon.png",
+    "default_title" : "Selecting the Text, Pressing Alt+S will do Google search."
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*"],
@@ -21,8 +25,6 @@
   "web_accessible_resources":["icon.png"],
 
   "permissions": [
-	"notifications",
-	"tabs",
-	"http://www.google.com.hk/*"
+	"tabs"
   ]
 }
