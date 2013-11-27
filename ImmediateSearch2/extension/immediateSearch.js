@@ -7,19 +7,12 @@ function getSelectedText() {
 }
 function doSearch(searchContent) {
 	var searchUrl='http://www.google.com.hk/#newwindow=1&q='+searchContent+'&safe=strict';
-	alert('searchUrl='+searchUrl);
-	alert('chrome create tab: chrome.tabs:'+chrome.tabs);
-	chrome.tabs.create({
-	    url: searchUrl 
-	}, function(){alert("created new tab");});
-	
-	//searchUrl="http://www.163.com";
-	//$.get(searchUrl, function(data){
-	//	alert("Data Loaded: " + data);
-	//}).error(function() {
-	//	alert('error when search'); // or whatever
-	//});
-	
+	alert('--searchUrl='+searchUrl);
+	//alert('chrome create tab: chrome.tabs:'+chrome.tabs);
+	console.log('--------------send message searchUrl:'+searchUrl);
+	chrome.extension.sendMessage({greeting: "http://www.apple.com/"}, function(response){
+		console.log(response.farewell);
+	});
 }
 function performWhenKeyDown() {
 	//alert('alt+s');

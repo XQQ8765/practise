@@ -6,12 +6,14 @@
   "icons": { "64": "icon.png" },
   "version": "1.0.0",
   
-  "background": {"page": "background.html"},
+  "background": {
+	"page": "background.html",
+	"scipts": ["background.js"]
+	},
 
   "content_scripts": [
     {
-      "matches": ["http://localhost/examples/"],
-      "matches": ["http://www.google.com.hk/*"],
+      "matches": ["http://*/*"],
       "js": ["jquery-2.0.3.min.js", "jquery.hotkeys.js", "immediateSearch.js"]
     }
   ],
