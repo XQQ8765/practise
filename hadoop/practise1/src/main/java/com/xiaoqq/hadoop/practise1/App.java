@@ -9,6 +9,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.FileInputFormat;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 
 /**
@@ -19,8 +20,14 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        //String[] args2 = {"resources/input.txt", "resources/output.txt"};
-        //args = args2;
+        if (args == null || args.length == 0) {
+            System.out.println("--------App: args[] is empty");
+            String[] args2 = {"resources/input.txt", "resources"};
+            args = args2;
+        }
+
+        System.out.println("--------App: Arrays.toString(args):"+ Arrays.toString(args));
+
         if (args.length != 2) {
             System.err.println("Usage: MinTemperature <input path> <output path>");
             System.exit(1);

@@ -1,8 +1,11 @@
 package com.xiaoqq.hadoop.practise1;
 
+import com.google.common.base.Objects;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.util.Arrays;
 
 /**
  * Unit test for simple App.
@@ -26,6 +29,14 @@ public class AppTest
     public static Test suite()
     {
         return new TestSuite( AppTest.class );
+    }
+
+    public void testToString() {
+       String[] args = {"aa", "bb"};
+       String str = Objects.toStringHelper(args).toString();
+       assertEquals("String;{}", str);
+       str = Arrays.toString(args);
+       assertEquals("[aa, bb]", str);
     }
 
     /**
