@@ -11,3 +11,8 @@ java -cp practise1-1.0-jar-with-dependencies.jar com.xiaoqq.hadoop.practise1.App
 mvn assembly:assembly
 mvn package
 mvn install
+
+
+hdfs dfs -mkdir /resources
+hdfs dfs -copyFromLocal d:/workspace/practise/hadoop/practise1/target/resources/input.txt /resources  (x)
+hdfs dfs -copyFromLocal e:/input.txt /resources

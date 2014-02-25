@@ -20,10 +20,12 @@ import java.util.Iterator;
 public class MinTemperatureReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable>{
     public void reduce(Text key, Iterator<IntWritable> values,
                        OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
+        System.out.println("-----------------MinTemperatureReducer: key:"+key+", values="+values);
         int minValue = Integer.MIN_VALUE;
         while (values.hasNext()) {
             minValue = Math.min(minValue, values.next().get());
         }
+        System.out.println("-----------------MinTemperatureReducer: key:"+key+", minValue="+minValue);
         output.collect(key, new IntWritable(minValue));
     }
 }

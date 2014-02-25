@@ -22,7 +22,7 @@ public class App
     {
         if (args == null || args.length == 0) {
             System.out.println("--------App: args[] is empty");
-            String[] args2 = {"resources/input.txt", "resources"};
+            String[] args2 = {"/resources/input.txt", "/output"};
             args = args2;
         }
 

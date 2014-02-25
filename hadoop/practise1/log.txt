@@ -1,0 +1,95 @@
+d:\workspace\practise\hadoop\practise1\target>hadoop com.xiaoqq.hadoop.practise1.App resources\input.txt resources
+The system cannot find the batch label specified - make_command_arguments
+--------App: args[] is empty
+--------App: Arrays.toString(args):[/resources/input.txt, /output]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/E:/open_source/hadoop/hadoop-2.2.0/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/workspace/practise/hadoop/practise1/target/practise1-1.0-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.clas
+s]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+14/02/25 18:40:00 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+14/02/25 18:40:00 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+14/02/25 18:40:00 WARN mapreduce.JobSubmitter: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with
+ToolRunner to remedy this.
+14/02/25 18:40:01 INFO mapred.FileInputFormat: Total input paths to process : 1
+14/02/25 18:40:01 INFO mapreduce.JobSubmitter: number of splits:2
+14/02/25 18:40:01 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.output.value.class is deprecated. Instead, use mapreduce.job.output.value.class
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.job.name is deprecated. Instead, use mapreduce.job.name
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.input.dir is deprecated. Instead, use mapreduce.input.fileinputformat.inputdir
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.output.key.class is deprecated. Instead, use mapreduce.job.output.key.class
+14/02/25 18:40:01 INFO Configuration.deprecation: mapred.working.dir is deprecated. Instead, use mapreduce.job.working.dir
+14/02/25 18:40:01 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1393323813176_0003
+14/02/25 18:40:02 INFO impl.YarnClientImpl: Submitted application application_1393323813176_0003 to ResourceManager at /0.0.0.0:8032
+14/02/25 18:40:02 INFO mapreduce.Job: The url to track the job: http://ZHU13856:8088/proxy/application_1393323813176_0003/
+14/02/25 18:40:02 INFO mapreduce.Job: Running job: job_1393323813176_0003
+14/02/25 18:40:12 INFO mapreduce.Job: Job job_1393323813176_0003 running in uber mode : false
+14/02/25 18:40:12 INFO mapreduce.Job:  map 0% reduce 0%
+14/02/25 18:40:20 INFO mapreduce.Job:  map 100% reduce 0%
+14/02/25 18:40:27 INFO mapreduce.Job:  map 100% reduce 100%
+14/02/25 18:40:28 INFO mapreduce.Job: Job job_1393323813176_0003 completed successfully
+14/02/25 18:40:28 INFO mapreduce.Job: Counters: 43
+        File System Counters
+                FILE: Number of bytes read=309
+                FILE: Number of bytes written=238958
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=903
+                HDFS: Number of bytes written=143
+                HDFS: Number of read operations=9
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+        Job Counters
+                Launched map tasks=2
+                Launched reduce tasks=1
+                Data-local map tasks=2
+                Total time spent by all maps in occupied slots (ms)=10812
+                Total time spent by all reduces in occupied slots (ms)=4449
+        Map-Reduce Framework
+                Map input records=23
+                Map output records=21
+                Map output bytes=261
+                Map output materialized bytes=315
+                Input split bytes=186
+                Combine input records=0
+                Combine output records=0
+                Reduce input groups=7
+                Reduce shuffle bytes=315
+                Reduce input records=21
+                Reduce output records=7
+                Spilled Records=42
+                Shuffled Maps =2
+                Failed Shuffles=0
+                Merged Map outputs=2
+                GC time elapsed (ms)=102
+                CPU time spent (ms)=1714
+                Physical memory (bytes) snapshot=689430528
+                Virtual memory (bytes) snapshot=956157952
+                Total committed heap usage (bytes)=602996736
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=717
+        File Output Format Counters
+                Bytes Written=143
+
+d:\workspace\practise\hadoop\practise1\target>
+
+e:\open_source\hadoop\hadoop-2.2.0\bin>hdfs dfs -cat /output/part-00000
+Benjing -2147483648
+Changsha        -2147483648
+GuangZhong      -2147483648
+Shangya -2147483648
+Shenzhen        -2147483648
+Tianjin -2147483648
+Wuhan   -2147483648

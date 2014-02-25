@@ -24,7 +24,9 @@ public class MinTemperatureMapper extends MapReduceBase implements Mapper<LongWr
 
     public void map(LongWritable longWritable, Text value,
                     OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
+        System.out.println("-----------------MinTemperatureMapper: value:"+value);
         String line = value.toString();
+        System.out.println("-----------------MinTemperatureMapper: line:"+line);
         if (Strings.isNullOrEmpty(line)) {
             return ;
         }
