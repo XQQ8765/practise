@@ -33,9 +33,12 @@ public class MinTemperatureMapper extends MapReduceBase implements Mapper<LongWr
         iterator.next();
         String cityName = iterator.next();
         iterator.next();
-        int temperature =  Integer.parseInt(iterator.next());
-
-        output.collect(new Text(cityName), new IntWritable(temperature));
+        String temperatureStr = iterator.next();
+        int temperature =  Integer.parseInt(temperatureStr);
+        final int MISSING = 9999;
+        if (temperature != MISSING) {
+            output.collect(new Text(cityName), new IntWritable(temperature));
+        }
 
 
     }

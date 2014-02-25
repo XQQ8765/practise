@@ -1,0 +1,9 @@
+d:\workspace\practise\hadoop\practise1\target>java -jar practise1-1.0.jar resources\input.txt resources\output.txt
+
+java -jar practise1-1.0-jar-with-dependencies.jar resources\input.txt resources\output.txt
+
+java -cp practise1-1.0-jar-with-dependencies.jar com.xiaoqq.hadoop.practise1.App resources\input.txt resources\output.txt
+
+mvn assembly:assembly
+mvn package
+mvn install
