@@ -1,5 +1,8 @@
 #ignore .swp files
 *.swp
 *.swo
+*.iml
+*.ipr
+*.iws
 classes
 target
