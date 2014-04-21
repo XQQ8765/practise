@@ -13,6 +13,20 @@ mvn package
 mvn install
 
 
-hdfs dfs -mkdir /resources
-hdfs dfs -copyFromLocal d:/workspace/practise/hadoop/practise1/target/resources/input.txt /resources  (x)
-hdfs dfs -copyFromLocal e:/input.txt /resources
+hdfs dfs -mkdir /input
+hdfs dfs -copyFromLocal d:/workspace/practise/hadoop/practise1/target/resources/input.txt /input  (x)
+hdfs dfs -copyFromLocal e:/input.txt /input
+
+
+./hdfs dfs -mkdir /input
+./hdfs namenode -format
+192.168.84.178
+netstat -atn | grep LISTEN
+sudo ./hdfs dfsadmin -safemode leave
+./hdfs dfs -copyFromLocal ~/workspace/hadoop/practise1/input.txt /input
+java -jar practise1-1.0-jar-with-dependencies.jar hdfs://localhost:9000/input/input.txt hdfs://localhost:9000/output
+
+psftp xiaoqq@192.168.84.178
+lcd d:\workspace\practise\hadoop\practise1\target\
+cd /home/xiaoqq/workspace/hadoop/practise1
+put practise1-1.0-jar-with-dependencies.jar

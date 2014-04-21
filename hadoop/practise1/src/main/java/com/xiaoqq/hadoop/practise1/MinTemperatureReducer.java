@@ -21,7 +21,7 @@ public class MinTemperatureReducer extends MapReduceBase implements Reducer<Text
     public void reduce(Text key, Iterator<IntWritable> values,
                        OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
         System.out.println("-----------------MinTemperatureReducer: key:"+key+", values="+values);
-        int minValue = Integer.MIN_VALUE;
+        int minValue = Integer.MAX_VALUE;
         while (values.hasNext()) {
             minValue = Math.min(minValue, values.next().get());
         }

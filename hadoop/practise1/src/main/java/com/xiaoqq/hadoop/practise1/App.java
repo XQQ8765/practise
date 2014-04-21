@@ -22,7 +22,7 @@ public class App
     {
         if (args == null || args.length == 0) {
             System.out.println("--------App: args[] is empty");
-            String[] args2 = {"/resources/input.txt", "/output"};
+            String[] args2 = {"/input/input.txt", "/output"};
             args = args2;
         }
 
@@ -41,6 +41,8 @@ public class App
         conf.setReducerClass(MinTemperatureReducer.class);
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
+        conf.addResource(new Path("/home/xiaoqq/install/hadoop-2.2.0/etc/hadoop/core-site.xml"));
+        conf.addResource(new Path("/home/xiaoqq/install/hadoop-2.2.0/etc/hadoop/hdfs-site.xml"));
 
         JobClient.runJob(conf);
     }
