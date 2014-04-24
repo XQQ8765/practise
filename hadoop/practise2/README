@@ -10,3 +10,4 @@ put practise2-1.0-SNAPSHOT.jar
 export HADOOP_CLASSPATH=/home/xiaoqq/workspace/hadoop/practise2/practise2-1.0-SNAPSHOT.jar:$HADOOP_HOME/share/*.jar;
 ~/install/hadoop-2.2.0/bin/hadoop com.xiaoqq.hadoop.practise2.URLCat  hdfs://localhost:9000/input/practise2/input.txt
 ~/install/hadoop-2.2.0/bin/hadoop com.xiaoqq.hadoop.practise2.FileSystemCat  hdfs://localhost:9000/input/practise2/input.txt
+~/install/hadoop-2.2.0/bin/hadoop com.xiaoqq.hadoop.practise2.FileSystemDoubleCat  hdfs://localhost:9000/input/practise2/input.txt
