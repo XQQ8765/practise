@@ -41,9 +41,9 @@ public class App
         conf.setReducerClass(MinTemperatureReducer.class);
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
-        conf.addResource(new Path("/home/xiaoqq/install/hadoop-2.2.0/etc/hadoop/core-site.xml"));
-        conf.addResource(new Path("/home/xiaoqq/install/hadoop-2.2.0/etc/hadoop/hdfs-site.xml"));
 
+        conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+        conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
         JobClient.runJob(conf);
     }
 }
