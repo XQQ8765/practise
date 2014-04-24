@@ -1,0 +1,2 @@
+#Create practise2 module
+mvn archetype:create -DgroupId=com.xiaoqq.hadoop.practise2 -DartifactId=practise2  -DarchetypeArtifactId=maven-archetype-quickstart

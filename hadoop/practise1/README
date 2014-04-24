@@ -7,6 +7,7 @@ sudo ./hdfs dfsadmin -safemode leave
 
 ./hdfs namenode -format
 ./hdfs dfs -mkdir /input/practise1
+./hdfs dfs -copyFromLocal ~/workspace/hadoop/practise1/input.txt /input/practise1
 
 psftp xiaoqq@192.168.84.178
 lcd d:\workspace\practise\hadoop\practise1\target\
@@ -14,7 +15,7 @@ cd /home/xiaoqq/workspace/hadoop/practise1
 put practise1-1.0-jar-with-dependencies.jar
 
 #Use HDFS file
-./hdfs dfs -copyFromLocal ~/workspace/hadoop/practise1/input.txt /input/practise1
+
 java -jar practise1-1.0-jar-with-dependencies.jar hdfs://localhost:9000/input/practise1/input.txt hdfs://localhost:9000/output/practise1
 #Use local file
 java -jar practise1-1.0-jar-with-dependencies.jar /home/xiaoqq/workspace/hadoop/practise1/input.txt /home/xiaoqq/workspace/hadoop/practise1/output
