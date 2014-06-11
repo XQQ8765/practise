@@ -19,7 +19,7 @@ public class OutOfTime {
         timer.schedule(new ThrowTask(), 1);
         Thread.sleep(5);    */
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
-        scheduledExecutorService.schedule(new ThrowExceptionRunnable(), 1, TimeUnit.SECONDS);
+        scheduledExecutorService.scheduleAtFixedRate(new ThrowExceptionRunnable(), 0, 3, TimeUnit.SECONDS);
 
         Thread.sleep(100 * 1000L);
     }
@@ -34,7 +34,7 @@ public class OutOfTime {
     static class ThrowExceptionRunnable implements Runnable {
         public void run() {
             System.out.println("Run in ScheduledExecutorService. Date:"+ new Date());
-            throw new RuntimeException();
+            //throw new RuntimeException();
         }
     }
 }
