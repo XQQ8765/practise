@@ -19,15 +19,14 @@ public class ProducerConsumerService {
 
         //starting producer to produce messages in queue
         threadPool.submit(producer);
-        //new Thread(producer).start();
 
         for (int i=0; i<3; ++i) {
             Consumer consumer = new Consumer(queue, "Consumer"+i);
             //starting consumer to consume messages from queue
             threadPool.submit(consumer);
-            //new Thread(consumer).start();
         }
         System.out.println("Producer and Consumer has been started");
+        threadPool.shutdown();
     }
     private static class Message {
         private String msg;
@@ -55,7 +54,7 @@ public class ProducerConsumerService {
                 Message msg = new Message(""+i);
                 try {
                     Thread.sleep(i);
-                    System.out.println("Put "+msg.getMsg() + ", queue.size():" + queue.size());
+                    //System.out.println("Put "+msg.getMsg() + ", queue.size():" + queue.size());
                     queue.put(msg);
                     System.out.println("Produced "+msg.getMsg());
                 } catch (InterruptedException e) {
@@ -86,7 +85,7 @@ public class ProducerConsumerService {
             try{
                 //consuming messages until exit message is received
                 while(true){
-                    System.out.println("Consumer:(" + name +") start to poll. queue.size():" + queue.size());
+                    //System.out.println("Consumer:(" + name +") start to poll. queue.size():" + queue.size());
                     //Message msg = queue.poll(); //NullPointerException will occur
                     Message msg = queue.take();
                     Thread.sleep(10);

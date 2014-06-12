@@ -15,7 +15,7 @@ public class SemaphoreDemo {
     public static void main(String[] args) {
         // 线程池
         ExecutorService exec = Executors.newCachedThreadPool();
-        // 只能个线程同时访问
+        // 只能5个线程同时访问
         final Semaphore semp = new Semaphore(5);
         // 模拟个客户端访问
         for (int index = 1; index < 21; index++) {
