@@ -14,7 +14,6 @@ import org.junit.Before;
  * Created by rxiao on 2/10/15.
  */
 public class ClassAndMethodWriterTest {
-    private byte[] classBytes;
     private Class beanClazz;
 
     @Before
@@ -27,6 +26,8 @@ public class ClassAndMethodWriterTest {
         ClassVisitor classPrinter = new TraceClassVisitor(new PrintWriter(System.out));
         ClassReader classReader = new ClassReader(classBytes);
         classReader.accept(classPrinter, 0);
+
+        //Load the class
         MyClassLoader myClassLoader = new MyClassLoader();
         beanClazz = myClassLoader.defineClass(ClassAndMethodWriter.BEAN_DOT_NAME, classBytes);
     }
