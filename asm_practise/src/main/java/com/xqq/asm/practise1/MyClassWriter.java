@@ -1,6 +1,8 @@
 package com.xqq.asm.practise1;
 
 import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.util.CheckClassAdapter;
+
 import static org.objectweb.asm.Opcodes.*;
 
 /**
@@ -11,8 +13,10 @@ public class MyClassWriter {
     public byte[] writeClass() {
         ClassWriter cw = new ClassWriter(0);
         cw.visit(V1_5, ACC_PUBLIC + ACC_ABSTRACT + ACC_INTERFACE,
-                    "org/xqq/test/Comparable", null, "java/lang/Object",
-                    new String[]{"org/xqq/test/Measurable"});
+                null, //"org/xqq/test/Comparable",
+                null, "" +
+                "java/lang/Object",
+                new String[]{"org/xqq/test/Measurable"});
         //Create static fields
         cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "LESS", "I",
                 null, new Integer(-1)).visitEnd();

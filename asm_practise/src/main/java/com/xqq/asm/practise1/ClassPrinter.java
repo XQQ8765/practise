@@ -14,7 +14,11 @@ public class ClassPrinter extends ClassVisitor {
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         StringBuilder sb = new StringBuilder();
-        sb.append(access + " " + name + " extends " + superName);
+        sb.append("Version: " + version);
+        sb.append("\n");
+        sb.append("Access: " + access);
+        sb.append("\n");
+        sb.append("Class: " + name + " extends " + superName);
         if (interfaces != null && interfaces.length > 0) {
             sb.append(" implements " + StringUtils.join(interfaces, ","));
         }

@@ -122,6 +122,21 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise2/ClassAndMethodWriter.java" line="111" class="com.xqq.asm.practise2.ClassAndMethodWriter" package="com.xqq.asm.practise2">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <method_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <field_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
@@ -230,66 +245,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="input.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/input.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="725">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/xiaoqq/hadoop/practise1/AppTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="36" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="30" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1800">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MyClassWriter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/MyClassWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="8" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="900">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassWriteTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassWriteTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="10" selection-start="248" selection-end="248" vertical-scroll-proportion="0.3949447" vertical-offset="0" max-vertical-offset="633">
+            <state line="15" column="24" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="1000">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../asm/pom.xml">
+      <file leaf-file-name="ChangeVersionAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ChangeVersionAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="33" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1025">
+            <state line="10" column="13" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="925">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassPrinter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinter.java">
+      <file leaf-file-name="ClassAndMethodWriter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise2/ClassAndMethodWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="23" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1300">
+            <state line="136" column="90" selection-start="5117" selection-end="5117" vertical-scroll-proportion="-11.607142" vertical-offset="3075" max-vertical-offset="4275">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -300,7 +277,7 @@
       <file leaf-file-name="Opcodes.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/Opcodes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="8" selection-start="1668" selection-end="1685" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8475">
+            <state line="247" column="8" selection-start="7993" selection-end="7993" vertical-scroll-proportion="0.0" vertical-offset="5288" max-vertical-offset="8475">
               <folding>
                 <element signature="n#!!doc" expanded="false" />
               </folding>
@@ -308,24 +285,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileInputStream.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/io/FileInputStream.java">
+      <file leaf-file-name="ClassLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/lang/ClassLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="47" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="9750">
+            <state line="790" column="0" selection-start="30725" selection-end="30725" vertical-scroll-proportion="0.0" vertical-offset="18129" max-vertical-offset="53950">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MethodVisitor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/MethodVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="442" column="16" selection-start="19317" selection-end="19317" vertical-scroll-proportion="12.678572" vertical-offset="10705" max-vertical-offset="21450">
               <folding>
-                <element signature="e#0#14932#0" expanded="false" />
-                <element signature="imports" expanded="false" />
+                <element signature="n#!!doc" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassPrinterTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinterTest.java">
+      <file leaf-file-name="AddFieldAdapter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="45" selection-start="560" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
+            <state line="0" column="8" selection-start="8" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../asm/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="26" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1400">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="asm-practise-effective-pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="mock:///asm-practise-effective-pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="4200" max-vertical-offset="7400">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddFieldAdapterTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="53" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -353,11 +365,17 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/App.java" />
         <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/../../asm/pom.xml" />
         <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinterTest.java" />
         <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinter.java" />
-        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/MyClassWriter.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ChangeVersionAdapter.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ChangeVersionAdapterTest.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapterTest.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapter.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ASMifierTest.java" />
         <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassWriteTest.java" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/MyClassWriter.java" />
+        <option value="$PROJECT_DIR$/../../asm/pom.xml" />
+        <option value="$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise2/ClassAndMethodWriter.java" />
       </list>
     </option>
   </component>
@@ -439,6 +457,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,47 +466,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practise1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practise1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practise1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="asm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practise1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="asm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practise1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -509,63 +489,20 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../asm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../asm_practise" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="options.lastSelected" value="org.clarent.ivyidea.intellij.ui.IvyIdeaProjectSettingsComponent" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\workspace\practise\asm" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClassWriteTest">
-    <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.xiaoqq.hadoop.practise1.App" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="practise1" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="64950" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="AppTest.testToString" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="practise1" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.xiaoqq.hadoop.practise1" />
-      <option name="MAIN_CLASS_NAME" value="com.xiaoqq.hadoop.practise1.AppTest" />
-      <option name="METHOD_NAME" value="testToString" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.ClassAndMethodWriter">
     <configuration default="false" name="ClassPrinterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.xqq.asm.practise1.ClassPrinterTest" />
       <option name="VM_PARAMETERS" />
@@ -600,7 +537,67 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="asm" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AddFieldAdapterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xqq.asm.practise1.AddFieldAdapterTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="asm" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ASMifierTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xqq.asm.practise1.ASMifierTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="asm" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ClassAndMethodWriter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xqq.asm.practise2.ClassAndMethodWriter" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="asm" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -725,16 +722,20 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.App" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.AppTest.testToString" />
-      <item index="2" class="java.lang.String" itemvalue="Application.ClassPrinterTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.ClassWriteTest" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.ClassPrinterTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ClassWriteTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.AddFieldAdapterTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ASMifierTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.ClassAndMethodWriter" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.ClassWriteTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ClassPrinterTest" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.ClassAndMethodWriter" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ClassWriteTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ASMifierTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.AddFieldAdapterTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.ClassPrinterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -809,38 +810,69 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891893" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41450778" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3153527" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24946696" sideWeight="0.6846473" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3150259" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24946696" sideWeight="0.6846473" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38756478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3153527" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24946696" sideWeight="0.6846473" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38756478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41450778" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -909,97 +941,17 @@
     <webview flattenPackages="false" showMembers="false" autoscrollToSource="false" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="33" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="71" selection-start="857" selection-end="865" vertical-scroll-proportion="0.0" vertical-offset="625" max-vertical-offset="1325">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="925">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="550" max-vertical-offset="700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/xiaoqq/hadoop/practise1/AppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="36" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="30" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="1150" max-vertical-offset="1800">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="33" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="71" selection-start="857" selection-end="865" vertical-scroll-proportion="0.0" vertical-offset="625" max-vertical-offset="1325">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="925">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="550" max-vertical-offset="700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/xiaoqq/hadoop/practise1/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="36" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1375">
@@ -1030,23 +982,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="925">
-          <folding />
-        </state>
+        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="925" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="43" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="925">
-          <folding />
-        </state>
+        <state line="17" column="43" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="925" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="36" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="725">
-          <folding />
-        </state>
+        <state line="6" column="36" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="725" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/xiaoqq/hadoop/practise1/AppTest.java">
@@ -1100,9 +1046,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/MinTemperatureReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="725">
-          <folding />
-        </state>
+        <state line="23" column="40" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="725" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoqq/hadoop/practise1/App.java">
@@ -1114,102 +1058,257 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="725">
-          <folding />
-        </state>
+        <state line="6" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="725" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar!/org/objectweb/asm/ClassVisitor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="169" selection-end="169" vertical-scroll-proportion="0.13904338" vertical-offset="0" max-vertical-offset="950">
-          <folding />
-        </state>
+        <state line="6" column="22" selection-start="169" selection-end="169" vertical-scroll-proportion="0.13904338" vertical-offset="0" max-vertical-offset="950" />
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/jre/lib/rt.jar!/com/sun/xml/internal/ws/org/objectweb/asm/ClassVisitor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="188" selection-end="188" vertical-scroll-proportion="0.2016129" vertical-offset="0" max-vertical-offset="725">
+        <state line="6" column="17" selection-start="188" selection-end="188" vertical-scroll-proportion="0.2016129" vertical-offset="0" max-vertical-offset="725" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/ClassVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="22" selection-start="2113" selection-end="2113" vertical-scroll-proportion="-1.0379747" vertical-offset="899" max-vertical-offset="7450">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/ClassReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="13" selection-start="2108" selection-end="2108" vertical-scroll-proportion="0.33333334" vertical-offset="148" max-vertical-offset="61725">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/FieldWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="4" selection-start="3977" selection-end="3977" vertical-scroll-proportion="-0.08085809" vertical-offset="2299" max-vertical-offset="7675" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/com/sun/org/apache/xpath/internal/compiler/OpCodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="632" column="9" selection-start="12537" selection-end="12544" vertical-scroll-proportion="0.66386557" vertical-offset="14880" max-vertical-offset="15475" />
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/io/FileInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="47" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="9750">
+        <state line="59" column="47" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="9750" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ChangeVersionAdapterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="48" selection-start="1416" selection-end="1571" vertical-scroll-proportion="0.0" vertical-offset="818" max-vertical-offset="1800">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3.jar!/org/objectweb/asm/util/TraceClassVisitor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="48" selection-start="361" selection-end="372" vertical-scroll-proportion="-8.12" vertical-offset="22" max-vertical-offset="1000" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3.jar!/org/objectweb/asm/util/CheckClassAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="11" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.34700856" vertical-offset="397" max-vertical-offset="2225" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3-sources.jar!/org/objectweb/asm/util/TraceClassVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="11" selection-start="3686" selection-end="3686" vertical-scroll-proportion="0.0" vertical-offset="1418" max-vertical-offset="4750">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3-sources.jar!/org/objectweb/asm/util/Printer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="22" selection-start="2055" selection-end="2055" vertical-scroll-proportion="0.0" vertical-offset="13302" max-vertical-offset="13925">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ASMifierTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="46" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="775">
           <folding>
-            <element signature="e#0#14932#0" expanded="false" />
+            <marker date="1422868602771" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/security/CodeSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="11" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="15275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/security/ProtectionDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="13" selection-start="1442" selection-end="1442" vertical-scroll-proportion="0.0" vertical-offset="10104" max-vertical-offset="10700">
+          <folding>
+            <element signature="e#0#16213#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#6810#6811#0" expanded="false" />
+            <element signature="e#6848#6849#0" expanded="false" />
+            <element signature="e#7051#7052#0" expanded="false" />
+            <element signature="e#7090#7091#0" expanded="false" />
+            <element signature="e#7706#7707#0" expanded="false" />
+            <element signature="e#7740#7741#0" expanded="false" />
+            <element signature="e#12123#12413#0" expanded="false" />
+            <element signature="e#12394#12395#0" expanded="false" />
+            <element signature="e#15364#16202#0" expanded="false" />
+            <element signature="e#16187#16188#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3-sources.jar!/org/objectweb/asm/util/ASMifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="27" selection-start="5456" selection-end="5544" vertical-scroll-proportion="0.0" vertical-offset="2493" max-vertical-offset="31275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/security/SecureClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="0" selection-start="4965" selection-end="4965" vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="5150">
+          <folding>
+            <element signature="e#0#8271#0" expanded="false" />
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/ClassVisitor.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/ClassWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="34" selection-start="10506" selection-end="10507" vertical-scroll-proportion="0.5851602" vertical-offset="5453" max-vertical-offset="7450">
+        <state line="790" column="30" selection-start="25754" selection-end="25767" vertical-scroll-proportion="0.0" vertical-offset="18746" max-vertical-offset="43850">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="23" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="700">
+        <state line="356" column="0" selection-start="13788" selection-end="13788" vertical-scroll-proportion="0.61950284" vertical-offset="6951" max-vertical-offset="76275">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../asm/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/Label.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1025">
+        <state line="254" column="11" selection-start="9919" selection-end="9919" vertical-scroll-proportion="0.0" vertical-offset="12513" max-vertical-offset="13450">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="30" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1800">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/Opcodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="1668" selection-end="1685" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8475">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/MyClassWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="8" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="900">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="23" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1300">
+        <state line="7" column="46" selection-start="179" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="1375">
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassPrinterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="560" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ClassWriteTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="248" selection-end="248" vertical-scroll-proportion="0.3949447" vertical-offset="0" max-vertical-offset="633">
+        <state line="27" column="63" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/MyClassWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="24" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="402" max-vertical-offset="1000">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/ChangeVersionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="925">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="53" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/MethodVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="442" column="16" selection-start="19317" selection-end="19317" vertical-scroll-proportion="12.678572" vertical-offset="10705" max-vertical-offset="21450">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_05/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="790" column="0" selection-start="30725" selection-end="30725" vertical-scroll-proportion="0.0" vertical-offset="18129" max-vertical-offset="53950">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar!/org/objectweb/asm/Opcodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="247" column="8" selection-start="7993" selection-end="7993" vertical-scroll-proportion="0.0" vertical-offset="5288" max-vertical-offset="8475">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise2/ClassAndMethodWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="90" selection-start="5117" selection-end="5117" vertical-scroll-proportion="-11.607142" vertical-offset="3075" max-vertical-offset="4275">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="23" selection-start="70" selection-end="70" vertical-scroll-proportion="0.18518518" vertical-offset="0" max-vertical-offset="700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="30" selection-start="1640" selection-end="1640" vertical-scroll-proportion="2.1296296" vertical-offset="0" max-vertical-offset="1800">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="26" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../asm/src/com/xqq/asm/practise1/AddFieldAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
           <folding />
         </state>
       </provider>
