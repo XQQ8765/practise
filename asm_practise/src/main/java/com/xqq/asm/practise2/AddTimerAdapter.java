@@ -107,11 +107,5 @@ public class AddTimerAdapter extends ClassVisitor{
             }
             super.visitInsn(opcode);
         }
-
-        @Override
-        public void visitMaxs(int maxStack, int maxLocals) {
-            //The instructions we add push two long values, and therefore require four slots on the operand stack.
-            super.visitMaxs(maxStack + 4, maxLocals);
-        }
     }
 }

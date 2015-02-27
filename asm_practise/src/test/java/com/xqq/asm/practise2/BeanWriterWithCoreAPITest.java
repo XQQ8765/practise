@@ -1,12 +1,15 @@
 package com.xqq.asm.practise2;
 
+import com.xqq.asm.util.ClassUtil;
 import com.xqq.asm.util.MyClassLoader;
 import junit.framework.Assert;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.util.TraceClassVisitor;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
@@ -14,23 +17,22 @@ import org.junit.Before;
 /**
  * Created by rxiao on 2/10/15.
  */
-public class ClassAndMethodWriterTest {
+public class BeanWriterWithCoreAPITest {
     private Class beanClazz;
 
     @Before
-    public void setUp() {
-        byte[] classBytes = new ClassAndMethodWriter().writeClass();
+    public void setUp() throws Exception{
+        byte[] classBytes = new BeanWriterWithCoreAPI().writeClass();
         //File classFile = new File("d:\\workspace\\tmp\\asm\\org\\xqq\\test\\Bean.class");
+        //File classFile = new File("d:\\workspace\\practise\\asm_practise\\src\\main\\java\\com\\xqq\\asm\\practise2\\Bean.class");
         //byte[] classBytes = FileUtils.readFileToByteArray(classFile);
 
         //Print the instractions for the class bytes
-        ClassVisitor classPrinter = new TraceClassVisitor(new PrintWriter(System.out));
-        ClassReader classReader = new ClassReader(classBytes);
-        classReader.accept(classPrinter, 0);
+        ClassUtil.printWithTraceClassVisit(classBytes);
 
         //Load the class
         MyClassLoader myClassLoader = new MyClassLoader();
-        beanClazz = myClassLoader.defineClass(ClassAndMethodWriter.BEAN_DOT_NAME, classBytes);
+        beanClazz = myClassLoader.defineClass(BeanWriterWithCoreAPI.BEAN_DOT_NAME, classBytes);
     }
 
     @Test

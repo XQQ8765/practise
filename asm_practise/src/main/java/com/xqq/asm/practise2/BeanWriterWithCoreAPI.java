@@ -32,7 +32,7 @@ import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
  }
  </code>
  */
-public class ClassAndMethodWriter {
+public class BeanWriterWithCoreAPI {
     public static final String BEAN = "org/xqq/test/Bean";
     public static final String BEAN_DOT_NAME = "org.xqq.test.Bean";
     public static final String FIELD_F = "f";
