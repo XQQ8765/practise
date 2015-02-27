@@ -8,7 +8,29 @@ import static org.objectweb.asm.Opcodes.*;
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 
 /**
- * Created by rxiao on 2/9/15.
+ * The generated class is:
+ <code>
+ package org.xqq.test;
+
+ public class Bean {
+ private int f;
+ public int getF() {
+ return f;
+ }
+ public void setF(int f) {
+ this.f = f;
+ }
+ public void checkAndSetF(int f) {
+ if (f >= 1 && f <= 10) {
+ this.f = f;
+ } else {
+ String errorMsg = "Only 1<=f<=10 is allowed.";
+ System.err.println(errorMsg);
+ throw new IllegalArgumentException(errorMsg);
+ }
+ }
+ }
+ </code>
  */
 public class ClassAndMethodWriter {
     public static final String BEAN = "org/xqq/test/Bean";

@@ -1,5 +1,6 @@
 package com.xqq.asm.practise2;
 
+import com.xqq.asm.util.MyClassLoader;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.objectweb.asm.ClassReader;
@@ -75,10 +76,5 @@ public class ClassAndMethodWriterTest {
         }
     }
 
-    private static class MyClassLoader extends ClassLoader {
-        public Class defineClass(String name, byte[] b) {
-            return defineClass(name, b, 0, b.length);
-        }
-    }
 
 }
