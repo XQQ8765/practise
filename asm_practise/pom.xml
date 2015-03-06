@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>net.oneandone</groupId>
+            <artifactId>jasmin</artifactId>
+            <version>3.0.11</version>
+        </dependency>
+        <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
             <version>5.0.3</version>
