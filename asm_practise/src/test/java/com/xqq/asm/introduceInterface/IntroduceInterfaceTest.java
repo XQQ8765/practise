@@ -55,7 +55,7 @@ public class IntroduceInterfaceTest {
         Method method = beanClazz.getMethod("add", int.class);
         method.invoke(beanInst, i1);
 
-        Method getVMethod = beanClazz.getMethod("getV");
+        Method getVMethod = beanClazz.getMethod("getK");
         int r = (Integer) getVMethod.invoke(beanInst);
         assertEquals(r, i0 + i1);
 

@@ -5,7 +5,7 @@ import com.xqq.asm.util.ClassUtil;
 import java.io.IOException;
 
 /**
- * Created by xiaoqq on 15-3-9.
+ * Example class
  */
 public class E extends C implements IAdd{
 
@@ -20,6 +20,6 @@ public class E extends C implements IAdd{
     }
 
     public static void main(String[] args) throws IOException {
-        ClassUtil.printWithTraceClassVisit("com.xqq.asm.introduceInterface.E");
+        ClassUtil.printWithTraceClassVisit(E.class);
     }
 }
