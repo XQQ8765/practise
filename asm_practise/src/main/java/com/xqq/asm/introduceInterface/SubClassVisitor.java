@@ -18,7 +18,7 @@ public class SubClassVisitor extends ClassVisitor{
         int _access = ACC_PUBLIC + ACC_FINAL;
         String _childName = name+"_Sub";
         String _superName = name;
-        String _signature = _childName + ";";
+        String _signature = _superName + ";";
         //Clear the interfaces
         super.visit(version, _access, _childName, _signature, _superName, null);
     }
