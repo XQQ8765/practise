@@ -3,7 +3,7 @@ package com.xqq.asm.introduceInterface;
 /**
  * Created by xiaoqq on 15-3-9.
  */
-public abstract class C {
+public abstract class C implements Comparable<C>{
     private int v;
 
     public C(int v) {
@@ -16,5 +16,14 @@ public abstract class C {
 
     public void setV(int v) {
         this.v = v;
+    }
+
+    public int compareTo(C o) {
+        return this.v - o.v;
+    }
+
+    //Inner class
+    private static final class Inner {
+
     }
 }

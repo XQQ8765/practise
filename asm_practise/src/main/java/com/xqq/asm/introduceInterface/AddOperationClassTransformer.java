@@ -1,5 +1,6 @@
 package com.xqq.asm.introduceInterface;
 
+import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.tree.*;
 
 import java.util.Iterator;
@@ -10,22 +11,20 @@ import static org.objectweb.asm.Opcodes.*;
  * Created by xiaoqq on 15-3-9.
  */
 
-public class AddOperationClassTransformer{
+public class AddOperationClassTransformer extends ClassVisitor{
     public static final String BEAN = "com/xqq/asm/introduceInterface/C";
 
+    public AddOperationClassTransformer(ClassNode cn) {
+        super(ASM4, cn);
+    }
+
+    @Override
+    public void visitEnd() {
+        transform((ClassNode) cv);
+        super.visitEnd();
+    }
+
     public void transform(ClassNode cn) {
-        cn.superName = cn.name;
-        cn.name = cn.name + "_Sub";
-        cn.access = ACC_PUBLIC + ACC_FINAL;
-
-        Iterator<MethodNode> itr = cn.methods.iterator();
-        while (itr.hasNext()) {
-            MethodNode methodNode = itr.next();
-            if (methodNode.name.equals("<init>")) {
-                itr.remove();
-            }
-        }
-
         MethodNode mn = createConstructMethodNode();
         cn.methods.add(mn);
 
