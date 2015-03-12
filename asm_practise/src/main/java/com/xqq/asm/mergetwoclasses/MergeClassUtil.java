@@ -24,7 +24,7 @@ public class MergeClassUtil {
         classReader.accept(mcn, ClassReader.SKIP_DEBUG);
 
         classReader = new ClassReader(c2.getName());
-        classReader.accept(mcn, ClassReader.SKIP_DEBUG);
+        classReader.accept(mcn, ClassReader.EXPAND_FRAMES);
 
         ClassWriter cw = new ClassWriter(0);
         mcn.accept(cw);

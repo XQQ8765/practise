@@ -2,15 +2,18 @@ package com.xqq.asm.mergetwoclasses;
 
 import org.apache.commons.lang3.StringUtils;
 import org.objectweb.asm.*;
+import org.objectweb.asm.commons.Remapper;
+import org.objectweb.asm.commons.RemappingFieldAdapter;
+import org.objectweb.asm.commons.RemappingMethodAdapter;
 import org.objectweb.asm.tree.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by rxiao on 3/12/15.
  */
 public class MergeClassNode extends ClassNode {
+    private String replacedClassName;
 
     public MergeClassNode() {
         super(Opcodes.ASM4);
@@ -36,9 +39,8 @@ public class MergeClassNode extends ClassNode {
 
         if (StringUtils.isBlank(this.name)) {
             this.name = name;
-        }
-        if (StringUtils.isBlank(this.signature)) {
-            this.signature = signature;
+        } else {
+            replacedClassName = name;//The class2's name should be replaced with class1's name.
         }
         if (StringUtils.isBlank(this.superName)) {
             this.superName = superName;
@@ -54,17 +56,6 @@ public class MergeClassNode extends ClassNode {
         if (!this.interfaces.contains(_interface)) {
                     this.interfaces.add(_interface);
                 }
-    }
-    
-
-    @Override
-    public void visitSource(String file, String debug) {
-        if (StringUtils.isBlank(this.sourceFile)) {
-            this.sourceFile = file;
-        }
-        if (StringUtils.isBlank(this.sourceDebug)) {
-            this.sourceDebug = debug;
-        }
     }
 
     @Override
@@ -135,6 +126,7 @@ public class MergeClassNode extends ClassNode {
                 return null;
             }
         }
+
         return super.visitField(access, name, desc, signature, value);
     }
 
@@ -146,6 +138,19 @@ public class MergeClassNode extends ClassNode {
                 return null;
             }
         }
-        return super.visitMethod(access, name, desc, signature, exceptions);
+
+        MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
+        return new RemappingMethodAdapter(access, desc, mv, remapper);
     }
+
+    //Replace the classnode im method instructions
+    private Remapper remapper = new Remapper() {
+        @Override
+        public String map(String typeName) {
+            if (typeName.equals(replacedClassName)) {
+                return MergeClassNode.this.name;
+            }
+            return super.map(typeName);
+        }
+    } ;
 }
