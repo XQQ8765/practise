@@ -4,7 +4,9 @@ import org.objectweb.asm.ClassVisitor;
 
 import static org.objectweb.asm.Opcodes.*;
 
+import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.Remapper;
 import org.objectweb.asm.commons.RemappingMethodAdapter;
 import org.objectweb.asm.tree.ClassNode;
@@ -20,9 +22,9 @@ public class MergeClass2Visitor extends ClassVisitor {
     private ClassNode classNode;
     private String mergedClassName;
 
-    public MergeClass2Visitor(ClassNode classNode) {
-        super(ASM4);
-        this.classNode = classNode;
+    public MergeClass2Visitor(ClassVisitor cv, ClassNode cn) {
+        super(Opcodes.ASM4, cv);
+        this.classNode = cn;
     }
 
     @Override

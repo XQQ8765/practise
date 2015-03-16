@@ -1,7 +1,9 @@
 package com.xqq.asm.mergetwoclasses;
 
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.tree.ClassNode;
 
 import java.io.IOException;
 
@@ -28,6 +30,26 @@ public class MergeClassUtil {
 
         ClassWriter cw = new ClassWriter(0);
         mcn.accept(cw);
+        return cw.toByteArray();
+    }
+
+    /**
+     * Merge the two classes.
+     * @param c1 Class
+     * @param c2 Class
+     * @return byte[]
+     * @throws IOException
+     */
+    public static byte[] mergeClass2(Class c1, Class c2) throws IOException {
+        ClassNode cn = new ClassNode();
+        ClassReader classReader = new ClassReader(c2.getName());
+        classReader.accept(cn, ClassReader.EXPAND_FRAMES);
+
+        ClassWriter cw = new ClassWriter(0);
+        classReader = new ClassReader(c1.getName());
+        ClassVisitor cv = new MergeClass2Visitor(cw, cn);
+        classReader.accept(cv, ClassReader.SKIP_DEBUG);
+
         return cw.toByteArray();
     }
 }
