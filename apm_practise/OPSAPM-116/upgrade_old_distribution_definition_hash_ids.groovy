@@ -69,7 +69,7 @@ def updateDistributionHashID = { tables, newDistributionHashId, oldDistributionH
 def createTriggers = {
 	def oldDistributionHashId = getOldDistributionHashId()
 	if (oldDistributionHashId == null) {
-		log "Can not find the hashId for definition: \'apm.common.distribution.RESPONSE_TIME_DISTRIBUTION\'."
+		log "Can not find the hashId for definition: \'apm.monitor.common.RESPONSE_TIME_DISTRIBUTION\'."
 		return
 	} else {
 		log "oldDistributionHashId:${oldDistributionHashId}."

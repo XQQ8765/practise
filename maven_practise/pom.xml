@@ -24,6 +24,12 @@
           <artifactId>commons-io</artifactId>
           <version>2.4</version>
       </dependency>
+      <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>2.3.2</version>
+      </dependency>
+
   </dependencies>
     <!--Add this section "<distributionManagement>" to do "maven:deploy", the <id> value is the same with "<server>" in Maven global setting file: "~/.m2/settings.xml".-->
         <distributionManagement>
