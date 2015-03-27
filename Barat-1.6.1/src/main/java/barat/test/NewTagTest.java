@@ -1,0 +1,70 @@
+package barat.test;
+
+/** This is a class to test the new tags.
+abc
+ **de
+ * f.
+ *@constraints sadjhsdkjhsdakjhds
+ asdlkj
+ adskj
+ *
+ */
+
+public class NewTagTest
+{
+	/**@emptytag*/ static void assertTrue(boolean condition, String message)
+	{/**@if*/
+		if(!condition)
+		{
+			/**@debug-statement*/
+			System.out.println("error: " + message);
+		}
+	}
+	
+	/**
+	 *@constraints
+	 *  public boolean checkCast(Cast c) {
+	 *    return false;
+	 *  }
+	 */
+	static void printTags(barat.Node n)
+	{
+		barat.Tag[] tags = n.new_getTags();
+		assertTrue(tags!=null, "no tags (" + n.getClass().getName() + ")");
+		System.out.println("Tags for " + n.getClass().getName() + ":");
+		for(int i=0; i<tags.length; i++)
+		{
+			System.out.println(tags[i]);
+			System.out.println("----------");
+		}
+	}
+	
+	/**@justonetag argument*/
+	public static void main(String[] args)
+	{
+		String[] trimTests = new String[] {
+			"", "",
+			" ", "",
+			"\t", "",
+			" \t", "",
+			"\t ", "",
+			"a", "a",
+			"abcdefg", "abcdefg",
+			" abcdefg", "abcdefg",
+			"  abcdefg", "abcdefg",
+			" \tabcdefg", "abcdefg",
+			"\t \tabcdefg", "abcdefg",
+		};
+		for(int i=0; i<trimTests.length; i+=2)
+		{
+			System.out.println(i);
+			assertTrue(barat.parser.BaratParserTokenManager.trim(trimTests[i], " \t").equals(trimTests[i+1]), "trimtest failed for " + trimTests[i]);
+		}
+		barat.reflect.Class c = barat.Barat.getClass("barat.test.NewTagTest");
+		printTags(c);
+		for(barat.collections.ConcreteMethodIterator i=c.getConcreteMethods().iterator(); i.hasNext();)
+		{
+			printTags(i.next());
+		}
+	}
+}

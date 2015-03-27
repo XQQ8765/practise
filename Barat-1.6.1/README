@@ -1,0 +1,115 @@
+This is Barat, a front-end for Java.  It allows you to analyse Java
+programs and do all sorts of fancy things with them.
+
+
+  Installation
+  ------------
+
+Barat has been developed and tested with JDK1.2.2. It should run with
+JDK1.2 or higher. Barat-1.3.4 is (probably) the last version which runs
+with JDK1.1.
+
+The directory in which you unpacked Barat is called Barat-x.y.z, where
+x.y.z is the version number.  Let the absolute path to this directory
+be TOPDIR.  To use Barat, add TOPDIR to your classpath and make sure
+that "java -version" prints out JDK1.2 or higher.
+
+Barat is written using the GJ generic Java compiler (but runs on any
+standard JVM).  If you want to recompile Barat, you need this
+compiler, and it is probably helpful if you use a GNU environment.
+You can find GJ at http://www.cis.unisa.edu.au/~pizza/gj/Distribution/
+(you need "GJ for use with JDK 1.2").
+
+If you want to make changes to the grammar file (BaratParser.jj)
+you will also need JavaCC 0.7.1 or 1.0, which you can find at
+http://www.metamata.com .
+
+The Makefiles in the Barat distribution require GNU make.
+
+For parsing class files, Barat depends on BCEL, a library for
+reading (and writing) Java byte code. BCEL is not included in
+this distribution; please download BCEL.jar from:
+  http://bcel.sourceforge.net/
+(Note that BCEL is licensed using the Library GNU Public License.) 
+
+Markus Dahm (dahm@inf.fu-berlin.de), the author of BCEL, has
+written a code generator for Barat, i.e. an extendable Java compiler.
+Please contact me or Markus if you are interested; the code generator
+is currently licensed under the GNU Public License. It is not included
+in this distribution.
+
+  Usage and Documentation
+  -----------------------
+
+You can verify that Barat is installed correctly by executing 
+
+  java barat.Barat <some class name>
+
+Barat will parse the indicated class and write it back to standard
+output in a "canonic" format.  NOTE: As Barat itself is written in
+generic Java, it cannot parse its own source code.  If you don't have
+any other Java program around, you can try it with
+
+  java barat.Barat barat.reflect.AType
+
+but don't feed it with any other source file from Barat itself.
+
+To analyze Java programs, you will most likely use Barat as a
+framework for higher level analysis tools.  There is a technical
+report available which describes all of Barat's internals so that you
+can use it for your own analyses.  The URL of the technical report is
+
+  ftp://ftp.inf.fu-berlin.de/pub/reports/tr-b-98-09.pdf (or .ps.gz)
+
+The code generator in package barat.codegen is *not* documented in
+the technical report.
+
+There are two new classes in the package barat, PreOrderWalker and
+PostOrderWalker. These classes have been contributed by Jesper Steen
+Moller <jesper@selskabet.org>.
+
+  Authors
+  -------
+
+Barat was written by Boris Bokowski <bokowski@users.sourceforge.net>, with
+contributions by Andre Spiegel <spiegel@inf.fu-berlin.de>. A code
+generator was written by Markus Dahm <dahm@inf.fu-berlin.de>.
+
+The official home page of Barat is 
+
+  http://barat.sourceforge.net
+
+
+  License
+  -------
+
+/*
+Copyright (c) 1998-2000 Boris Bokowski
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+  Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+  Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+
+  Neither the name of Boris Bokowski nor the names of contributors
+  may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BORIS BOKOWSKI
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/

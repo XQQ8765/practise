@@ -1,0 +1,38 @@
+import barat.OutputVisitor;
+import barat.reflect.ArrayInitializer;
+import barat.reflect.AExpression;
+import barat.reflect.AUserType;
+import barat.collections.AExpressionIterator;
+
+public class NestedAITypeOutputVisitor extends OutputVisitor
+{
+  public void visitArrayInitializer(ArrayInitializer o)
+  {
+    print ("{ ");
+    for(AExpressionIterator i=o.getArguments().iterator(); i.hasNext();)
+    {
+      AExpression e = i.next();
+      print ("/*"+e.type().qualifiedName()+"*/");
+      e.accept(this);
+      if (i.hasNext()) print (", ");
+    }
+    print (" }");
+  }
+
+  public static void main(String[] args) { // args[] are fully qualified class names 
+    for(int i=0; i < args.length; i++) {
+      AUserType t = barat.Barat.getUserType(args[i]); // Class or interface
+
+      String pack  = t.qualifiedName();
+      int    index = pack.lastIndexOf('.');
+      if(index > 0) {
+	pack = pack.substring(0, index);
+	System.out.println("package " + pack + ";\n");
+      }
+      
+      OutputVisitor out = new NestedAITypeOutputVisitor();
+      t.accept(out);
+    }
+  }
+
+}

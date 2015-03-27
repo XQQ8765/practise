@@ -1,0 +1,35 @@
+Frequently asked questions for Barat
+====================================
+
+(this is just a start...)
+
+
+Q. I would like to change the ASTs, for instance to "flatten" calls
+via temporary assignment statements - in other words, I need to
+add/change/delete statements and change expressions. Can this be
+done with Barat?
+
+A. The reason for not supporting changes to the AST is the
+lazy-evaluation architecture of Barat. If you were allowed to change
+the AST, name and type analysis which are performed after the change
+might be affected, which potentially leads to inconsistencies.
+What you can do instead is the following:
+
+1. Write one or more visitors to traverse the AST and add attributes
+as needed. (You might be able to use the "registerAttributeAdder"
+method for lazily-evaluated attributes instead)
+
+2. Write an output visitor to output changed code based on the AST and
+the attribute values from (1).
+
+Note that the visitor framework provided by Barat is based on the AST
+and not on the attributes. Normally, this should not be a problem
+except if you wanted to visit all nodes regardless of their types, but
+with a certain attribute.
+
+If you really need to do heavy transformations, it might be a good idea to
+come up with your own data structure for that which has pointers to the
+unchanged Barat AST. However, since every transformation should result in
+something which is meaningful, the more you try to transform the harder it
+is to get it right.
+

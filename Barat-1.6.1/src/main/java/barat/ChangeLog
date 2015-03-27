@@ -1,0 +1,1373 @@
+2003-07-24  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fixed bug #759997
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/test/RunTests.java, /cvsroot/barat/Barat/barat/test/Test478842.java:
+	fixed bug #478842
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fixed bug #221847
+
+	* /cvsroot/barat/Barat/barat/test/Test478842.java: test case
+
+	* /cvsroot/barat/Barat/barat/test/Test221847.java:
+	added test case from sourceforge bug report
+
+	* /cvsroot/barat/Barat/barat/test/Test221847.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fixed bug 221847 based on fixes from Jonathan Aldrich
+
+	* /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java:
+	added a method required by Jonathan Aldrich's fixes
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fixes from Jonathan Aldrich (sent by E-Mail on 2002-11-11):
+	fixed the problem that Barat could not load inner classes from .class files
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java:
+	removed debug output
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java:
+	bug 580846 seems to be fixed now
+
+2003-07-23  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/reflect/Block.java:
+	goes together with the fixes from Jonathan Aldrich (sent by E-Mail on 2002-11-11)
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fixes from Jonathan Aldrich (sent by E-Mail on 2002-11-11)
+	"In NameAnalysis.getAccessOrCall_have_nothing(), the assignment to isStatic near the top assumes that if you're not in a method scope, "this" is not available.  Of course, "this" is available inside non-static field initializers and instance initializer blocks."
+
+2002-10-28  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Version.java:
+	changed version name to 1.6.0
+
+	* /cvsroot/barat/Barat/barat/test/AssertTest.java, /cvsroot/barat/Barat/barat/test/NewTagTest.java, /cvsroot/barat/Barat/barat/test/Test580846.java, /cvsroot/barat/Barat/barat/test/Test617556.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/reflect/Assert.java, /cvsroot/barat/Barat/barat/parser/.cvsignore, /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/AssertImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/PostOrderWalker.java, /cvsroot/barat/Barat/barat/PreOrderWalker.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java, /cvsroot/barat/Barat/barat/DefaultVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java:
+	Breaking Change: added support for new 1.4 keyword "assert"
+
+2002-08-27  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Factory.java:
+	fix for CompilationUnit.filename() to return an absolute pathname regardless of how the compilation unit was created.
+
+2002-08-08  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/Test580846.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java:
+	Fix for #580846
+
+2002-07-17  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/LocalVariable.java:
+	added isFinal() to avoid ambiguities
+
+2002-07-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/Test581888.java: testing #581888
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	bugfix for parsing Javadoc style tags. From the following Javadoc
+	comment, only the last tag was recognized:
+	/**
+	 * @tag1
+	 * @tag2
+	 */
+
+2002-04-12  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile: changed the distrib rule
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Version.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/test/NewTagTest.java:
+	added "new style" tags to statements
+
+	* /cvsroot/barat/Barat/barat/Makefile:
+	changed compiler to javac (should be the default)
+
+2002-01-28  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/Repository.java, /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/PMGpp2.java, /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java, /cvsroot/barat/Barat/barat/codegen/CodeGenerator.java, /cvsroot/barat/Barat/barat/codegen/Conversion.java, /cvsroot/barat/Barat/barat/codegen/IFFALSE.java, /cvsroot/barat/Barat/barat/codegen/IFTRUE.java, /cvsroot/barat/Barat/barat/codegen/InnerClassGenerator.java, /cvsroot/barat/Barat/barat/codegen/InnerClassVisitor.java, /cvsroot/barat/Barat/barat/codegen/InstructionFactory.java, /cvsroot/barat/Barat/barat/codegen/MethodObject.java, /cvsroot/barat/Barat/barat/codegen/PeepHole.java, /cvsroot/barat/Barat/barat/codegen/Repository.java, /cvsroot/barat/Barat/barat/codegen/Suspension.java, /cvsroot/barat/Barat/barat/codegen/VariableEnvironment.java:
+	BCEL moved to Apache
+
+2001-09-04  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java:
+	consider native methods as non-abstract
+
+2001-08-02  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Repository.java:
+	index local t anonymous iterator
+
+2001-07-11  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Repository.java, /cvsroot/barat/Barat/barat/TraversingVisitor.java:
+	initial revision
+
+	* /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java, /cvsroot/barat/Barat/barat/codegen/CodeGenerator.java, /cvsroot/barat/Barat/barat/codegen/InnerClassVisitor.java:
+	update needed because of type Node in BCEL
+
+2001-07-09  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	removeSourceParsedObserver
+
+2001-07-02  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java:
+	Adapted to version 4.3.0
+
+2001-05-03  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/Manifest, /cvsroot/barat/Barat/barat/collections/Makefile:
+	Added jar target
+
+2001-02-20  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/codegen/InstructionFactory.java:
+	append(byte) doesn't exist in stringbuffer
+
+2001-02-15  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/codegen/Makefile: foo
+
+	* /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java:
+	Check whether non-abstract class contains implementations for all
+	abstract methods
+
+	* /cvsroot/barat/Barat/barat/codegen/Repository.java:
+	initial revision, stolen from doorastha
+
+2001-02-12  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/codegen/Makefile, /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java:
+	Fixes for new settings
+
+	* /cvsroot/barat/Barat/barat/codegen/ClassGenerator.java, /cvsroot/barat/Barat/barat/codegen/ClassMap.java, /cvsroot/barat/Barat/barat/codegen/CodeGenerator.java, /cvsroot/barat/Barat/barat/codegen/CodeHook.java, /cvsroot/barat/Barat/barat/codegen/CodeSuspension.java, /cvsroot/barat/Barat/barat/codegen/CollectionAttribute.java, /cvsroot/barat/Barat/barat/codegen/Conversion.java, /cvsroot/barat/Barat/barat/codegen/IFFALSE.java, /cvsroot/barat/Barat/barat/codegen/IFTRUE.java, /cvsroot/barat/Barat/barat/codegen/InnerClassGenerator.java, /cvsroot/barat/Barat/barat/codegen/InnerClassVisitor.java, /cvsroot/barat/Barat/barat/codegen/InstructionFactory.java, /cvsroot/barat/Barat/barat/codegen/MethodObject.java, /cvsroot/barat/Barat/barat/codegen/PeepHole.java, /cvsroot/barat/Barat/barat/codegen/Suspension.java, /cvsroot/barat/Barat/barat/codegen/VariableEnvironment.java:
+	Second try
+
+2000-12-13  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	this is a late-night "bugfix" for bug 125576; should reduce the number of "Barf" cases
+	(are there any remaining Barf cases?)
+	What a Barf case is: when looking up a type from an inner class, the same name is defined
+	differently in one of its supertypes and one of its enclosing types. For example, there is
+	Map.Entry and HashMap.Entry.
+
+2000-12-08  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java (visitLiteral):
+	For type long, add a trailing "L".
+
+2000-11-25  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/Makefile, /cvsroot/barat/Barat/barat/test/README, /cvsroot/barat/Barat/barat/test/RunTests.java, /cvsroot/barat/Barat/barat/Makefile:
+	added Makefile to test package
+
+2000-11-24  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/.cvsignore, /cvsroot/barat/Barat/barat/test/Bug122702.java, /cvsroot/barat/Barat/barat/test/README, /cvsroot/barat/Barat/barat/test/RunTests.java, /cvsroot/barat/Barat/barat/test/Test121846.java, /cvsroot/barat/Barat/barat/test/Test122702.java:
+	wrote a minimal test framework (see RunTests.java)
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	fixed bug 121846 (nested array initializers)
+
+2000-11-23  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/.cvsignore, /cvsroot/barat/Barat/barat/.cvsignore, /cvsroot/barat/Barat/barat/collections/.cvsignore, /cvsroot/barat/Barat/barat/parser/.cvsignore:
+	added *.class to .cvsignore files (global settings apparently did not
+	survive the move to sourceforge)
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/test/Bug122702.java:
+	fixed bug ("extends java.lang.Object") in OutputVisitor; added test class
+
+2000-11-20  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Version.java: went to 1.5.0
+
+	* /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/ClassExpression.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/ArrayLengthAccess.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ATyped.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ANamed.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/parser/TypeAttribute.java, /cvsroot/barat/Barat/barat/parser/TypeConstant.java, /cvsroot/barat/Barat/barat/parser/Typing.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/SourceParsedObserver.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/PMGpp2.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/Modifiers.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/Function.java, /cvsroot/barat/Barat/barat/parser/Function2.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/ImplAHasModifier.java, /cvsroot/barat/Barat/barat/parser/ImplANamed.java, /cvsroot/barat/Barat/barat/parser/ImplATyped.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/Constant.java, /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/ClassExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayLengthAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/AttributeAdderVisitor.java, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/CastingAttribute.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/collections/ListIterator.generic, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/collections/ArrayList.generic, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/Iterator.generic, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/List.generic, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/QualifiedName.java, /cvsroot/barat/Barat/barat/Tag.java, /cvsroot/barat/Barat/barat/Version.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/CachedAttribute.java, /cvsroot/barat/Barat/barat/ConstantAttribute.java, /cvsroot/barat/Barat/barat/DefaultVisitor.java:
+	moving to sourceforge... (changed to BSD license)
+
+2000-11-05  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java:
+	bugfix: getting the import declarations from a .class-derived type failed
+
+2000-11-01  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/Version.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/ChangeLog:
+	Improved the OutputVisitor. It outputs Javadoc comments, and by
+	default, it no longer prints fully qualified names, and it
+	re-generates import declarations when applied to a compilation
+	unit.
+	Incremented the version number to 1.4.1
+
+2000-10-27  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	added Barat.getImmediateSubPackages and Barat.getAllSubPackages
+
+2000-10-20  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile: Added doc target
+
+	* /cvsroot/barat/Barat/barat/AbstractAttribute.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/QualifiedName.java:
+	Added javadoc comments
+
+	* /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Makefile, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/ClassExpression.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayLengthAccess.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ATyped.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ANamed.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java:
+	After all the interfaces are finally documented!
+	Added lots of javadoc comments and cleaned up the interfaces.
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java:
+	Fix for "synchronized" classes
+
+	* /cvsroot/barat/Barat/barat/reflect/change, /cvsroot/barat/Barat/barat/reflect/newline:
+	*** empty log message ***
+
+2000-06-25  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/PostOrderWalker.java, /cvsroot/barat/Barat/barat/PreOrderWalker.java:
+	Contributed by Jesper (jesper@selskabet.org).
+
+	* /cvsroot/barat/Barat/barat/ChangeLog: updated the ChangeLog.
+
+	* /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/collections/ListIterator.java, /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/collections/ArrayList.generic, /cvsroot/barat/Barat/barat/collections/ArrayList.java, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/Collection.java, /cvsroot/barat/Barat/barat/collections/Iterator.java, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.java, /cvsroot/barat/Barat/barat/collections/List.generic, /cvsroot/barat/Barat/barat/collections/List.java, /cvsroot/barat/Barat/barat/ChangeLog, /cvsroot/barat/Barat/barat/Version.java:
+	Changed version number to 1.4.0. From now on, Barat requires JDK1.2
+	(because we use the new collection classes in java.util).
+	All occurrences of "com.sun.java.util.collections" have been
+	replaced by "java.util".
+	Removed java files from the collections package, they are obsolete.
+	"make clean" in the collections package now removes all instantiated
+	java files.
+	Small changes to the .generic files in the collections package
+	to make them compatible with the collection classes in JDK1.2.2.
+	I hope the updated Makefile in barat/parser works.
+
+2000-06-24  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Version.java:
+	changed to 1.3.4 (I will rtag this version with 1_3_4). The reason for this is
+	to have a version just before moving from com.sun.java.util.collections to
+	JDK1.2 java.util.
+
+	* /cvsroot/barat/Barat/barat/Makefile:
+	Added new rule distrib which tries to construct tar.gz and zip files automatically.
+	It works on my laptop, but try it with "make -n" first because it contains invocations
+	of "rm -rf ...". Use at your own risk!!
+
+	* /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/parser/AttributeAdderVisitor.java, /cvsroot/barat/Barat/barat/parser/Factory.java:
+	Implemented the method "registerAttributeAdder" as described in the technical
+	report.
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/test/NewTagTest.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/Tag.java:
+	Added methods for "new" tags which are based on JavaDoc comments and tags.
+	Eventually, I would like to remove the "old" tags.
+
+	* /cvsroot/barat/Barat/barat/parser/ToBe.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Added class ToBe with two methods fixSoon and fixLater to mark places in the code
+	which need more work at some time. Marked one place in BaratParser.
+
+	* /cvsroot/barat/Barat/barat/parser/ParameterImpl.java:
+	removed isFinal methods as they are now in AVariableImpl
+
+2000-06-20  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	fix for creating This(): containing class may be null if class is
+	abstract and method comes from interface
+
+2000-06-19  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java:
+	several bugfixes, mostly name lookup for inner classes
+
+	* /cvsroot/barat/Barat/barat/reflect/AVariable.java: added isFinal()
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	bugfixes (float, char, String literals; statement labels)
+	restructuring (separate printing of method/constructor signatures)
+
+2000-05-31  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java:
+	support for UnaryOperations like -1
+
+2000-05-24  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Fixed bug import bla; ffrom default package fails
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	-private static boolean contains, accessed by NodeImpl to implement
+	contains()
+	Fixed bug in assert which assumed obj != null
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java:
+	added contains(other_node) method
+
+2000-04-26  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java:
+	added isFinal()
+
+	* /cvsroot/barat/Barat/barat/reflect/AVariable.java: added isFinl()
+
+2000-02-17  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	Use empty constructor of ClassPath()
+
+	* /cvsroot/barat/Barat/barat/parser/ClassPath.java:
+	Consider boot class path as well
+
+2000-02-10  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile: *!§%!!!
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile: *** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile:
+	Extra rule for BaratParserTokenManager.class
+	make quick target
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java:
+	more public
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	*** empty log message ***
+
+1999-12-22  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Barat.java:
+	Additional printTags()
+
+	* /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Added support for tagging of method call arguments
+
+1999-12-14  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile: Updated target
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java:
+	Initial size for HashMap set to 3, don't expect much more
+
+1999-12-03  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java:
+	Added thrown exceptions to method objects loaded from a .class file
+	boris forgot that obviously
+
+1999-11-15  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	Added support for tags of return statements
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Added support for tags in return statements
+
+1999-10-29  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java:
+	removed hashCode() methods
+
+1999-10-28  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	The parser now accepts spurious ";" and therefore is less fussy
+	about ";" after methods and constructors
+
+	* /cvsroot/barat/Barat/barat/Version.java:
+	New Release 1.3.2 (with strictfp, Barat.parseCompilationUnit, and less fussy
+	about ";" after methods and constructors)
+
+	* /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/Modifiers.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	added "strictfp" (new keyword in Java 1.2); new method Barat.parseCompilationUnit
+
+1999-10-27  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ATypeImpl.java (qualifiedName):
+	Qualify names of arrays.
+
+1999-09-21  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	bugfix: method isAccessible() incorrectly assumed that calls originate in classes only
+
+	* /cvsroot/barat/Barat/barat/parser/Typing.java, /cvsroot/barat/Barat/barat/parser/TypeConstant.java, /cvsroot/barat/Barat/barat/parser/TypeAttribute.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java:
+	Optimization: Attribute<AType> is replaced by the special TypeAttribute<AType>
+	(same for Constant) which contains the type's name. This enables comparing
+	the type names without having to parse files, which is used for comparing
+	method signatures (see TypeAnalysis.java, Typing.java, AVariableImpl.java).
+	As a result, only those files are parsed which really have to be parsed
+	(thinks Boris).
+
+	* /cvsroot/barat/Barat/barat/Barat.java:
+	new flag: "-p", when given as the first argument, causes whole packages to
+	be parsed instead of classes/interfaces
+
+1999-09-19  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Version.java:
+	1.3.0 did not work with JDK1.2: The version of gjc (/import/gj) that I used
+	for compiling produced incorrect class files (detected by the verifier).
+	There is no difference between 1.3.0 and 1.3.1 on the source code level
+	(except this file).
+
+1999-09-17  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/ClassExpression.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayLengthAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/ATyped.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ANamed.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/Typing.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/SourceParsedObserver.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/PMGpp2.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Modifiers.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/ImplANamed.java, /cvsroot/barat/Barat/barat/parser/ImplATyped.java, /cvsroot/barat/Barat/barat/parser/ImplAHasModifier.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/Function2.java, /cvsroot/barat/Barat/barat/parser/Function.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/Constant.java, /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/ClassExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/CastingAttribute.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/ArrayLengthAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/collections/ListIterator.generic, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/collections/List.generic, /cvsroot/barat/Barat/barat/collections/Iterator.generic, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/ArrayList.generic, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/QualifiedName.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/DefaultVisitor.java, /cvsroot/barat/Barat/barat/CachedAttribute.java, /cvsroot/barat/Barat/barat/ConstantAttribute.java, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java:
+	New header comments
+
+	* /cvsroot/barat/Barat/barat/Version.java: New file.
+
+	* /cvsroot/barat/Barat/barat/plainJava, /cvsroot/barat/Barat/barat/barat.inst, /cvsroot/barat/Barat/barat/pmg.inst:
+	Removed
+
+1999-09-17  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/QualifiedAnonymousAlloc.java, /cvsroot/barat/Barat/barat/test/InnerClassesTest.java, /cvsroot/barat/Barat/barat/test/InnerBug1.java:
+	small test classes for testing inner classes support
+
+1999-09-17  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/ArrayList.generic:
+	*** empty log message ***
+
+1999-09-03  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	bugfix, inner classes (UserTypeDeclaration) can be found by name analysis now
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	correction, superclass of java.lang.Object is set to null now
+
+1999-08-30  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	BlockImpl implements Scope (needed for addLocalVariable); these are the parser changes
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java:
+	added methods: BlockImpl.addLocalVariable, Factory.makeExpression, Factory.makeStatement
+
+1999-08-27  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj (Literal):
+	Recognize floating point literals (trailing "f").
+
+1999-08-24  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java:
+	equals() and hashcode() added
+	use char[] instead of str.charAt()
+
+1999-07-22  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/PackageImpl.java:
+	Added toString() because the default toString() hangs.
+
+1999-07-15  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Attribute.java:
+	genious improvements by boris
+
+1999-07-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Attribute.java:
+	jetzt neu: mit CyclicAttributeException!
+
+1999-07-08  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	if tags
+
+1999-06-10  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java (qualifiedName):
+	Handle anonymous classes as well.
+
+1999-06-09  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java (visitInterface, visitClass):
+	Descend into nested types as well.
+
+1999-06-09  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Barat.java: removed repository stuff
+
+1999-06-08  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java (visitObjectAllocation):
+	Descend into enclosing instance expression,
+	if present.
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java (visitThis):
+	Added basic handling of enclosing instances; but not
+	entirely correct.
+
+1999-06-08  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	Added "static { ... }" for getStaticInitializers()
+
+1999-06-07  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java:
+	Further improved memory usage by making `attributes' cached, too
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java: Fixes
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/Barat.java:
+	Fixes for OutputVisitor distinguishing between binary and normal classes
+	utility routines for Barat
+
+1999-06-02  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java: getTags() fix
+
+1999-06-01  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	Fixes for new tag behavior
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java:
+	Changed addTags, such that the `tags' and `tagScopes' fields are initialized
+	lazily. Otherwise, these fields would be added to _every_ node, and we've got quite
+	a lot of them.
+
+	Thus node.getTags() returns null instead of an empty list. Easy to check for.
+
+	* /cvsroot/barat/Barat/barat/Barat.java:
+	Added methos that return the transitive closure of the super types of a given
+	clazz, i.e. all super classes and implemented interfaces
+
+1999-05-31  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Support for tag expressions such as //:if-cond a[i]
+
+	* /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java, /cvsroot/barat/Barat/barat/DefaultVisitor.java:
+	Added cool new feature: tags may contain expressions such as //:if-cond a[i]
+	Fixed OutputVisitor.visitThis()
+
+1999-05-06  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Function2.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Barat.java:
+	support for qualified this/super and qualified allocations added.
+	name lookup for inner classes is improved, but not yet correct.
+
+1999-05-06  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile: Removed PMG stuff.
+
+1999-05-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile:
+	changes that work not only for Markus
+
+	* /cvsroot/barat/Barat/barat/Visitor.java:
+	added new import because of JDK1.2 java.lang.Package
+
+1999-05-04  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile:
+	make target BaratParser.class first
+
+	* /cvsroot/barat/Barat/barat/parser/PMGpp2.java:
+	Preporcessor mangles Hashtable<A,B> to Hashtable$1A$3B$2
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile: add -unchecked
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/Constant.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CastingAttribute.java, /cvsroot/barat/Barat/barat/parser/C.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/B.java, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/A.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java:
+	Switched to GJ! Replaced import statements and removed some casts, that's
+	(almost) all.
+
+1999-04-29  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	bugfix: "this" in instance field initializers was not resolved correctly
+
+1999-04-28  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	bugfix: BaratParser does not call Factory.createArray any longer
+	(this method caused other files to be parsed before the current file
+	was parsed completely)
+	added: small check in NameAnalysis to detect future problems of this
+	kind (boolean parserInUse)
+
+1999-04-20  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	bufix: called constructor of anonymous allocations is now set correctly.
+
+1999-04-16  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/ClassExpressionTest.java:
+	example for testing expressions like: String.class double.class void.class
+
+	* /cvsroot/barat/Barat/barat/reflect/ClassExpression.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/parser/Typing.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ClassExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/DefaultVisitor.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java:
+	added barat.reflect.ClassExpression for expressions like:
+	 String.class double.class void.class
+
+1999-02-20  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/AbstractingVisitor.java (visitConstructor):
+	Call visitAMethod(), not visitConcreteMethod().
+
+1999-02-12  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile (pure):
+	Remove generic source files from pure tree.  Don't compile
+	what no longer exists.
+
+	* /cvsroot/barat/Barat/barat/AbstractAttribute.java, /cvsroot/barat/Barat/barat/parser/Modifiers.java, /cvsroot/barat/Barat/barat/parser/Function.java, /cvsroot/barat/Barat/barat/QualifiedName.java, /cvsroot/barat/Barat/barat/Node.java:
+	Serializabilized.
+
+1999-02-10  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java:
+	Constructor now inherits from AMethod and has its own attribute "body".
+	Rationale: All other concrete interfaces are derived from abstract
+	interfaces, so Constructor's supertype should be an abstract interface
+	as well. I chose to let Constructor to have its own attribute "body"
+	because otherwise, a new abstract superinterface of ConcreteMethod
+	and Constructor would have been needed.
+
+1999-02-09  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Makefile:
+	added make target "clean"
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java, /cvsroot/barat/Barat/barat/parser/Attribute.java:
+	changed class Visitor to be an interface
+	added make target "clean"
+
+	* /cvsroot/barat/Barat/barat/collections/Makefile:
+	added make target "clean"
+
+	* /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/DefaultVisitor.java, /cvsroot/barat/Barat/barat/ConstantAttribute.java, /cvsroot/barat/Barat/barat/CachedAttribute.java, /cvsroot/barat/Barat/barat/AbstractingVisitor.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java:
+	changed class AbstractAttribute to an interface
+	added CachedAttribute and ConstantAttribute
+	changed class Visitor to an interface
+	added DefaultVisitor and AbstractingVisitor
+	added make target "clean"
+
+1999-02-06  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Typing.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/Barat.java:
+	Don't cache the reference to the factory.
+
+	* /cvsroot/barat/Barat/barat/parser/Factory.java: Made serializable.
+
+	* /cvsroot/barat/Barat/barat/collections/instantiate:
+	Adapted to the new Makefile.
+
+	* /cvsroot/barat/Barat/barat/Makefile:
+	Adapted to the changed Makefile in barat/collections.
+
+	* /cvsroot/barat/Barat/barat/collections/Makefile:
+	Now a proper Makefile that does generic instantiation and compilation
+	only when needed.
+
+	* /cvsroot/barat/Barat/barat/pmg.inst:
+	Use barat.reflect.Package instead of barat.parser.Package, which
+	doesn't exist.
+
+1999-02-05  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Makefile, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayLengthAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/ATyped.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/ANamed.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java:
+	removed references to ImplementationVisitor
+	Makefile added
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/Makefile:
+	make should work now!
+
+1999-02-05  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/pmg.inst:
+	Changed generic parameters of type PackageImpl into Package, to break
+	circular dependency between NameAnalysis and PackageImpl (to overcome
+	a limitation of PMG).
+
+1999-02-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	changed a comment that referred to the obsolete class Naming
+
+	* /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	removed references to Naming in OutputVisitor
+	updated Rational Rose class diagram
+
+1999-02-04  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Typing.java: Removed
+
+	* /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/reflect/Class.java (isSubclassOf, isImplementationOf):
+	New methods.
+
+	* /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/reflect/Interface.java (isSubinterfaceOf):
+	New method.
+
+	* /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java (isSubtypeOf):
+	New method.
+
+	* /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/reflect/AType.java (isAssignableTo, isPassableTo, isCastableTo, equals):
+	New methods.
+
+	* /cvsroot/barat/Barat/barat/parser/Typing.java:
+	Moved here from package barat.
+
+1999-02-04  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java:
+	added hasSource()
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	*** empty log message ***
+
+1999-02-04  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java (qualifiedName):
+	Redirected the call to barat.parser.NameAnalysis.
+
+	* /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java (getConstructor):
+	Moved here from barat.Naming.
+
+	* /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java (getInstanceMethod, getStaticMethod):
+	Moved here from barat.Naming.
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java (qualifiedNameOf):
+	Moved here from barat.Naming.
+
+	* /cvsroot/barat/Barat/barat/Naming.java: Removed.
+
+	* /cvsroot/barat/Barat/barat/plainJava:
+	PMGDIR no longer set here (comes from the environment now)
+
+	* /cvsroot/barat/Barat/barat/barat.inst:
+	Use barat.reflect.ATyped instead of ...Typed for instantiation.
+
+1999-02-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	bugfix in BaratParser.jj: native methods are now represented by AbstractMethod
+	bugfix in BaratParser.jj: methods in interfaces are now public and abstract
+	PackageImpl, NameAnalysis, ClassPath: Package.getClasses() and Package.getInterfaces() trigger loading of *all* classes/interfaces in that package
+
+	* /cvsroot/barat/Barat/barat/Barat.java:
+	added method: getPackage(String name)
+
+1999-02-02  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/AttributeTest.java, /cvsroot/barat/Barat/barat/test/PMGTest.java, /cvsroot/barat/Barat/barat/test/AttributeCastTest.java:
+	cleanup: these test classes are no longer needed
+
+	* /cvsroot/barat/Barat/barat/test/InsertLogging.java:
+	example program for how to subclass OutputVisitor
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	added wrap() for correct output of string literals (quick, first version)
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	modified visitPackage and visitCompilationUnit to print "package ...;"
+
+	* /cvsroot/barat/Barat/barat/reflect/Typed.java, /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/ATyped.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ANamed.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/AHasModifier.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/ImplNamed.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/ImplATyped.java, /cvsroot/barat/Barat/barat/parser/ImplAHasModifier.java, /cvsroot/barat/Barat/barat/parser/ImplANamed.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Naming.java:
+	changed names: Typed -> ATyped, Named -> ANamed, HasModifier -> AHasModifier
+
+1999-02-02  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/pmg.inst:
+	corrected instantiation for barat.QualifiedName
+
+1999-02-01  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/AttributeWrapper.java:
+	Added AttributeWrapper for java class file attributes, available with
+	key AttributeWrapper.class
+
+1999-01-26  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/HasExpression.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java:
+	removed interface HasExpression, which I think was of no use.
+
+	* /cvsroot/barat/Barat/barat/Node.java:
+	added method addAttribute to Node (was only in NodeImpl)
+
+	* /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/NodeImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/Modifiers.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/Hack.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/Function.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/Constant.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/CastingAttribute.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/C.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/B.java, /cvsroot/barat/Barat/barat/parser/Attribute.java, /cvsroot/barat/Barat/barat/parser/ArrayLengthAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/A.java, /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/barat.inst, /cvsroot/barat/Barat/barat/pmg.inst, /cvsroot/barat/Barat/barat/QualifiedName.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Function.java, /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/Constant.java, /cvsroot/barat/Barat/barat/CastingAttribute.java, /cvsroot/barat/Barat/barat/C.java, /cvsroot/barat/Barat/barat/B.java, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/A.java:
+	moved class from barat.reflect to barat: QualifiedName
+	moved class from barat.reflect to barat.parser: Modifiers
+	moved classes from barat
+	              to barat.parser: A B C Attribute Constant CastingAttribute
+	                               Function NodeImpl
+	removed class: barat.parser.Hack
+	removed method: barat.reflect.HasModifier.getDelegate_modifiers()
+	(all PMG-related weirdness now in barat.parser!)
+
+1999-01-21  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Tags (comments starting with '/*:' ) are now supported for:
+	classes, interfaces, constructors, methods, method calls
+	(where the comment appears just before the construct)
+	and allocation expressions (where the comment appears just after 'new')
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java:
+	made AbstractAttribute public.
+	added containingUserType to Node / NodeImpl
+	changes to output of tag comments in OutputVisitor
+
+1999-01-11  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/Makefile:
+	String und QualifiedName were missing from Makefile
+
+1999-01-07  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/LiteralImpl.java:
+	Added copy() function needed by CodeGenerator
+
+1999-01-05  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	fixed method lookup for inner classes, changed This.getThisClass
+	to return AUserType instead of Class (needed for inner classes)
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	name analysis for inner classes implemented
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	added implementation for visitAnonymousAllocation
+
+1999-01-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: small bugfix
+
+1999-01-02  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	method-lookup implemented: changed lookupMethod and lookupConstructor
+
+	* /cvsroot/barat/Barat/barat/Naming.java:
+	method-lookup implemented: getInstanceMethod, getStaticMethod, getConstructor
+
+1999-01-01  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Class.java:
+	added Class.getInstanceInitializers()
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	implemented int Node.line_number()
+	added Class.getInstanceInitializers()
+	inner classes supported by parser (name analysis not yet implemented)
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java:
+	implemented int Node.line_number()
+
+1998-12-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java:
+	added: AMethod.overriddenMethod()
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java: .
+
+1998-12-05  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/.cvsignore:
+	Added Suspension*.java to .cvsignore
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/CastingAttribute.java, /cvsroot/barat/Barat/barat/C.java, /cvsroot/barat/Barat/barat/Barat.java, /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java:
+	Moved Attributes and Tags to the public interface (in an untyped version)
+
+1998-11-27  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java:
+	?
+
+1998-11-26  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/Barat.java: preferByteCode
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	fix allocationimpl
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: bla
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java:
+	Parser: parseChar(), parseString()
+
+1998-11-11  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Attribute.java:
+	made Attribute more robust (?)
+
+1998-11-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	tags for allocation expressions
+	instantiations updated
+
+	* /cvsroot/barat/Barat/barat/pmg.inst, /cvsroot/barat/Barat/barat/barat.inst, /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	OutputVisitor: outputs tags for allocation expressions
+	instantiations updated
+
+1998-11-04  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java:
+	removed superfluous Attribute imports
+
+1998-11-04  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/SourceParsedObserver.java:
+	corrections
+
+1998-11-03  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/Attribute.java:
+	!
+
+1998-11-03  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ConstantAnalysis.java:
+	started to implement constant folding
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	Bug fix for Break
+
+1998-11-02  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/SourceParsedObserver.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Bugfixes, SourceParsedObserver
+
+	* /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Constant.java, /cvsroot/barat/Barat/barat/Attribute.java:
+	Bugfixes
+
+	* /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java:
+	Neu: filename() in CompilationUnit
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassPath.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Neu: Tags, manche Methoden jetzt public,
+	     callback-Funktionalitaet in der Factory; target von Break/Continue wird
+	     gesetzt
+
+	* /cvsroot/barat/Barat/barat/Typing.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Barat.java:
+	Neu: Tags, manche Methoden jetzt public, Parametrisierung des OutputVisitors
+
+1998-10-28  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/ClassFileParser.java:
+	field initializer
+
+1998-10-14  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	some fixes
+
+	* /cvsroot/barat/Barat/barat/collections/List.generic, /cvsroot/barat/Barat/barat/collections/ListIterator.generic, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/Iterator.generic, /cvsroot/barat/Barat/barat/collections/ArrayList.generic:
+	additional classes + support for adding new ones
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Makefile:
+	some corrections
+
+1998-09-16  dahm  <dahm@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/instantiate, /cvsroot/barat/Barat/barat/collections/Makefile:
+	support for other packages then bara.reflect, automatic compilation
+
+1998-09-01  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Barat.java:
+	*** empty log message ***
+
+1998-08-21  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	debug flags, float and double literals
+
+	* /cvsroot/barat/Barat/barat/Barat.java: debug flags
+
+1998-08-21  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Attribute.java:
+	corrected containment
+
+	* /cvsroot/barat/Barat/barat/NodeImpl.java (containing):
+	When seeking for something that is inside a type,
+	don't wander into outer types.
+
+1998-08-19  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java:
+	added qualifiedName()
+
+	* /cvsroot/barat/Barat/barat/barat.inst: *** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	set modifiers of local variables
+
+	* /cvsroot/barat/Barat/barat/Makefile: added purification target
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java (visitConstructor):
+	Account for missing constructor call in
+	java.lang.Object's default constructor.
+
+1998-08-18  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Barat.java: added version number
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	implemented integer syntax
+
+1998-08-17  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Barat.java: *** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java:
+	corrected severe java.lang.Object bug
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/Barat.java: use Markus Dahm's ClassPath
+
+	* /cvsroot/barat/Barat/barat/parser/ClassPath.java:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	use Markus Dahm's ClassPath
+
+1998-08-07  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/ArrayLengthAccessImpl.java, /cvsroot/barat/Barat/barat/plainJava:
+	*** empty log message ***
+
+1998-08-06  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/pmg.inst, /cvsroot/barat/Barat/barat/plainJava, /cvsroot/barat/Barat/barat/barat.inst:
+	*** empty log message ***
+
+1998-08-05  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/ArrayLengthAccess.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/ArrayLengthAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java:
+	*** empty log message ***
+
+1998-08-04  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/NodeImpl.java:
+	*** empty log message ***
+
+1998-08-03  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+1998-08-03  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Makefile, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/Barat.java:
+	*** empty log message ***
+
+1998-07-28  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/AnalysisVisitor.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Hack.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/AbstractAttribute.java:
+	nodes may have an arbitrary number of user-defined attributes
+
+1998-07-17  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	*** empty log message ***
+
+1998-07-16  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	*** empty log message ***
+
+1998-07-16  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java:
+	*** empty log message ***
+
+1998-07-16  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java (visitConstructor):
+	Print name of defining class, not own name, which
+	is not meaningful.
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj (ConstructorDeclaration):
+	Add constructors to the class they are defined in.
+
+1998-07-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/Typing.java:
+	*** empty log message ***
+
+1998-07-15  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/Makefile, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java (lookupConstructor):
+	New method.
+
+	* /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	*** empty log message ***
+
+1998-07-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java:
+	*** empty log message ***
+
+1998-07-15  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/Makefile, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitorImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java:
+	ImplementationVisitorImpl.java
+
+	* /cvsroot/barat/Barat/barat/VisitorImpl.java:
+	*** empty log message ***
+
+1998-07-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/Naming.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Attribute.java:
+	*** empty log message ***
+
+1998-07-14  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+1998-07-14  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+1998-07-14  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/Node.java:
+	*** empty log message ***
+
+1998-07-14  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+1998-07-14  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Typing.java (noReturnTypeConflicts):
+	Implemented.
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	statement expression corrected
+
+1998-07-14  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/ClassFileParser.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java:
+	*** empty log message ***
+
+1998-07-14  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Naming.java: *** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java: it does compile
+
+1998-07-14  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java:
+	*** empty log message ***
+
+1998-07-14  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Typing.java: use Naming.qualifiedNameOf
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java: this should be it
+
+1998-07-13  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java:
+	*** empty log message ***
+
+1998-07-13  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/Typing.java (equalSignature): Implemented.
+
+	* /cvsroot/barat/Barat/barat/OutputVisitor.java:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/Typing.java (isAssignableTo, isPassableTo, isCastableTo, etc.):
+	New methods.
+
+1998-07-13  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Typing.java, /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	*** empty log message ***
+
+1998-07-12  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/collections/.cvsignore, /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/parser/TypeAnalysis.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/AttributeVisitor.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/Visitor.java:
+	*** empty log message ***
+
+1998-07-11  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	*** empty log message ***
+
+1998-07-11  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/test/AttributeCastTest.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Typed.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/HasExpression.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitorImpl.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/ImplNamed.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/AFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/AFiedAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/VisitorImpl.java, /cvsroot/barat/Barat/barat/Function.java, /cvsroot/barat/Barat/barat/B.java, /cvsroot/barat/Barat/barat/CastingAttribute.java:
+	*** empty log message ***
+
+1998-07-10  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/PMGTest.java, /cvsroot/barat/Barat/barat/parser/.cvsignore, /cvsroot/barat/Barat/barat/parser/ImplementationVisitorImpl.java, /cvsroot/barat/Barat/barat/parser/ImplementationVisitor.java, /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/parser/Factory.java, /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Typed.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/HasExpression.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ImplNamed.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/AFiedAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/VisitorImpl.java, /cvsroot/barat/Barat/barat/NodeImpl.java:
+	*** empty log message ***
+
+1998-07-10  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: syntax
+
+1998-07-10  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/parser/Makefile:
+	*** empty log message ***
+
+1998-07-10  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+1998-07-09  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/Typed.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/HasExpression.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ImplNamed.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/AFiedAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/VisitorImpl.java, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/Attribute.java:
+	*** empty log message ***
+
+1998-07-09  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/Factory.java: create everything
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	changed indentation to two spaces per level
+
+1998-07-09  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/parser/Scope.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/UserTypeDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Typed.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/StaticField.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/QualifiedName.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/Named.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Literal.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/Identifier.java, /cvsroot/barat/Barat/barat/reflect/INamed.java, /cvsroot/barat/Barat/barat/reflect/ITyped.java, /cvsroot/barat/Barat/barat/reflect/IHasModifier.java, /cvsroot/barat/Barat/barat/reflect/HasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/HasExpression.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Constant.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/AnonymousAllocation.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AUserType.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/parser/WhileImpl.java, /cvsroot/barat/Barat/barat/parser/VariableDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/VariableAccessImpl.java, /cvsroot/barat/Barat/barat/parser/UserTypeDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/UnaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/TryImpl.java, /cvsroot/barat/Barat/barat/parser/ThisImpl.java, /cvsroot/barat/Barat/barat/parser/ThrowImpl.java, /cvsroot/barat/Barat/barat/parser/SynchronizedImpl.java, /cvsroot/barat/Barat/barat/parser/SwitchImpl.java, /cvsroot/barat/Barat/barat/parser/StaticMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/StaticFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/PrimitiveTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ReturnImpl.java, /cvsroot/barat/Barat/barat/parser/ParenExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ParameterImpl.java, /cvsroot/barat/Barat/barat/parser/PackageImpl.java, /cvsroot/barat/Barat/barat/parser/NullTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ObjectAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/LocalVariableImpl.java, /cvsroot/barat/Barat/barat/parser/LiteralImpl.java, /cvsroot/barat/Barat/barat/parser/InterfaceImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceofImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/InstanceFieldAccessImpl.java, /cvsroot/barat/Barat/barat/parser/ImplTyped.java, /cvsroot/barat/Barat/barat/parser/ImplNamed.java, /cvsroot/barat/Barat/barat/parser/ImplHasModifier.java, /cvsroot/barat/Barat/barat/parser/IfImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitDeclarationImpl.java, /cvsroot/barat/Barat/barat/parser/ForInitExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/ForImpl.java, /cvsroot/barat/Barat/barat/parser/FinallyImpl.java, /cvsroot/barat/Barat/barat/parser/FieldImpl.java, /cvsroot/barat/Barat/barat/parser/ExpressionStatementImpl.java, /cvsroot/barat/Barat/barat/parser/DoImpl.java, /cvsroot/barat/Barat/barat/parser/EmptyStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ContinueImpl.java, /cvsroot/barat/Barat/barat/parser/DefaultBranchImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorImpl.java, /cvsroot/barat/Barat/barat/parser/ConstructorCallImpl.java, /cvsroot/barat/Barat/barat/parser/ConditionalImpl.java, /cvsroot/barat/Barat/barat/parser/ConcreteMethodImpl.java, /cvsroot/barat/Barat/barat/parser/CompilationUnitImpl.java, /cvsroot/barat/Barat/barat/parser/ClassImpl.java, /cvsroot/barat/Barat/barat/parser/CastImpl.java, /cvsroot/barat/Barat/barat/parser/CatchImpl.java, /cvsroot/barat/Barat/barat/parser/CaseBranchImpl.java, /cvsroot/barat/Barat/barat/parser/BreakImpl.java, /cvsroot/barat/Barat/barat/parser/BlockImpl.java, /cvsroot/barat/Barat/barat/parser/BinaryOperationImpl.java, /cvsroot/barat/Barat/barat/parser/AssignmentImpl.java, /cvsroot/barat/Barat/barat/parser/AttributeVisitor.java, /cvsroot/barat/Barat/barat/parser/ArrayInitializerImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/ArrayAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AnonymousAllocationImpl.java, /cvsroot/barat/Barat/barat/parser/AbstractMethodImpl.java, /cvsroot/barat/Barat/barat/parser/AVariableImpl.java, /cvsroot/barat/Barat/barat/parser/AUserTypeImpl.java, /cvsroot/barat/Barat/barat/parser/ATypeImpl.java, /cvsroot/barat/Barat/barat/parser/ATargetStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AStatementImpl.java, /cvsroot/barat/Barat/barat/parser/ASwitchBranchImpl.java, /cvsroot/barat/Barat/barat/parser/AReferenceTypeImpl.java, /cvsroot/barat/Barat/barat/parser/AOperandExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodImpl.java, /cvsroot/barat/Barat/barat/parser/ALoopingStatementImpl.java, /cvsroot/barat/Barat/barat/parser/AMethodCallImpl.java, /cvsroot/barat/Barat/barat/parser/AForInitImpl.java, /cvsroot/barat/Barat/barat/parser/ALValueImpl.java, /cvsroot/barat/Barat/barat/parser/AFiedAccessImpl.java, /cvsroot/barat/Barat/barat/parser/AExpressionImpl.java, /cvsroot/barat/Barat/barat/parser/AArgumentsExpressionImpl.java, /cvsroot/barat/Barat/barat/barat.mdl, /cvsroot/barat/Barat/barat/NodeImpl.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/Attribute.java:
+	*** empty log message ***
+
+1998-07-08  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: intermediate
+
+1998-07-06  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	primary expressions initially
+
+	* /cvsroot/barat/Barat/barat/parser/Factory.java:
+	Pretty much done, without primary expressions.
+
+1998-07-03  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: intermediate
+
+1998-07-02  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: intermediate
+
+1998-07-02  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/AttributeTest.java:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java:
+	method names changed
+
+	* /cvsroot/barat/Barat/barat/Attribute.java: *** empty log message ***
+
+1998-07-02  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: scope handling
+
+	* /cvsroot/barat/Barat/barat/collections/.cvsignore:
+	*** empty log message ***
+
+1998-07-01  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/test/AttributeTest.java:
+	to test the Attribute evaluation mechanism
+
+	* /cvsroot/barat/Barat/barat/parser/NameAnalysis.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/Constant.java, /cvsroot/barat/Barat/barat/A.java, /cvsroot/barat/Barat/barat/Attribute.java, /cvsroot/barat/Barat/barat/parser/Scope.java:
+	*** empty log message ***
+
+1998-06-25  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	binary and unary operations
+
+1998-06-24  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: one time through
+
+1998-06-23  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	use helper variable for Factory.getInstance().
+
+1998-06-22  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: intermediate
+
+1998-06-19  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj: intermediate stage
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/VisitorImpl.java, /cvsroot/barat/Barat/barat/Node.java, /cvsroot/barat/Barat/barat/DescendingVisitor.java:
+	*** empty log message ***
+
+1998-06-19  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/StaticField.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/ITyped.java, /cvsroot/barat/Barat/barat/reflect/Identifier.java, /cvsroot/barat/Barat/barat/reflect/INamed.java, /cvsroot/barat/Barat/barat/reflect/IHasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Constant.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java:
+	applied "change"
+
+	* /cvsroot/barat/Barat/barat/DescendingVisitor.java, /cvsroot/barat/Barat/barat/DescendVisitor.java:
+	changed name
+
+1998-06-19  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/collections/Makefile:
+	*** empty log message ***
+
+1998-06-18  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/DescendVisitor.java:
+	DescendVisitor now has Methods for abstract classes (like AMethod, etc...)
+
+1998-06-18  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/newline: a really important file
+
+	* /cvsroot/barat/Barat/barat/collections/ListIterator.generic, /cvsroot/barat/Barat/barat/collections/List.generic, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.generic, /cvsroot/barat/Barat/barat/collections/Iterator.generic, /cvsroot/barat/Barat/barat/collections/Collection.generic, /cvsroot/barat/Barat/barat/collections/ArrayList.generic, /cvsroot/barat/Barat/barat/collections/instantiate, /cvsroot/barat/Barat/barat/reflect/change:
+	*** empty log message ***
+
+	* /cvsroot/barat/Barat/barat/collections/IteratorWrapper.java:
+	added header comment
+
+	* /cvsroot/barat/Barat/barat/collections/ListIterator.java, /cvsroot/barat/Barat/barat/collections/IteratorWrapper.java, /cvsroot/barat/Barat/barat/collections/List.java, /cvsroot/barat/Barat/barat/collections/Iterator.java, /cvsroot/barat/Barat/barat/collections/Collection.java, /cvsroot/barat/Barat/barat/collections/ArrayList.java:
+	hopefully working, non-generic version
+
+1998-06-15  spiegel  <spiegel@rabin>
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	Renamings and comment changes
+
+	* /cvsroot/barat/Barat/barat/parser/BaratParser.jj:
+	This file is taken from JavaCC 0.7.1,
+	examples/JavaGrammar/Java1.1noLA.jj
+
+1998-06-15  bokowski  <bokowski@rabin>
+
+	* /cvsroot/barat/Barat/barat/reflect/While.java, /cvsroot/barat/Barat/barat/reflect/VariableDeclaration.java, /cvsroot/barat/Barat/barat/reflect/UnaryOperation.java, /cvsroot/barat/Barat/barat/reflect/VariableAccess.java, /cvsroot/barat/Barat/barat/reflect/Try.java, /cvsroot/barat/Barat/barat/reflect/Throw.java, /cvsroot/barat/Barat/barat/reflect/This.java, /cvsroot/barat/Barat/barat/reflect/Synchronized.java, /cvsroot/barat/Barat/barat/reflect/Switch.java, /cvsroot/barat/Barat/barat/reflect/StaticMethodCall.java, /cvsroot/barat/Barat/barat/reflect/StaticFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/StaticField.java, /cvsroot/barat/Barat/barat/reflect/Return.java, /cvsroot/barat/Barat/barat/reflect/PrimitiveType.java, /cvsroot/barat/Barat/barat/reflect/ParenExpression.java, /cvsroot/barat/Barat/barat/reflect/Parameter.java, /cvsroot/barat/Barat/barat/reflect/Package.java, /cvsroot/barat/Barat/barat/reflect/ObjectAllocation.java, /cvsroot/barat/Barat/barat/reflect/NullType.java, /cvsroot/barat/Barat/barat/reflect/Modifiers.java, /cvsroot/barat/Barat/barat/reflect/LocalVariable.java, /cvsroot/barat/Barat/barat/reflect/Interface.java, /cvsroot/barat/Barat/barat/reflect/Instanceof.java, /cvsroot/barat/Barat/barat/reflect/InstanceMethodCall.java, /cvsroot/barat/Barat/barat/reflect/InstanceFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/If.java, /cvsroot/barat/Barat/barat/reflect/ITyped.java, /cvsroot/barat/Barat/barat/reflect/Identifier.java, /cvsroot/barat/Barat/barat/reflect/INamed.java, /cvsroot/barat/Barat/barat/reflect/IHasModifier.java, /cvsroot/barat/Barat/barat/reflect/ForInitExpression.java, /cvsroot/barat/Barat/barat/reflect/ForInitDeclaration.java, /cvsroot/barat/Barat/barat/reflect/For.java, /cvsroot/barat/Barat/barat/reflect/Finally.java, /cvsroot/barat/Barat/barat/reflect/Field.java, /cvsroot/barat/Barat/barat/reflect/ExpressionStatement.java, /cvsroot/barat/Barat/barat/reflect/EmptyStatement.java, /cvsroot/barat/Barat/barat/reflect/Do.java, /cvsroot/barat/Barat/barat/reflect/DefaultBranch.java, /cvsroot/barat/Barat/barat/reflect/Continue.java, /cvsroot/barat/Barat/barat/reflect/ConstructorCall.java, /cvsroot/barat/Barat/barat/reflect/Constructor.java, /cvsroot/barat/Barat/barat/reflect/Conditional.java, /cvsroot/barat/Barat/barat/reflect/Constant.java, /cvsroot/barat/Barat/barat/reflect/ConcreteMethod.java, /cvsroot/barat/Barat/barat/reflect/CompilationUnit.java, /cvsroot/barat/Barat/barat/reflect/Class.java, /cvsroot/barat/Barat/barat/reflect/Catch.java, /cvsroot/barat/Barat/barat/reflect/Cast.java, /cvsroot/barat/Barat/barat/reflect/CaseBranch.java, /cvsroot/barat/Barat/barat/reflect/Break.java, /cvsroot/barat/Barat/barat/reflect/Block.java, /cvsroot/barat/Barat/barat/reflect/BinaryOperation.java, /cvsroot/barat/Barat/barat/reflect/Assignment.java, /cvsroot/barat/Barat/barat/reflect/ArrayInitializer.java, /cvsroot/barat/Barat/barat/reflect/ArrayAllocation.java, /cvsroot/barat/Barat/barat/reflect/ArrayAccess.java, /cvsroot/barat/Barat/barat/reflect/Array.java, /cvsroot/barat/Barat/barat/reflect/AbstractMethod.java, /cvsroot/barat/Barat/barat/reflect/AVariable.java, /cvsroot/barat/Barat/barat/reflect/AType.java, /cvsroot/barat/Barat/barat/reflect/ATargetStatement.java, /cvsroot/barat/Barat/barat/reflect/ASwitchBranch.java, /cvsroot/barat/Barat/barat/reflect/AStatement.java, /cvsroot/barat/Barat/barat/reflect/AReferenceType.java, /cvsroot/barat/Barat/barat/reflect/AOperandExpression.java, /cvsroot/barat/Barat/barat/reflect/AMethodCall.java, /cvsroot/barat/Barat/barat/reflect/AMethod.java, /cvsroot/barat/Barat/barat/reflect/ALoopingStatement.java, /cvsroot/barat/Barat/barat/reflect/ALValue.java, /cvsroot/barat/Barat/barat/reflect/AForInit.java, /cvsroot/barat/Barat/barat/reflect/AFieldAccess.java, /cvsroot/barat/Barat/barat/reflect/AExpression.java, /cvsroot/barat/Barat/barat/reflect/AArgumentsExpression.java, /cvsroot/barat/Barat/barat/VisitorImpl.java, /cvsroot/barat/Barat/barat/Visitor.java, /cvsroot/barat/Barat/barat/Node.java:
+	initial revision
+

@@ -1,0 +1,29 @@
+How the test "framework" works:
+===============================
+
+To compile all test classes:
+----------------------------
+
+> make
+or
+> javac Test*.java RunTests.java
+
+
+To run the tests:
+-----------------
+
+> java barat.test.RunTests
+
+
+To write a new test:
+--------------------
+
+Create a new test class in the package barat.test which has a name starting
+with "Test" (e.g., "TestOutputVisitor" or "Test121846"). Each test class
+should have a method
+  public static void runTest()
+which, when invoked, runs a test. The test is assumed to succeed if no
+exception is thrown during the execution of runTest(). For a succeeding
+test, both System.out and System.err are suppressed. In the failing
+case, the output (out and err) is printed, followed by the stack trace
+of the exception.
