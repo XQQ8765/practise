@@ -7,6 +7,11 @@
   <version>1.0-SNAPSHOT</version>
   <name>maven_practise</name>
   <url>http://maven.apache.org</url>
+    <parent>
+        <groupId>com.xiaoqq.practise</groupId>
+        <artifactId>practise</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

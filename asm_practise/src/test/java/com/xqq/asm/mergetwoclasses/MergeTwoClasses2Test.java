@@ -13,7 +13,7 @@ import static junit.framework.Assert.*;
  * Created by rxiao on 2/26/15.
  */
 public class MergeTwoClasses2Test {
-
+    /*
     @Test
     public void testMergeClass() throws Exception {
         Class clazz1 = C1.class;
@@ -27,4 +27,5 @@ public class MergeTwoClasses2Test {
         Class beanClazz = myClassLoader.defineClass(clazz1.getName(), classBytes);
         assertEquals(clazz1.getName(), beanClazz.getName());
     }
+    */
 }

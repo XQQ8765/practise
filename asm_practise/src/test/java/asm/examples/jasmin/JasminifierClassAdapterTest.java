@@ -145,7 +145,8 @@ public class JasminifierClassAdapterTest extends TestCase {
     protected TestSuite getSuite() throws Exception {
         TestSuite suite = new TestSuite(getClass().getName());
 
-        String files = "d:\\workspace\\practise\\asm_practise\\src\\main\\resources\\,e:\\open_source\\asm\\asm-5.0.3\\lib\\asm-5.0.3.jar,";
+        //String files = "d:\\workspace\\practise\\asm_practise\\src\\main\\resources\\,e:\\open_source\\asm\\asm-5.0.3\\lib\\asm-5.0.3.jar,";
+        String files = "d:\\workspace\\practise\\asm_practise\\src\\main\\resources\\";
         String clazz = null;
         //String files = System.getProperty("asm.test") + ",";
         //String clazz = System.getProperty("asm.test.class");
