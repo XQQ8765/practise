@@ -6,5 +6,6 @@
 *.iws
 classes
 target
+build
 .idea
 *.class

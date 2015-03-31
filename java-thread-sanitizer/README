@@ -1,0 +1,12 @@
+Create project:
+mvn archetype:generate -DgroupId=org.jtsan -DartifactId=java-thread-sanitizer -DarchetypeArtifactId=maven-archetype-quickstart
+
+Package java with all dependencies:
+mvn assembly:assembly
+
+Run:
+java -javaagent:target/java-thread-sanitizer-1.0-SNAPSHOT-jar-with-dependencies.jar org.jtsan.examples.Hello
+
+Source Code:
+https://code.google.com/p/java-thread-sanitizer/
+https://github.com/XQQ8765/java-thread-sanitizer/

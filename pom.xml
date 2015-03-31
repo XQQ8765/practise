@@ -12,8 +12,8 @@
         <module>hadoop</module>  
 		<module>maven_practise</module>
 		<module>Barat-1.6.1</module>
-    <module>threadmonitor</module>
-  </modules>  
+        <module>java-thread-sanitizer</module>
+  </modules>
 <build>  
     <plugins>  
 		<plugin>
