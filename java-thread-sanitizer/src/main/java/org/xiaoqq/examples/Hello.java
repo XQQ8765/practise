@@ -1,4 +1,4 @@
-package org.jtsan.examples;/* Copyright (c) 2009 Google Inc.
+package org.xiaoqq.examples;/* Copyright (c) 2009 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
