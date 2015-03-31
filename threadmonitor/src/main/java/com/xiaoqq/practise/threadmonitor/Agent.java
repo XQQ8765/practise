@@ -61,23 +61,23 @@ public class Agent implements ClassFileTransformer {
   private static String[] noignore = new String[]{};
 
   public static void premain(String arg, Instrumentation instrumentation) {
-    System.out.println("Start to create Agent");
-    Agent agent = new Agent();
-    instrumentation.addTransformer(agent, true);
-
-      Class[] allClasses = instrumentation.getAllLoadedClasses();
-      for (Class c : allClasses) {
-        if (!c.isInterface() && instrumentation.isModifiableClass(c)) {
-          try {
-            instrumentation.retransformClasses(c);
-          } catch (Exception e) {
-            System.err.println("Cannot retransform class. Exception: " + e);
-              e.printStackTrace();
-              System.exit(1);
-          }
-        }
-      }
-  }
+        System.out.println("Start to create Agent");
+        Agent agent = new Agent();
+        instrumentation.addTransformer(agent, true);
+        /*
+        Class[] allClasses = instrumentation.getAllLoadedClasses();
+        for (Class c : allClasses) {
+            if (!c.isInterface() && instrumentation.isModifiableClass(c)) {
+                try {
+                    instrumentation.retransformClasses(c);
+                } catch (Exception e) {
+                    System.err.println("Cannot retransform class. Exception: " + e);
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+            }
+        } */
+    }
 
   private boolean inIgnoreList(String className) {
     for (String anIgnore : ignore) {
@@ -95,10 +95,11 @@ public class Agent implements ClassFileTransformer {
 
   public byte[] transform(ClassLoader loader, String className,
                           Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
-      if (inIgnoreList(className)) {
-        return bytes;
-      }
-
+      /*if (inIgnoreList(className)) {
+          System.out.println("-------------------ignore. className:"+className + ", clazz:" +clazz.getName());
+          return bytes;
+      }  */
+      System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
       ClassReader cr = new ClassReader(bytes);
       ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
       ClassVisitor cv = new MonitorThreadClassVisitor(Opcodes.ASM4, cw);
@@ -106,6 +107,8 @@ public class Agent implements ClassFileTransformer {
 
       byte[] transformedBytes = cw.toByteArray();
       return transformedBytes;
+      //System.out.println("-------------------no transform. className:"+className + ", clazz:" +clazz.getName());
+      //return bytes;
   }
 
 }

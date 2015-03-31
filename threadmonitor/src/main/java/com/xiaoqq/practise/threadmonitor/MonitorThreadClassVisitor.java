@@ -18,17 +18,19 @@ public class MonitorThreadClassVisitor extends ClassVisitor{
 
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+        System.out.println("---------MonitorThreadClassVisitor class:"+name+" visit.");
         super.visit(version, access, name, signature, superName, interfaces);
         className = name;
     }
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+        System.out.println("---------MonitorThreadClassVisitor method:"+name+desc+" visit.");
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
-        if (isThreadRunningMethod(className, name, desc)) {
+        //if (isThreadRunningMethod(className, name, desc)) {
             return new MonitorThreadAdviceAdapter(api, mv, access, name, desc, className);
-        }
-        return mv;
+        //}
+        //return mv;
     }
 
     private static boolean isThreadRunningMethod(String clazzName, String methodName, String desc) {

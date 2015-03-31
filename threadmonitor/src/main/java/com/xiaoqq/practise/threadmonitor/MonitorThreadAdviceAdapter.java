@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
 public class MonitorThreadAdviceAdapter extends AdviceAdapter {
     private String methodName;
     private String className;
+    private String desc;
 
     /**
      * Creates a new {@link org.objectweb.asm.commons.AdviceAdapter}.
@@ -27,12 +28,26 @@ public class MonitorThreadAdviceAdapter extends AdviceAdapter {
         super(api, mv, access, name, desc);
         this.className = className;
         this.methodName = name;
+        this.desc = desc;
+    }
+    @Override public void visitCode() {
+        // trigger the super class
+        super.visitCode();
+
+        // load the system.out field into the stack
+        super.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+        // load the constant string we want to print into the stack
+        // this string is created by the values we get from ASM
+        super.visitLdcInsn("Method " + className + "." + methodName + "(" + desc + ") called");
+        // trigger the method instruction for 'println'
+        super.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V");
+
     }
 
     @Override
     public void visitTypeInsn(int opcode, String type) {
         if (opcode == NEW && MonitorUtil.isThreadTypeOrInterfaces(type)) {
-            System.out.println("New a thread: " + type);
+            System.out.println("###New a Thread: " + type);
         }
         super.visitTypeInsn(opcode, type);
     }
@@ -43,7 +58,7 @@ public class MonitorThreadAdviceAdapter extends AdviceAdapter {
         }
         if (opcode == INVOKESPECIAL) {
             if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, owner) && name.equals("start")) {//Thread start method
-                System.out.println("visitMethodInsn(): Thread:" + MonitorUtil.getCurrentThreadName() + "start()");
+                System.out.println("###visitMethodInsn(): Thread:" + MonitorUtil.getCurrentThreadName() + "start()");
             }
         }
         super.visitMethodInsn(opcode, owner, name, desc, itf);
@@ -51,13 +66,13 @@ public class MonitorThreadAdviceAdapter extends AdviceAdapter {
 
     @Override
     protected void onMethodEnter() {
-        System.out.println("onMethodEnter(): className:" + className + ", methodName:" + methodName + ", Thread:" + MonitorUtil.getCurrentThreadName() + " start().");
+        System.out.println("###onMethodEnter(): className:" + className + ", methodName:" + methodName + ", Thread:" + MonitorUtil.getCurrentThreadName() + " start().");
         super.onMethodEnter();
     }
 
     @Override
     protected void onMethodExit(int opcode) {
         super.onMethodExit(opcode);
-        System.out.println("onMethodEnter():  className:" + className + ", methodName:" + methodName +", Thread:" + MonitorUtil.getCurrentThreadName() + " finish().");
+        System.out.println("###onMethodEnter():  className:" + className + ", methodName:" + methodName +", Thread:" + MonitorUtil.getCurrentThreadName() + " finish().");
     }
 }
