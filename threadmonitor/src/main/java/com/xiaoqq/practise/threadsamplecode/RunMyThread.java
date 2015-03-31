@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.threadsamplecode;
+package com.xiaoqq.practise.threadsamplecode;
 
 /*
 * See more at: http://www.java2novice.com/java_thread_examples/implementing_runnable/#sthash.s5d7fw08.dpuf

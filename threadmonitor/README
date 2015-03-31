@@ -1,1 +1,14 @@
+Create project:
 mvn archetype:generate -DgroupId=com.xiaoqq.practise.threadmonitor -DartifactId=threadmonitor -DarchetypeArtifactId=maven-archetype-quickstart
+
+Package java with all dependencies:
+mvn assembly:assembly
+
+Run:
+Go to folder: d:\workspace\practise\JavaConcurrent\concurrent\target\classes\
+java -javaagent:d:\workspace\practise\threadmonitor\target\threadmonitor-agent-with-dependencies.jar rabbit.share.concurrent.RunThreadExample
+
+java -javaagent:../threadmonitor-agent-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
+java -javaagent:target/threadmonitor-agent-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
+java -javaagent:target/threadmonitor-agent-with-dependencies.jar -jar target/threadmonitor-sample-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
+java -javaagent:target/threadmonitor-1.0-SNAPSHOT-jar-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread

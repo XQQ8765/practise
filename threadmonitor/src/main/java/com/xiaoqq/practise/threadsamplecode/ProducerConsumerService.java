@@ -1,4 +1,4 @@
-package rabbit.share.concurrent;
+package com.xiaoqq.practise.threadsamplecode;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

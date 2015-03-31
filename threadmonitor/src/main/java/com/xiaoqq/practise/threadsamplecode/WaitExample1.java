@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.threadsamplecode;
+package com.xiaoqq.practise.threadsamplecode;
 
 /**
  * Code is from: http://www.programcreek.com/2009/02/notify-and-wait-example/

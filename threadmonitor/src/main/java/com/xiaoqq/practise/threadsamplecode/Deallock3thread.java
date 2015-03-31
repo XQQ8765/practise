@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.threadsamplecode;
+package com.xiaoqq.practise.threadsamplecode;
 
 /**
  * Created by rxiao on 3/27/15.

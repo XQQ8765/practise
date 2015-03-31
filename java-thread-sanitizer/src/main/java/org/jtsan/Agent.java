@@ -118,7 +118,7 @@ public class Agent implements ClassFileTransformer {
   private boolean writeTransformedClasses;
 
   public static void premain(String arg, Instrumentation instrumentation) {
-    arg = "sys=1";//TODO, debug purpose, we can remove it.
+    arg = "sys=1:cls=org";//TODO, debug purpose, we can remove it.
     System.out.println("Start to create Agent");
     Agent agent = new Agent();
     syncMethods = new MethodMapping();

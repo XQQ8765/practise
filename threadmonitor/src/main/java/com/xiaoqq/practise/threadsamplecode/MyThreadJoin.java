@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.threadsamplecode;
+package com.xiaoqq.practise.threadsamplecode;
 
 import java.util.ArrayList;
 import java.util.List;

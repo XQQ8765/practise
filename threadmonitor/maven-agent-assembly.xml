@@ -1,0 +1,19 @@
+<assembly>
+    <id>agent</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    <baseDirectory>src/main/java</baseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <!--<include>com.xiaoqq.practise.threadmonitor</include>-->
+                <include>com/xiaoqq/practise/threadmonitor/**</include>
+            </includes>
+            <!--<sources>
+                <outputDirectory>sources/${artifactId}</outputDirectory>
+            </sources> -->
+        </moduleSet>
+    </moduleSets>
+</assembly>

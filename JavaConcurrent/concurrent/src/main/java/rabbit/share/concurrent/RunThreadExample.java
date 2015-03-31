@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.threadsamplecode;
+package rabbit.share.concurrent;
 
 /*
 * See more at: http://www.java2novice.com/java_thread_examples/implementing_runnable/#sthash.s5d7fw08.dpuf
@@ -17,7 +17,7 @@ class MySmpThread extends Thread{
     }
 }
 
-public class RunThread {
+public class RunThreadExample {
     public static void main(String a[]){
         System.out.println("Starting Main Thread...");
         MySmpThread mst = new MySmpThread();
