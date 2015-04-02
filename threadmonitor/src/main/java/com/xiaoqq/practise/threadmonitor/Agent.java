@@ -15,10 +15,14 @@
 
 package com.xiaoqq.practise.threadmonitor;
 
+import com.xiaoqq.practise.threadmonitor.uuid.UUIDThreadClassVisitor;
+import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
-import java.lang.instrument.UnmodifiableClassException;
 
 public class Agent implements ClassFileTransformer {
 
@@ -76,10 +80,17 @@ public class Agent implements ClassFileTransformer {
       System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
       ClassReader cr = new ClassReader(bytes);
       ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-      ClassVisitor cv = new MonitorThreadClassVisitor(Opcodes.ASM5, cw);
+      ClassVisitor cv = new UUIDThreadClassVisitor(Opcodes.ASM5, cw);
       cr.accept(cv, ClassReader.EXPAND_FRAMES);
 
       byte[] transformedBytes = cw.toByteArray();
+
+      //TODO: remove it
+      try {
+          FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_gen.class"), transformedBytes);
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
       return transformedBytes;
   }
 
