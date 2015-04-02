@@ -24,13 +24,18 @@ public class MonitorUtil {
 
     public static boolean isAssignableFrom(String super_bytecode_type_name, String child_bytecode_type_name) {
         try {
-            Class clazz1 = Class.forName(super_bytecode_type_name.replaceAll("/", "."));
-            Class clazz2 = Class.forName(child_bytecode_type_name.replaceAll("/", "."));
+            Class clazz1 = Class.forName(bytecodeClassNameToJavaClassName(super_bytecode_type_name));
+            Class clazz2 = Class.forName(bytecodeClassNameToJavaClassName(child_bytecode_type_name));
             return clazz1.isAssignableFrom(clazz2);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String bytecodeClassNameToJavaClassName(String bytecodeClassName) {
+        return bytecodeClassName.replaceAll("/", ".");
     }
 
     /**

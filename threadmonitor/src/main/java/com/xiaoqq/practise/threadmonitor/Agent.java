@@ -28,33 +28,7 @@ public class Agent implements ClassFileTransformer {
       "sun",
       "java",
       "com/intellij",
-
-      // Classes required by EventListener itself. Triggering events in these will
-      // cause endless recursion.
-      "java/io/PrintWriter",
-      "java/lang/AbstractStringBuilder",
-      "java/lang/Boolean",
-      "java/lang/Class",
-      "java/lang/Long",
-      "java/lang/String",
-      "java/lang/StringBuilder",
-      "java/lang/System",
-
-      // Exclusions to workaround HotSpot internal failures.
-      "java/io/",
-      "java/lang/Thread",
-      "java/lang/ref/",
-      "java/lang/reflect/",
-      "java/nio/",
-      "java/util/Arrays",
-
-      // Exclude some internals of java.util.concurrent to avoid false report.
-      // TimeUnit is enum. TimeUnit<init>:71 provoke false positive in tryLock test.
-      "java/util/concurrent/TimeUnit",
-      // ReentrantReadWriteLock$Sync provoke false positive in tryLock and readAndWriteLocks tests.
-      "java/util/concurrent/locks/ReentrantReadWriteLock",
-      // AbstractQueuedSynchronizer$ConditionObject provoke false positive in cyclicBarrier test.
-      "java/util/concurrent/locks/AbstractQueuedSynchronizer",
+      "org/objectweb/",
   };
 
   // A list of exceptions for the ignore list.
@@ -64,7 +38,7 @@ public class Agent implements ClassFileTransformer {
         System.out.println("Start to create Agent");
         Agent agent = new Agent();
         instrumentation.addTransformer(agent, true);
-        /*
+
         Class[] allClasses = instrumentation.getAllLoadedClasses();
         for (Class c : allClasses) {
             if (!c.isInterface() && instrumentation.isModifiableClass(c)) {
@@ -76,7 +50,7 @@ public class Agent implements ClassFileTransformer {
                     System.exit(1);
                 }
             }
-        } */
+        }
     }
 
   private boolean inIgnoreList(String className) {
@@ -95,20 +69,18 @@ public class Agent implements ClassFileTransformer {
 
   public byte[] transform(ClassLoader loader, String className,
                           Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
-      /*if (inIgnoreList(className)) {
-          System.out.println("-------------------ignore. className:"+className + ", clazz:" +clazz.getName());
+      if (inIgnoreList(className)) {
+          //System.out.println("-------------------ignore. className:"+className + ", clazz:" +clazz.getName());
           return bytes;
-      }  */
+      }
       System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
       ClassReader cr = new ClassReader(bytes);
       ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-      ClassVisitor cv = new MonitorThreadClassVisitor(Opcodes.ASM4, cw);
-      cr.accept(cv, ClassReader.SKIP_DEBUG);
+      ClassVisitor cv = new MonitorThreadClassVisitor(Opcodes.ASM5, cw);
+      cr.accept(cv, ClassReader.EXPAND_FRAMES);
 
       byte[] transformedBytes = cw.toByteArray();
       return transformedBytes;
-      //System.out.println("-------------------no transform. className:"+className + ", clazz:" +clazz.getName());
-      //return bytes;
   }
 
 }
