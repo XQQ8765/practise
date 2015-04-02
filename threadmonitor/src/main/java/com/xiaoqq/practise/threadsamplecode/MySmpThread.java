@@ -18,6 +18,7 @@ public class MySmpThread extends Thread{
     }
 
     public void run(){
+        System.out.print("MySmpThread.run() start to execute");
         while(MySmpThread.myCount <= 10){
             try{
                 //String threadName = Thread.currentThread().getName();
@@ -28,16 +29,23 @@ public class MySmpThread extends Thread{
                int j = i + 3;
                 Timestamp time = new Timestamp(date.getTime());
                 System.out.println("Expl Thread: "+(++MySmpThread.myCount) + ", timestamp:" + time);
+
                 StackTraceElement[]	statckTraces = getStackTrace();
                 if (statckTraces != null) {
                     for (StackTraceElement se: statckTraces) {
                         System.out.println("trace -> " + se.toString());
                     }
                 }
+
                 Thread.sleep(100);
             } catch (InterruptedException iex) {
                 System.out.println("Exception in thread: "+iex.getMessage());
             }
         }
+
+    }
+
+    private void test() {
+        System.out.println("test");
     }
 }

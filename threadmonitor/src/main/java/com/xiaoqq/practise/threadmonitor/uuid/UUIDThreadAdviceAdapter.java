@@ -3,6 +3,7 @@ package com.xiaoqq.practise.threadmonitor.uuid;
 import com.xiaoqq.practise.threadmonitor.MonitorUtil;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.AdviceAdapter;
+import org.objectweb.asm.Label;
 import static org.objectweb.asm.Opcodes.*;
 import static com.xiaoqq.practise.threadmonitor.uuid.IConstant.*;
 
@@ -41,6 +42,9 @@ public class UUIDThreadAdviceAdapter extends AdviceAdapter {
     protected void onMethodEnter() {
         System.out.println("###onMethodEnter(): className:" + className + ", methodName:" + methodName + ", Thread:" + MonitorUtil.getCurrentThreadName() + " is running.");
 
+        Label l0 = new Label();
+        mv.visitLabel(l0);
+
         mv.visitVarInsn(ALOAD, 0);
         mv.visitMethodInsn(INVOKESPECIAL, className, "printThreadRelationship", "()V", false);
         /*
@@ -49,7 +53,7 @@ public class UUIDThreadAdviceAdapter extends AdviceAdapter {
         */
         super.onMethodEnter();
     }
-
+    /*
     protected void addMethodPrintCurrentThreadName() {
         //Invoke method "String MonitorUtil.getCurrentThreadName()"
         this.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/MonitorUtil", "getCurrentThreadName", "()Ljava/lang/String;", false);
@@ -66,6 +70,7 @@ public class UUIDThreadAdviceAdapter extends AdviceAdapter {
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
     }
+    */
 
     protected void addMethodPrintParentThreadName() {
         {

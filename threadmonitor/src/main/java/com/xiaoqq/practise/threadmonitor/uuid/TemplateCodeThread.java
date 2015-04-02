@@ -5,6 +5,7 @@ package com.xiaoqq.practise.threadmonitor.uuid;
  */
 public class TemplateCodeThread extends Thread{
      private ThreadBean xxx_parent_threadBean;
+    private static int myCount;
 
     public TemplateCodeThread() {
         recordParentThread();
@@ -19,12 +20,13 @@ public class TemplateCodeThread extends Thread{
     public void run() {
         //System.out.println("$$$Parent Thread Name:" + xxx_parent_threadBean.getThreadName());
         printThreadRelationship();
+        while(TemplateCodeThread.myCount <= 10){
+            myCount++;
+        }
     }
 
     private void printThreadRelationship() {
-        if (xxx_parent_threadBean == null) {
-            System.out.println("$$$xxx_parent_threadBean is null.");
-        }
+        System.out.println("$$$xxx_parent_threadBean="+xxx_parent_threadBean);
         String parentThreadName =  xxx_parent_threadBean.getThreadName();
         String currentThreadName = Thread.currentThread().getName();
         StringBuilder sb = new StringBuilder();

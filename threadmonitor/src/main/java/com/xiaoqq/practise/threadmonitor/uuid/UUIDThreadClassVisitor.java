@@ -3,16 +3,19 @@ package com.xiaoqq.practise.threadmonitor.uuid;
 import com.xiaoqq.practise.threadmonitor.MonitorUtil;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
+
 import static org.objectweb.asm.Opcodes.*;
 import static com.xiaoqq.practise.threadmonitor.uuid.IConstant.*;
+
 /**
  * Created by rxiao on 3/31/15.
  */
-public class UUIDThreadClassVisitor extends ClassVisitor{
+public class UUIDThreadClassVisitor extends ClassVisitor {
     private String className;
     private String superName;
     private String[] interfaces;
     private int api;
+
     public UUIDThreadClassVisitor(int api, ClassVisitor cv) {
         super(api, cv);
         this.api = api;
@@ -29,9 +32,11 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
-        System.out.println("---------UUIDThreadClassVisitor className:" + className + ", method:"+name+desc+" visit.");
+        System.out.println("---------UUIDThreadClassVisitor className:" + className + ", method:" + name + desc + " visit.");
         if (isThreadRunningMethod(superName, interfaces, name, desc)) {
             return new UUIDThreadAdviceAdapter(api, mv, access, name, desc, className);
+        } else if (isThreadConstructMethod(superName, interfaces, name, desc)) {
+            return new UUIDThreadConstructdviceAdapter(api, mv, access, name, desc, className);
         }
         return mv;
     }
@@ -59,22 +64,35 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
 
     /**
      * Source code of this method:
-     private void printThreadRelationship() {
-         String parentThreadName =  xxx_parent_threadBean.getThreadName();
-         String currentThreadName = Thread.currentThread().getName();
-         StringBuilder sb = new StringBuilder();
-         sb.append("$$$: Parent Thread Name:");
-         sb.append(parentThreadName);
-         sb.append(", Current Thread Name:");
-         sb.append(currentThreadName);
-         System.out.println(sb.toString());
-     }
+     * private void printThreadRelationship() {
+     * String parentThreadName =  xxx_parent_threadBean.getThreadName();
+     * String currentThreadName = Thread.currentThread().getName();
+     * StringBuilder sb = new StringBuilder();
+     * sb.append("#####: Parent Thread Name:");
+     * sb.append(parentThreadName);
+     * sb.append(", Current Thread Name:");
+     * sb.append(currentThreadName);
+     * System.out.println(sb.toString());
+     * }
      */
     private void addMethodPrintThreadRelationship() {
         {
             System.out.println("---------UUIDThreadClassVisitor create Method:" + METHOD_PRINT_THRAD_RELATIONSHIP_NAME + "()V");
             MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_PRINT_THRAD_RELATIONSHIP_NAME, "()V", null, null);
             mv.visitCode();
+
+            //Genarate Code: System.out.println("#####xxx_parent_threadBean="+xxx_parent_threadBean);
+            mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+            mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
+            mv.visitInsn(DUP);
+            mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
+            mv.visitLdcInsn("#####xxx_parent_threadBean=");
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitFieldInsn(GETFIELD, className, "xxx_parent_threadBean", "Lcom/xiaoqq/practise/threadmonitor/uuid/ThreadBean;");
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/Object;)Ljava/lang/StringBuilder;", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
 
             //Genarate Code: String parentThreadName =  xxx_parent_threadBean.getThreadName();
             mv.visitVarInsn(ALOAD, 0);
@@ -93,9 +111,9 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
             mv.visitVarInsn(ASTORE, 3);
 
-            //Generate Code:  sb.append("$$$: Parent Thread Name:");
+            //Generate Code:  sb.append("#####: Parent Thread Name:");
             mv.visitVarInsn(ALOAD, 3);
-            mv.visitLdcInsn("$$$: Parent Thread Name:");
+            mv.visitLdcInsn("#####: Parent Thread Name:");
             mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
             mv.visitInsn(POP);
 
@@ -132,40 +150,40 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
 
     /**
      * Source code of this method:
-     private void recordParentThread() {
-         long threadId = Thread.currentThread().getId();
-         String threadName = Thread.currentThread().getName();
-         xxx_parent_threadBean = new ThreadBean(threadId, threadName);
-     }
+     * private void recordParentThread() {
+     * long threadId = Thread.currentThread().getId();
+     * String threadName = Thread.currentThread().getName();
+     * xxx_parent_threadBean = new ThreadBean(threadId, threadName);
+     * }
      */
     private void addMethodRecordParentThread() {
-            System.out.println("---------UUIDThreadClassVisitor create Method:" + METHOD_RECORD_PARENT_THREAD_NAME + "()V");
-            MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_RECORD_PARENT_THREAD_NAME, "()V", null, null);
-            mv.visitCode();
+        System.out.println("---------UUIDThreadClassVisitor create Method:" + METHOD_RECORD_PARENT_THREAD_NAME + "()V");
+        MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_RECORD_PARENT_THREAD_NAME, "()V", null, null);
+        mv.visitCode();
 
-            //Generate Code: long threadId = Thread.currentThread().getId();
-            mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getId", "()J", false);
-            mv.visitVarInsn(LSTORE, 1);
+        //Generate Code: long threadId = Thread.currentThread().getId();
+        mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getId", "()J", false);
+        mv.visitVarInsn(LSTORE, 1);
 
-            //Generate Code: String threadName = Thread.currentThread().getName();
-            mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getName", "()Ljava/lang/String;", false);
-            mv.visitVarInsn(ASTORE, 3);
+        //Generate Code: String threadName = Thread.currentThread().getName();
+        mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getName", "()Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 3);
 
-            //Generate Code:  xxx_parent_threadBean = new ThreadBean(threadId, threadName);
-            mv.visitVarInsn(ALOAD, 0);
-            mv.visitTypeInsn(NEW, "com/xiaoqq/practise/threadmonitor/uuid/ThreadBean");
-            mv.visitInsn(DUP);
-            mv.visitVarInsn(LLOAD, 1);
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitMethodInsn(INVOKESPECIAL, "com/xiaoqq/practise/threadmonitor/uuid/ThreadBean", "<init>", "(JLjava/lang/String;)V", false);
-            mv.visitFieldInsn(PUTFIELD, className, "xxx_parent_threadBean", "Lcom/xiaoqq/practise/threadmonitor/uuid/ThreadBean;");
+        //Generate Code:  xxx_parent_threadBean = new ThreadBean(threadId, threadName);
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitTypeInsn(NEW, "com/xiaoqq/practise/threadmonitor/uuid/ThreadBean");
+        mv.visitInsn(DUP);
+        mv.visitVarInsn(LLOAD, 1);
+        mv.visitVarInsn(ALOAD, 3);
+        mv.visitMethodInsn(INVOKESPECIAL, "com/xiaoqq/practise/threadmonitor/uuid/ThreadBean", "<init>", "(JLjava/lang/String;)V", false);
+        mv.visitFieldInsn(PUTFIELD, className, "xxx_parent_threadBean", "Lcom/xiaoqq/practise/threadmonitor/uuid/ThreadBean;");
 
-            mv.visitInsn(RETURN);
+        mv.visitInsn(RETURN);
 
-            mv.visitMaxs(6, 4);
-            mv.visitEnd();
+        mv.visitMaxs(6, 4);
+        mv.visitEnd();
     }
 
     private boolean isThreadClassOrInterface(String superName, String[] interfaces) {
@@ -175,7 +193,7 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
         if (interfaces != null) {
             for (String interface_name : interfaces) {
                 if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name)
-                    || MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                        || MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name)) {
                     return true;
                 }
             }
@@ -200,6 +218,26 @@ public class UUIDThreadClassVisitor extends ClassVisitor{
                     if (methodName.equals("call") && desc.contains("()")) { //V call()
                         return true;
                     }
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isThreadConstructMethod(String superName, String[] interfaces, String methodName, String desc) {
+        if (!methodName.equals("<init>")) {
+            return false;
+        }
+        if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName)) {
+            return true;
+        }
+        if (interfaces != null) {
+            for (String interface_name : interfaces) {
+                if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                    return true;
+                }
+                if (MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                    return true;
                 }
             }
         }
