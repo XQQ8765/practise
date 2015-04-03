@@ -1,6 +1,5 @@
 package com.xiaoqq.practise.threadmonitor.uuid;
 
-import com.xiaoqq.practise.threadmonitor.MonitorUtil;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.AdviceAdapter;
@@ -8,7 +7,7 @@ import org.objectweb.asm.commons.AdviceAdapter;
 /**
  * Created by rxiao on 3/31/15.
  */
-public class UUIDThreadConstructdviceAdapter extends AdviceAdapter {
+public class ThreadConstructAdviceAdapter extends AdviceAdapter {
     private String methodName;
     private String className;
 
@@ -22,7 +21,7 @@ public class UUIDThreadConstructdviceAdapter extends AdviceAdapter {
      * @param name   the method's name.
      * @param desc   the method's descriptor (see {@link java.lang.reflect.Type Type}).
      */
-    protected UUIDThreadConstructdviceAdapter(int api, MethodVisitor mv, int access, String name, String desc, String className) {
+    protected ThreadConstructAdviceAdapter(int api, MethodVisitor mv, int access, String name, String desc, String className) {
         super(api, mv, access, name, desc);
         this.className = className;
         this.methodName = name;
@@ -30,7 +29,7 @@ public class UUIDThreadConstructdviceAdapter extends AdviceAdapter {
 
     @Override
     protected void onMethodExit(int opcode) {
-        System.out.println("###onMethodExit():  className:" + className + ", methodName:" + methodName +", Thread:" + MonitorUtil.getCurrentThreadName() + " finish.");
+        //System.out.println("###ThreadConstructAdviceAdapter.onMethodExit():  className:" + className + ", methodName:" + methodName);
 
         //Gearate Code: recordParentThread()
         Label l1 = new Label();

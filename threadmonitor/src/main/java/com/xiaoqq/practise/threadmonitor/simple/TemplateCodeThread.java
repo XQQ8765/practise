@@ -1,4 +1,6 @@
-package com.xiaoqq.practise.threadmonitor.uuid;
+package com.xiaoqq.practise.threadmonitor.simple;
+
+import com.xiaoqq.practise.threadmonitor.model.ThreadBean;
 
 /**
  * Created by rxiao on 4/2/15.

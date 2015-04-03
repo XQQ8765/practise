@@ -15,7 +15,7 @@
 
 package com.xiaoqq.practise.threadmonitor;
 
-import com.xiaoqq.practise.threadmonitor.uuid.UUIDThreadClassVisitor;
+import com.xiaoqq.practise.threadmonitor.uuid.ThreadImplementationClassVisitor;
 import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.*;
 
@@ -27,16 +27,17 @@ import java.lang.instrument.Instrumentation;
 public class Agent implements ClassFileTransformer {
 
   // Ignore list to eliminate endless recursion.
-  private static String[] ignore = new String[]{
+  private static String[] ignoreList = new String[]{
       "com/xiaoqq/practise/threadmonitor",
       "sun",
       "java",
       "com/intellij",
-      "org/objectweb/",
+      "org/objectweb",
+      "org/apache"
   };
 
-  // A list of exceptions for the ignore list.
-  private static String[] noignore = new String[]{};
+  // A list of exceptions for the ignoreList list.
+  private static String[] noignoreList = new String[]{};
 
   public static void premain(String arg, Instrumentation instrumentation) {
         System.out.println("Start to create Agent");
@@ -58,9 +59,9 @@ public class Agent implements ClassFileTransformer {
     }
 
   private boolean inIgnoreList(String className) {
-    for (String anIgnore : ignore) {
+    for (String anIgnore : ignoreList) {
       if (className.startsWith(anIgnore)) {
-        for (String aNoignore : noignore) {
+        for (String aNoignore : noignoreList) {
           if (className.startsWith(aNoignore)) {
             return false;
           }
@@ -74,13 +75,13 @@ public class Agent implements ClassFileTransformer {
   public byte[] transform(ClassLoader loader, String className,
                           Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
       if (inIgnoreList(className)) {
-          //System.out.println("-------------------ignore. className:"+className + ", clazz:" +clazz.getName());
+          //System.out.println("-------------------ignoreList. className:"+className + ", clazz:" +clazz.getName());
           return bytes;
       }
-      System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
+      //System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
       ClassReader cr = new ClassReader(bytes);
       ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-      ClassVisitor cv = new UUIDThreadClassVisitor(Opcodes.ASM5, cw);
+      ClassVisitor cv = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw);
       cr.accept(cv, ClassReader.EXPAND_FRAMES);
 
       byte[] transformedBytes = cw.toByteArray();

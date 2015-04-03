@@ -1,6 +1,6 @@
 package com.xiaoqq.practise.threadsamplecode;
 
-import com.xiaoqq.practise.threadmonitor.MonitorUtil;
+import com.xiaoqq.practise.threadmonitor.util.MonitorUtil;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -18,24 +18,17 @@ public class MySmpThread extends Thread{
     }
 
     public void run(){
-        System.out.print("MySmpThread.run() start to execute");
+        //System.out.print("MySmpThread.run() start to execute");
         while(MySmpThread.myCount <= 10){
             try{
-                //String threadName = Thread.currentThread().getName();
-                String threadName = MonitorUtil.getCurrentThreadName();
-                System.out.println("Current Thread Name:" + threadName);
-                Date date = new Date();
-               int i = 2 + 3;
-               int j = i + 3;
-                Timestamp time = new Timestamp(date.getTime());
-                System.out.println("Expl Thread: "+(++MySmpThread.myCount) + ", timestamp:" + time);
-
+                System.out.println("Expl Thread: "+(++MySmpThread.myCount));
+                /*
                 StackTraceElement[]	statckTraces = getStackTrace();
                 if (statckTraces != null) {
                     for (StackTraceElement se: statckTraces) {
                         System.out.println("trace -> " + se.toString());
                     }
-                }
+                }*/
 
                 Thread.sleep(100);
             } catch (InterruptedException iex) {
@@ -43,9 +36,5 @@ public class MySmpThread extends Thread{
             }
         }
 
-    }
-
-    private void test() {
-        System.out.println("test");
     }
 }

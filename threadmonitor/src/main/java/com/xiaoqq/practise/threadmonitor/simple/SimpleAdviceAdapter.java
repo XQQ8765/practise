@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor;
+package com.xiaoqq.practise.threadmonitor.simple;
 
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;

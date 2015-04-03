@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadmonitor.uuid;
+package com.xiaoqq.practise.threadmonitor.util;
 
 /**
  * Created by rxiao on 4/2/15.
