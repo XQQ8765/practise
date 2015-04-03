@@ -31,6 +31,8 @@ public class Agent implements ClassFileTransformer {
       "com/xiaoqq/practise/threadmonitor",
       "sun",
       "java",
+       "javax",
+       "com/sun",
       "com/intellij",
       "org/objectweb",
       "org/apache"
@@ -40,10 +42,10 @@ public class Agent implements ClassFileTransformer {
   private static String[] noignoreList = new String[]{};
 
   public static void premain(String arg, Instrumentation instrumentation) {
-        System.out.println("Start to create Agent");
+        System.out.println("Start to create thread monitor Agent.");
         Agent agent = new Agent();
         instrumentation.addTransformer(agent, true);
-
+        /*
         Class[] allClasses = instrumentation.getAllLoadedClasses();
         for (Class c : allClasses) {
             if (!c.isInterface() && instrumentation.isModifiableClass(c)) {
@@ -55,7 +57,7 @@ public class Agent implements ClassFileTransformer {
                     System.exit(1);
                 }
             }
-        }
+        }   */
     }
 
   private boolean inIgnoreList(String className) {
@@ -72,7 +74,7 @@ public class Agent implements ClassFileTransformer {
     return false;
   }
 
-  public byte[] transform(ClassLoader loader, String className,
+  public byte[] transform(ClassLoader classLoader, String className,
                           Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
       if (inIgnoreList(className)) {
           //System.out.println("-------------------ignoreList. className:"+className + ", clazz:" +clazz.getName());
@@ -81,7 +83,7 @@ public class Agent implements ClassFileTransformer {
       //System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
       ClassReader cr = new ClassReader(bytes);
       ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-      ClassVisitor cv = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw);
+      ClassVisitor cv = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw, classLoader);
       cr.accept(cv, ClassReader.EXPAND_FRAMES);
 
       byte[] transformedBytes = cw.toByteArray();

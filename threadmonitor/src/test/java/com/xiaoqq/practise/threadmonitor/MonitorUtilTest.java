@@ -19,10 +19,10 @@ public class MonitorUtilTest {
 
     @Test
     public void testIsAssignableFrom() {
-        boolean b = MonitorUtil.isAssignableFrom("java/lang/Object", "java/lang/Thread");
+        boolean b = MonitorUtil.isAssignableFrom("java/lang/Object", "java/lang/Thread", this.getClass().getClassLoader());
         assertTrue(b);
 
-        b = MonitorUtil.isAssignableFrom("java/lang/Thread", "com/xiaoqq/practise/threadsamplecode/WaitExample1$ThreadB");
+        b = MonitorUtil.isAssignableFrom("java/lang/Thread", "com/xiaoqq/practise/threadsamplecode/WaitExample1$ThreadB", this.getClass().getClassLoader());
         assertTrue(b);
     }
 }

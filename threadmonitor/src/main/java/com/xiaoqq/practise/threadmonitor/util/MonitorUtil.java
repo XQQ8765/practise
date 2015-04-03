@@ -22,10 +22,10 @@ public class MonitorUtil {
         return "Object:" + obj + ", Type:" + obj.getClass() + ", identityCode: " +System.identityHashCode(obj);
     }
 
-    public static boolean isAssignableFrom(String super_bytecode_type_name, String child_bytecode_type_name) {
+    public static boolean isAssignableFrom(String super_bytecode_type_name, String child_bytecode_type_name , ClassLoader classLoader) {
         try {
-            Class clazz1 = Class.forName(bytecodeClassNameToJavaClassName(super_bytecode_type_name));
-            Class clazz2 = Class.forName(bytecodeClassNameToJavaClassName(child_bytecode_type_name));
+            Class clazz1 = Class.forName(bytecodeClassNameToJavaClassName(super_bytecode_type_name), false, classLoader);
+            Class clazz2 = Class.forName(bytecodeClassNameToJavaClassName(child_bytecode_type_name), false, classLoader);
             return clazz1.isAssignableFrom(clazz2);
 
         } catch (ClassNotFoundException e) {
@@ -43,14 +43,14 @@ public class MonitorUtil {
      * @param bytecode_type_name String, for example: java/lang/Object
      * @return boolean
      */
-    public static boolean isThreadTypeOrInterfaces(String bytecode_type_name) {
-        if (isAssignableFrom(THREAD_TYPE_BYTECODE_NAME, bytecode_type_name)) {
+    public static boolean isThreadTypeOrInterfaces(String bytecode_type_name, ClassLoader classLoader) {
+        if (isAssignableFrom(THREAD_TYPE_BYTECODE_NAME, bytecode_type_name, classLoader)) {
             return true;
         }
-        if (isAssignableFrom(RUNNABLE_TYPE_BYTECODE_NAME, bytecode_type_name)) {
+        if (isAssignableFrom(RUNNABLE_TYPE_BYTECODE_NAME, bytecode_type_name, classLoader)) {
             return true;
         }
-        if (isAssignableFrom(CALLABLE_TYPE_BYTECODE_NAME, bytecode_type_name)) {
+        if (isAssignableFrom(CALLABLE_TYPE_BYTECODE_NAME, bytecode_type_name, classLoader)) {
             return true;
         }
         return false;

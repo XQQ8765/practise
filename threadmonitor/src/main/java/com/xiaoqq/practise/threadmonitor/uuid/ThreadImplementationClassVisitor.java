@@ -15,10 +15,12 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
     private String superName;
     private String[] interfaces;
     private int api;
+    private ClassLoader classLoader;
 
-    public ThreadImplementationClassVisitor(int api, ClassVisitor cv) {
+    public ThreadImplementationClassVisitor(int api, ClassVisitor cv, ClassLoader classLoader) {
         super(api, cv);
         this.api = api;
+        this.classLoader = classLoader;
     }
 
     @Override
@@ -34,8 +36,10 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
         //System.out.println("---------ThreadImplementationClassVisitor className:" + className + ", method:" + name + desc + " visit.");
         if (isThreadRunningMethod(superName, interfaces, name, desc)) {
+            System.out.println("Instrumentation method: " + className + "." + name + desc);
             return new ThreadRunningAdviceAdapter(api, mv, access, name, desc, className);
         } else if (isThreadConstructMethod(superName, interfaces, name, desc)) {
+            System.out.println("Instrumentation method: " + className + "." + name + desc);
             return new ThreadConstructAdviceAdapter(api, mv, access, name, desc, className);
         }
         return mv;
@@ -190,13 +194,13 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
     }
 
     private boolean isThreadClassOrInterface(String superName, String[] interfaces) {
-        if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName)) {
+        if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName, classLoader)) {
             return true;
         }
         if (interfaces != null) {
             for (String interface_name : interfaces) {
-                if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name)
-                        || MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name, classLoader)
+                        || MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name, classLoader)) {
                     return true;
                 }
             }
@@ -205,19 +209,19 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
     }
 
     private boolean isThreadRunningMethod(String superName, String[] interfaces, String methodName, String desc) {
-        if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName)
+        if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName, classLoader)
                 && methodName.equals("run")
                 && desc.equals("()V")) { //Thread.run()
             return true;
         }
         if (interfaces != null) {
             for (String interface_name : interfaces) {
-                if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                if (MonitorUtil.isAssignableFrom(MonitorUtil.RUNNABLE_TYPE_BYTECODE_NAME, interface_name, classLoader)) {
                     if (methodName.equals("run") && desc.equals("()V")) { //Runnable.run()
                         return true;
                     }
                 }
-                if (MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name)) {
+                if (MonitorUtil.isAssignableFrom(MonitorUtil.CALLABLE_TYPE_BYTECODE_NAME, interface_name, classLoader)) {
                     if (methodName.equals("call") && desc.contains("()")) { //V call()
                         return true;
                     }
