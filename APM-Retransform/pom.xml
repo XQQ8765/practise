@@ -12,6 +12,42 @@
   <version>1.0-SNAPSHOT</version>
   <name>APM-Retransform</name>
   <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>agent</id>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifestFile>
+                                    src/main/resources/META-INF/manifest.mf
+                                </manifestFile>
+                            </archive>
+                            <!--<filters>
+                                <filter>**/instrumentation/**</filter>
+                            </filters>-->
+                            <finalName>${project.artifactId}-agent-with-dependencies</finalName>
+                        </configuration>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -43,6 +79,16 @@
           <groupId>org.ow2.asm</groupId>
           <artifactId>asm-analysis</artifactId>
           <version>5.0.3</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.3.2</version>
+      </dependency>
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.4</version>
       </dependency>
   </dependencies>
 </project>

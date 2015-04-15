@@ -1,17 +1,24 @@
 package com.dell.sample.instrumentation;
 
+import com.dell.sample.instrumentation.asm.ClassUtil;
+import com.dell.sample.instrumentation.asm.PollWebSiteServletClassVisitor;
+import com.dell.sample.instrumentation.asm.PollerClassVisitor;
+import com.dell.sample.instrumentation.asm.PollingServiceClassVisitor;
+import org.apache.commons.io.FileUtils;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
+import static com.dell.sample.instrumentation.asm.IConstant.*;
 
-public class RetransformAgent implem`ents ClassFileTransformer {
-
-    public static ClassPool pool = ClassPool.getDefault();
+public class RetransformAgent implements ClassFileTransformer {
     public static AtomicInteger transformedClasses = new AtomicInteger();
 
     private int agentId;
@@ -21,19 +28,73 @@ public class RetransformAgent implem`ents ClassFileTransformer {
     }
 
     public String getAgentName() {
-        return ""+agentId;
+        return "" + agentId;
     }
 
     @Override
     public String toString() {
-        return ""+agentId;
+        return "" + agentId;
     }
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain,
                             byte[] classfileBuffer) throws IllegalClassFormatException {
         transformedClasses.addAndGet(1);
+
+        if (CLASS_NAME_POLL_WEB_SITE_SERVLET.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
+            if (agentId % 2 == 0) {
+                System.out.println("RetransformAgent is going to transform PollWebSiteServlet");
+                ClassReader cr = new ClassReader(classfileBuffer);
+                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+                ClassVisitor cv = new PollWebSiteServletClassVisitor(cw, loader, agentId);
+                cr.accept(cv, ClassReader.EXPAND_FRAMES);
+                classfileBuffer = cw.toByteArray();
+
+                //TODO: remove it
+                saveTransformedClassBytes(className, classfileBuffer);
+
+                return classfileBuffer;
+            } else {
+                System.out.println("RetransformAgent is going to transform PollWebSiteServlet, remove instrumentation!");
+            }
+        } else if (CLASS_NAME_POLLER.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
+            System.out.println("RetransformAgent is going to transform Poller");
+            ClassReader cr = new ClassReader(classfileBuffer);
+            ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+            ClassVisitor cv = new PollerClassVisitor(cw, loader, agentId);
+            cr.accept(cv, ClassReader.EXPAND_FRAMES);
+            classfileBuffer = cw.toByteArray();
+
+            //TODO: remove it
+            saveTransformedClassBytes(className, classfileBuffer);
+
+            return classfileBuffer;
+        } else if (CLASS_NAME_POLLING_SERVICE.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
+            System.out.println("RetransformAgent is going to transform PollingService");
+            ClassReader cr = new ClassReader(classfileBuffer);
+            ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+            ClassVisitor cv = new PollingServiceClassVisitor(cw, loader, agentId);
+            cr.accept(cv, ClassReader.EXPAND_FRAMES);
+            classfileBuffer = cw.toByteArray();
+
+            //TODO: remove it
+            saveTransformedClassBytes(className, classfileBuffer);
+
+            return classfileBuffer;
+        }
+
+        return classfileBuffer;
+    }
+
+    private static void saveTransformedClassBytes(String className, byte[] bytes) {
+        //TODO: remove it
         try {
+            FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_embeded.class"), bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+        /*try {
             CtClass cl = null;
             if ("com/dell/apm/target/monitor/app/ping/PollWebSiteServlet".equals(className)) {
                 if (agentId % 2 == 0) {
@@ -73,8 +134,10 @@ public class RetransformAgent implem`ents ClassFileTransformer {
             e.printStackTrace();
         }
         return classfileBuffer;
-    }
 
+    }*/
+
+    /*
     private CtMethod findPointcut(CtClass cl, String methodName) {
         CtMethod pointcut = null;
         CtMethod[] behaviors = cl.getDeclaredMethods();
@@ -85,5 +148,5 @@ public class RetransformAgent implem`ents ClassFileTransformer {
         }
         return pointcut;
     }
-
+     */
 }
