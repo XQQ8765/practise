@@ -13,6 +13,7 @@
 		<module>maven_practise</module>
 		<module>Barat-1.6.1</module>
         <module>java-thread-sanitizer</module>
+        <module>APM-Retransform</module>
   </modules>
 <build>  
     <plugins>  
