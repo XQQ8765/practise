@@ -38,12 +38,7 @@ public class EmbededProfilingAgent implements ClassFileTransformer {
 
             classfileBuffer = cw.toByteArray();
 
-            //TODO: remove it
-            try {
-                FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_embeded.class"), classfileBuffer);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //saveTransformedClassBytes(className, classfileBuffer);
 
             return classfileBuffer;
 
@@ -55,8 +50,7 @@ public class EmbededProfilingAgent implements ClassFileTransformer {
             cr.accept(cv, ClassReader.EXPAND_FRAMES);
             classfileBuffer = cw.toByteArray();
 
-            //TODO: remove it
-            saveTransformedClassBytes(className, classfileBuffer);
+            //saveTransformedClassBytes(className, classfileBuffer);
 
             return classfileBuffer;
         } else if (CLASS_NAME_POLLING_SERVICE.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
@@ -67,8 +61,7 @@ public class EmbededProfilingAgent implements ClassFileTransformer {
             cr.accept(cv, ClassReader.EXPAND_FRAMES);
             classfileBuffer = cw.toByteArray();
 
-            //TODO: remove it
-            saveTransformedClassBytes(className, classfileBuffer);
+            //saveTransformedClassBytes(className, classfileBuffer);
 
             return classfileBuffer;
         }

@@ -50,37 +50,42 @@ public class RetransformAgent implements ClassFileTransformer {
                 cr.accept(cv, ClassReader.EXPAND_FRAMES);
                 classfileBuffer = cw.toByteArray();
 
-                //TODO: remove it
-                saveTransformedClassBytes(className, classfileBuffer);
+                //saveTransformedClassBytes(className, classfileBuffer);
 
                 return classfileBuffer;
             } else {
                 System.out.println("RetransformAgent is going to transform PollWebSiteServlet, remove instrumentation!");
             }
         } else if (CLASS_NAME_POLLER.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
-            System.out.println("RetransformAgent is going to transform Poller");
-            ClassReader cr = new ClassReader(classfileBuffer);
-            ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-            ClassVisitor cv = new PollerClassVisitor(cw, loader, agentId);
-            cr.accept(cv, ClassReader.EXPAND_FRAMES);
-            classfileBuffer = cw.toByteArray();
+            if (agentId % 2 == 0) {
+                System.out.println("RetransformAgent is going to transform Poller");
+                ClassReader cr = new ClassReader(classfileBuffer);
+                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+                ClassVisitor cv = new PollerClassVisitor(cw, loader, agentId);
+                cr.accept(cv, ClassReader.EXPAND_FRAMES);
+                classfileBuffer = cw.toByteArray();
 
-            //TODO: remove it
-            saveTransformedClassBytes(className, classfileBuffer);
+                //saveTransformedClassBytes(className, classfileBuffer);
 
-            return classfileBuffer;
+                return classfileBuffer;
+            } else {
+                System.out.println("RetransformAgent is going to transform Poller, remove instrumentation!");
+            }
         } else if (CLASS_NAME_POLLING_SERVICE.equals(ClassUtil.bytecodeClassNameToJavaClassName(className))) {
-            System.out.println("RetransformAgent is going to transform PollingService");
-            ClassReader cr = new ClassReader(classfileBuffer);
-            ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-            ClassVisitor cv = new PollingServiceClassVisitor(cw, loader, agentId);
-            cr.accept(cv, ClassReader.EXPAND_FRAMES);
-            classfileBuffer = cw.toByteArray();
+            if (agentId % 2 == 0) {
+                System.out.println("RetransformAgent is going to transform PollingService");
+                ClassReader cr = new ClassReader(classfileBuffer);
+                ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+                ClassVisitor cv = new PollingServiceClassVisitor(cw, loader, agentId);
+                cr.accept(cv, ClassReader.EXPAND_FRAMES);
+                classfileBuffer = cw.toByteArray();
 
-            //TODO: remove it
-            saveTransformedClassBytes(className, classfileBuffer);
+                //saveTransformedClassBytes(className, classfileBuffer);
 
-            return classfileBuffer;
+                return classfileBuffer;
+            } else {
+                System.out.println("RetransformAgent is going to transform PollingService, remove instrumentation!");
+            }
         }
 
         return classfileBuffer;
