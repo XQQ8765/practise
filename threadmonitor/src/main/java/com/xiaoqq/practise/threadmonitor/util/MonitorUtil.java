@@ -10,6 +10,7 @@ public class MonitorUtil {
     public static String THREAD_TYPE_BYTECODE_NAME = "java/lang/Thread";
     public static String RUNNABLE_TYPE_BYTECODE_NAME = "java/lang/Runnable";
     public static String CALLABLE_TYPE_BYTECODE_NAME = "java/util/concurrent/Callable";
+    public static String HTTP_SERVLET_BYTECODE_NAME = "javax/servlet/http/HttpServlet";
 
     public static String getCurrentThreadName() {
         return Thread.currentThread().getName();

@@ -11,4 +11,8 @@ public interface IConstant {
     String METHOD_RECORD_PARENT_THREAD_NAME = "recordParentThread";
 
     String METHOD_PRINT_THRAD_RELATIONSHIP_NAME = "printThreadRelationship";
+
+    String METHOD_SAVE_HASH = "saveHash";
+
+    String METHOD_REMOVE_HASH = "removeHash";
 }

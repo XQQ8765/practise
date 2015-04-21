@@ -15,7 +15,7 @@
 
 package com.xiaoqq.practise.threadmonitor;
 
-import com.xiaoqq.practise.threadmonitor.uuid.ThreadImplementationClassVisitor;
+import com.xiaoqq.practise.threadmonitor.addproperty.ThreadImplementationClassVisitor;
 import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.*;
 
