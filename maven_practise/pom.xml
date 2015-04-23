@@ -51,6 +51,16 @@
           <artifactId>guava</artifactId>
           <version>18.0</version>
       </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+          <version>4.4</version>
+      </dependency>
   </dependencies>
     <!--Add this section "<distributionManagement>" to do "maven:deploy", the <id> value is the same with "<server>" in Maven global setting file: "~/.m2/settings.xml".-->
         <distributionManagement>

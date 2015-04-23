@@ -4,8 +4,8 @@ import com.xiaoqq.practise.threadmonitor.util.MonitorUtil;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 
-import static org.objectweb.asm.Opcodes.*;
 import static com.xiaoqq.practise.threadmonitor.util.IConstant.*;
+import static org.objectweb.asm.Opcodes.*;
 
 /**
  * Created by rxiao on 3/31/15.
@@ -34,12 +34,12 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
-        //System.out.println("---------ThreadImplementationClassVisitor className:" + className + ", method:" + name + desc + " visit.");
+
         if (isThreadRunningMethod(superName, interfaces, name, desc)) {
-            System.out.println("Instrumentation method: " + className + "." + name + desc);
+            System.out.println("ThreadImplementationClassVisitor: Instrumentation method: " + className + "." + name + desc);
             return new ThreadRunningAdviceAdapter(api, mv, access, name, desc, className);
         } else if (isThreadConstructMethod(superName, interfaces, name, desc)) {
-            System.out.println("Instrumentation method: " + className + "." + name + desc);
+            System.out.println("ThreadImplementationClassVisitor: Instrumentation method: " + className + "." + name + desc);
             return new ThreadConstructAdviceAdapter(api, mv, access, name, desc, className);
         }
         return mv;
@@ -48,148 +48,138 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
     @Override
     public void visitEnd() {
         if (isThreadClassOrInterface(superName, interfaces)) {
-            //System.out.println("---------ThreadImplementationClassVisitor create Field:" + PROPERTY_THREAD_BEAN_NAME);
-            //Add field "private ThreadBean xxx_parent_threadBean"
-            super.visitField(
-                    ACC_PRIVATE,
-                    PROPERTY_THREAD_BEAN_NAME,
-                    "Lcom/xiaoqq/practise/threadmonitor/model/ThreadBean;",
-                    null,
-                    null);
-
-            //Add method "recordParentThreadMethod()"
-            addMethodRecordParentThread();
-
-            //Add method "printThreadRelationship()"
-            addMethodPrintThreadRelationship();
+            addMethodPostConstructor();
+            addMethodBeforeRun();
+            addMethodEndRun();
         }
         super.visitEnd();
     }
 
     /**
      * Source code of this method:
-     * private void printThreadRelationship() {
-     * String parentThreadName =  xxx_parent_threadBean.getThreadName();
-     * String currentThreadName = Thread.currentThread().getName();
-     * StringBuilder sb = new StringBuilder();
-     * sb.append("#####: Thread relationship: ");
-     * sb.append(parentThreadName);
-     * sb.append(" ---> ");
-     * sb.append(currentThreadName);
-     * System.out.println(sb.toString());
-     * }
+     private void postConstructor() {
+         String objectHashId = HashUtil.getCurrentThreadHash();
+         String UUID = HashStorage.getByObjectHashId(objectHashId);
+         String thisHashId = HashUtil.getObjectHash(this);
+         HashStorage.put(thisHashId, UUID);
+     }
      */
-    private void addMethodPrintThreadRelationship() {
-        {
-            //System.out.println("---------ThreadImplementationClassVisitor create Method:" + METHOD_PRINT_THRAD_RELATIONSHIP_NAME + "()V");
-            MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_PRINT_THRAD_RELATIONSHIP_NAME, "()V", null, null);
+    private void addMethodPostConstructor() {
+            MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_POST_CONSTRUCTOR, "()V", null, null);
             mv.visitCode();
-
-            //Genarate Code: System.out.println("#####xxx_parent_threadBean="+xxx_parent_threadBean);
-            /*
-            mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
-            mv.visitInsn(DUP);
-            mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
-            mv.visitLdcInsn("#####xxx_parent_threadBean=");
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-            mv.visitVarInsn(ALOAD, 0);
-            mv.visitFieldInsn(GETFIELD, className, "xxx_parent_threadBean", "Lcom/xiaoqq/practise/threadmonitor/model/ThreadBean;");
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/Object;)Ljava/lang/StringBuilder;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
-            */
-
-            //Genarate Code: String parentThreadName =  xxx_parent_threadBean.getThreadName();
-            mv.visitVarInsn(ALOAD, 0);
-            mv.visitFieldInsn(GETFIELD, className, PROPERTY_THREAD_BEAN_NAME, "Lcom/xiaoqq/practise/threadmonitor/model/ThreadBean;");
-            mv.visitMethodInsn(INVOKEVIRTUAL, "com/xiaoqq/practise/threadmonitor/model/ThreadBean", "getThreadName", "()Ljava/lang/String;", false);
+            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getCurrentThreadHash", "()Ljava/lang/String;", false);
             mv.visitVarInsn(ASTORE, 1);
 
-            //Generate Code: String currentThreadName = Thread.currentThread().getName();
-            mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getName", "()Ljava/lang/String;", false);
+            mv.visitVarInsn(ALOAD, 1);
+            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "getByObjectHashId", "(Ljava/lang/String;)Ljava/lang/String;", false);
             mv.visitVarInsn(ASTORE, 2);
 
-            //Generate Code: StringBuilder sb = new StringBuilder();
-            mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
-            mv.visitInsn(DUP);
-            mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getObjectHash", "(Ljava/lang/Object;)Ljava/lang/String;", false);
             mv.visitVarInsn(ASTORE, 3);
 
-            //Generate Code:  sb.append("#####: Thread relationship: ");
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitLdcInsn("#####: Thread relationship: ");
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-            mv.visitInsn(POP);
-
-            //Generate Code:  sb.append(parentThreadName);
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitVarInsn(ALOAD, 1);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-            mv.visitInsn(POP);
-
-            //Generate Code:  sb.append(" ---> ");
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitLdcInsn(" ---> ");
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-            mv.visitInsn(POP);
-
-            //Generate Code:  sb.append(currentThreadName);
             mv.visitVarInsn(ALOAD, 3);
             mv.visitVarInsn(ALOAD, 2);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-            mv.visitInsn(POP);
-
-            //Generate Code:  System.out.println(sb.toString());
-            mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
-
-            //Generate Code:  return
+            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "put", "(Ljava/lang/String;Ljava/lang/String;)V", false);
             mv.visitInsn(RETURN);
-
             mv.visitMaxs(2, 4);
             mv.visitEnd();
-        }
     }
 
     /**
      * Source code of this method:
-     * private void recordParentThread() {
-     * long threadId = Thread.currentThread().getId();
-     * String threadName = Thread.currentThread().getName();
-     * xxx_parent_threadBean = new ThreadBean(threadId, threadName);
-     * }
+     private void beforeRun() {
+         String thisHashId = HashUtil.getObjectHash(this);
+         String UUID = HashStorage.getByObjectHashId(thisHashId);
+         String currentThreadHash = HashUtil.getCurrentThreadHash();
+         HashStorage.put(currentThreadHash, UUID);
+     }
      */
-    private void addMethodRecordParentThread() {
-        //System.out.println("---------ThreadImplementationClassVisitor create Method:" + METHOD_RECORD_PARENT_THREAD_NAME + "()V");
-        MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_RECORD_PARENT_THREAD_NAME, "()V", null, null);
+    private void addMethodBeforeRun() {
+        MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_BEFORE_RUN, "()V", null, null);
         mv.visitCode();
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getObjectHash", "(Ljava/lang/Object;)Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 1);
 
-        //Generate Code: long threadId = Thread.currentThread().getId();
-        mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
-        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getId", "()J", false);
-        mv.visitVarInsn(LSTORE, 1);
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "getByObjectHashId", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 2);
 
-        //Generate Code: String threadName = Thread.currentThread().getName();
-        mv.visitMethodInsn(INVOKESTATIC, "java/lang/Thread", "currentThread", "()Ljava/lang/Thread;", false);
-        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Thread", "getName", "()Ljava/lang/String;", false);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getCurrentThreadHash", "()Ljava/lang/String;", false);
         mv.visitVarInsn(ASTORE, 3);
 
-        //Generate Code:  xxx_parent_threadBean = new ThreadBean(threadId, threadName);
-        mv.visitVarInsn(ALOAD, 0);
-        mv.visitTypeInsn(NEW, "com/xiaoqq/practise/threadmonitor/model/ThreadBean");
-        mv.visitInsn(DUP);
-        mv.visitVarInsn(LLOAD, 1);
         mv.visitVarInsn(ALOAD, 3);
-        mv.visitMethodInsn(INVOKESPECIAL, "com/xiaoqq/practise/threadmonitor/model/ThreadBean", "<init>", "(JLjava/lang/String;)V", false);
-        mv.visitFieldInsn(PUTFIELD, className, "xxx_parent_threadBean", "Lcom/xiaoqq/practise/threadmonitor/model/ThreadBean;");
-
+        mv.visitVarInsn(ALOAD, 2);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "put", "(Ljava/lang/String;Ljava/lang/String;)V", false);
         mv.visitInsn(RETURN);
 
-        mv.visitMaxs(6, 4);
+        mv.visitMaxs(2, 4);
+        mv.visitEnd();
+    }
+
+    /**
+     * Source code of this method:
+     private void endRun() {
+         String currentThreadHash = HashUtil.getCurrentThreadHash();
+         String thisHashId = HashUtil.getObjectHash(this);
+         String UUID = HashStorage.getByObjectHashId(thisHashId);
+
+         //Submit trace performance data by UUID
+         System.out.println("Thread Hash:" + currentThreadHash + "Object Hash:" + thisHashId + ", UUID:" + UUID);
+
+         HashStorage.remove(currentThreadHash);
+         HashStorage.remove(thisHashId);
+     }
+     */
+    private void addMethodEndRun() {
+        MethodVisitor mv = super.visitMethod(ACC_PRIVATE, "endRun", "()V", null, null);
+        mv.visitCode();
+        //String currentThreadHash = HashUtil.getCurrentThreadHash();
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getCurrentThreadHash", "()Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 1);
+
+        //String thisHashId = HashUtil.getObjectHash(this);
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getObjectHash", "(Ljava/lang/Object;)Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 2);
+
+        //String UUID = HashStorage.getByObjectHashId(thisHashId);
+        mv.visitVarInsn(ALOAD, 2);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "getByObjectHashId", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 3);
+
+        //System.out.println("Thread Hash:" + currentThreadHash + "Object Hash:" + thisHashId + ", UUID:" + UUID);
+        mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+        mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
+        mv.visitInsn(DUP);
+        mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
+        mv.visitLdcInsn("Thread Hash:");
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitLdcInsn("Object Hash:");
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitVarInsn(ALOAD, 2);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitLdcInsn(", UUID:");
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitVarInsn(ALOAD, 3);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
+
+        //HashStorage.remove(currentThreadHash);
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "remove", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitInsn(POP);
+
+        //HashStorage.remove(thisHashId);
+        mv.visitVarInsn(ALOAD, 2);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "remove", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitInsn(POP);
+        mv.visitInsn(RETURN);
+        mv.visitMaxs(3, 4);
         mv.visitEnd();
     }
 

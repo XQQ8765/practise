@@ -37,7 +37,7 @@ public class MonitoringClassVisitor extends ClassVisitor {
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
         if (isMonitoringMethod(name, desc)) {
-            System.out.println("Instrumentation method: " + className + "." + name + desc);
+            System.out.println("MonitoringClassVisitor: Instrumentation method: " + className + "." + name + desc);
             return new MonitoringMethodAdviceAdapter(api, mv, access, name, desc, className);
         }
         return mv;
@@ -56,13 +56,14 @@ public class MonitoringClassVisitor extends ClassVisitor {
     }
 
     private boolean isServletClass(String superName) {
-        return (MonitorUtil.isAssignableFrom(MonitorUtil.HTTP_SERVLET_BYTECODE_NAME, superName, classLoader));
+        return MonitorUtil.HTTP_SERVLET_BYTECODE_NAME.equals(superName);
+        //return (MonitorUtil.isAssignableFrom(MonitorUtil.HTTP_SERVLET_BYTECODE_NAME, superName, classLoader));
     }
 
     private boolean isMonitoringMethod(String methodName, String desc) {
         //TODO determine whether it's a servlet class
         if (("doGet".equals(methodName) && "(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)V".equals(desc)
-             || ("doPost".equals(methodName) && "(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)V".equals(desc)))) {
+                || ("doPost".equals(methodName) && "(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)V".equals(desc)))) {
             return true;
         }
         return false;
@@ -70,11 +71,11 @@ public class MonitoringClassVisitor extends ClassVisitor {
 
     /**
      * Source code of this method:
-     private void saveHash() {
-         String UUID = HashUtil.generateUUID();
-         String objectHashId = HashUtil.getCurrentThreadHash();
-         HashStorage.put(objectHashId, UUID);
-     }
+     * private void saveHash() {
+     * String UUID = HashUtil.generateUUID();
+     * String objectHashId = HashUtil.getCurrentThreadHash();
+     * HashStorage.put(objectHashId, UUID);
+     * }
      */
     private void addMethodSaveHash() {
         {
@@ -95,23 +96,42 @@ public class MonitoringClassVisitor extends ClassVisitor {
 
     /**
      * Source code of this method:
-     private void removeHash() {
-         String objectHashId = HashUtil.getCurrentThreadHash();
-         HashStorage.remove(objectHashId);
-     }
+     * private void removeHash() {
+     * String currentThreadHashId = HashUtil.getCurrentThreadHash();
+     * String UUID = HashStorage.getByObjectHashId(currentThreadHashId);
+     * System.out.println("Servlet: Thread Hash:" + currentThreadHashId + ", UUID:" + UUID);
+     * HashStorage.remove(currentThreadHashId);
+     * }
      */
     private void addMethodRemoveHash() {
-        {
-            MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_REMOVE_HASH, "()V", null, null);
-            mv.visitCode();
-            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getCurrentThreadHash", "()Ljava/lang/String;", false);
-            mv.visitVarInsn(ASTORE, 1);
-            mv.visitVarInsn(ALOAD, 1);
-            mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "remove", "(Ljava/lang/String;)Ljava/lang/String;", false);
-            mv.visitInsn(POP);
-            mv.visitInsn(RETURN);
-            mv.visitMaxs(1, 2);
-            mv.visitEnd();
-        }
+        MethodVisitor mv = super.visitMethod(ACC_PRIVATE, METHOD_REMOVE_HASH, "()V", null, null);
+        mv.visitCode();
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashUtil", "getCurrentThreadHash", "()Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 1);
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "getByObjectHashId", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitVarInsn(ASTORE, 2);
+
+        mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+        mv.visitTypeInsn(NEW, "java/lang/StringBuilder");
+        mv.visitInsn(DUP);
+        mv.visitMethodInsn(INVOKESPECIAL, "java/lang/StringBuilder", "<init>", "()V", false);
+        mv.visitLdcInsn("Servlet: Thread Hash:");
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitLdcInsn(", UUID:");
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitVarInsn(ALOAD, 2);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;", false);
+        mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
+
+        mv.visitVarInsn(ALOAD, 1);
+        mv.visitMethodInsn(INVOKESTATIC, "com/xiaoqq/practise/threadmonitor/uuid/HashStorage", "remove", "(Ljava/lang/String;)Ljava/lang/String;", false);
+        mv.visitInsn(POP);
+        mv.visitInsn(RETURN);
+        mv.visitMaxs(3, 3);
+        mv.visitEnd();
     }
 }

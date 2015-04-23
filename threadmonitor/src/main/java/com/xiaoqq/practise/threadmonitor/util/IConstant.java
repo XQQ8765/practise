@@ -15,4 +15,10 @@ public interface IConstant {
     String METHOD_SAVE_HASH = "saveHash";
 
     String METHOD_REMOVE_HASH = "removeHash";
+
+    String METHOD_POST_CONSTRUCTOR = "postConstructor";
+
+    String METHOD_BEFORE_RUN = "beforeRun";
+
+    String METHOD_END_RUN = "endRun";
 }

@@ -1,8 +1,8 @@
 package com.xiaoqq.practise.threadmonitor.uuid;
 
-import com.xiaoqq.practise.threadmonitor.util.MonitorUtil;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.AdviceAdapter;
+import static com.xiaoqq.practise.threadmonitor.util.IConstant.*;
 
 /**
  * Created by rxiao on 3/31/15.
@@ -29,14 +29,17 @@ public class ThreadRunningAdviceAdapter extends AdviceAdapter {
 
     @Override
     protected void onMethodEnter() {
-        //System.out.println("###onMethodEnter(): className:" + className + ", methodName:" + methodName + ", Thread:" + MonitorUtil.getCurrentThreadName() + " is running.");
-
-        //Label l0 = new Label();
-        //mv.visitLabel(l0);
-
         mv.visitVarInsn(ALOAD, 0);
-        mv.visitMethodInsn(INVOKESPECIAL, className, "printThreadRelationship", "()V", false);
+        mv.visitMethodInsn(INVOKESPECIAL, className, METHOD_BEFORE_RUN, "()V", false);
 
         super.onMethodEnter();
+    }
+
+    @Override
+    protected void onMethodExit(int opcode) {
+        mv.visitVarInsn(ALOAD, 0);
+        mv.visitMethodInsn(INVOKESPECIAL, className, METHOD_END_RUN, "()V", false);
+
+        super.onMethodExit(opcode);
     }
 }

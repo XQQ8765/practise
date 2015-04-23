@@ -15,7 +15,8 @@
 
 package com.xiaoqq.practise.threadmonitor;
 
-import com.xiaoqq.practise.threadmonitor.addproperty.ThreadImplementationClassVisitor;
+import com.xiaoqq.practise.threadmonitor.uuid.MonitoringClassVisitor;
+import com.xiaoqq.practise.threadmonitor.uuid.ThreadImplementationClassVisitor;
 import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.*;
 
@@ -26,25 +27,33 @@ import java.lang.instrument.Instrumentation;
 
 public class Agent implements ClassFileTransformer {
 
-  // Ignore list to eliminate endless recursion.
-  private static String[] ignoreList = new String[]{
-      "com/xiaoqq/practise/threadmonitor",
-      "sun",
-      "java",
-       "javax",
-       "com/sun",
-      "com/intellij",
-      "org/objectweb",
-      "org/apache"
-  };
+    // Ignore list to eliminate endless recursion.
+    private static String[] ignoreList = new String[]{
+            "com/xiaoqq/practise/threadmonitor",
+            "sun",
+            "java",
+            "javax",
+            "com/sun",
+            "com/intellij",
+            "org/objectweb",
+            "org/apache"
+    };
 
-  // A list of exceptions for the ignoreList list.
-  private static String[] noignoreList = new String[]{};
+    // A list of exceptions for the ignoreList list.
+    private static String[] noignoreList = new String[]{};
 
-  public static void premain(String arg, Instrumentation instrumentation) {
+    public static void premain(String arg, Instrumentation instrumentation) {
+
+
         System.out.println("Start to create thread monitor Agent.");
         Agent agent = new Agent();
         instrumentation.addTransformer(agent, true);
+        //TODO remove this code. Just for remote debug purpose
+        try {
+            Thread.sleep(15 * 1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         /*
         Class[] allClasses = instrumentation.getAllLoadedClasses();
         for (Class c : allClasses) {
@@ -60,41 +69,40 @@ public class Agent implements ClassFileTransformer {
         }   */
     }
 
-  private boolean inIgnoreList(String className) {
-    for (String anIgnore : ignoreList) {
-      if (className.startsWith(anIgnore)) {
-        for (String aNoignore : noignoreList) {
-          if (className.startsWith(aNoignore)) {
-            return false;
-          }
+    private boolean inIgnoreList(String className) {
+        for (String anIgnore : ignoreList) {
+            if (className.startsWith(anIgnore)) {
+                for (String aNoignore : noignoreList) {
+                    if (className.startsWith(aNoignore)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
-        return true;
-      }
+        return false;
     }
-    return false;
-  }
 
-  public byte[] transform(ClassLoader classLoader, String className,
-                          Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
-      if (inIgnoreList(className)) {
-          //System.out.println("-------------------ignoreList. className:"+className + ", clazz:" +clazz.getName());
-          return bytes;
-      }
-      //System.out.println("-------------------start to processs. className:"+className + ", clazz:" +clazz);
-      ClassReader cr = new ClassReader(bytes);
-      ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-      ClassVisitor cv = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw, classLoader);
-      cr.accept(cv, ClassReader.EXPAND_FRAMES);
+    public byte[] transform(ClassLoader classLoader, String className,
+                            Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
+        if (inIgnoreList(className)) {
+            return bytes;
+        }
+        ClassReader cr = new ClassReader(bytes);
+        ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+        ClassVisitor thCV = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw, classLoader);
+        ClassVisitor cv = new MonitoringClassVisitor(Opcodes.ASM5, thCV, classLoader);
+        cr.accept(cv, ClassReader.EXPAND_FRAMES);
 
-      byte[] transformedBytes = cw.toByteArray();
+        byte[] transformedBytes = cw.toByteArray();
 
-      //TODO: remove it
-      try {
-          FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_gen.class"), transformedBytes);
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-      return transformedBytes;
-  }
+        //TODO: remove it
+        try {
+            FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_gen.class"), transformedBytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return transformedBytes;
+    }
 
 }

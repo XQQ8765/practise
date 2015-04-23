@@ -1,4 +1,4 @@
-package com.xiaoqq.practise.threadsamplecode.poll;
+package poll;
 
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -46,13 +46,5 @@ public class Poller {
 	}
 
 
-    public static void main(String [] args) {
-        List<String> urls = new ArrayList<String>();
-        urls.add("http://www.163.com");
-        urls.add("http://www.qq.com");
 
-        Poller poller = new Poller();
-        List<PollingResult> results = poller.poll(urls);
-        System.out.println("results:" + results);
-    }
 }
