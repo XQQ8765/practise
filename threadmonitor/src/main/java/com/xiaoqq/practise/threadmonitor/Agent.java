@@ -48,12 +48,6 @@ public class Agent implements ClassFileTransformer {
         System.out.println("Start to create thread monitor Agent.");
         Agent agent = new Agent();
         instrumentation.addTransformer(agent, true);
-        //TODO remove this code. Just for remote debug purpose
-        try {
-            Thread.sleep(15 * 1000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         /*
         Class[] allClasses = instrumentation.getAllLoadedClasses();
         for (Class c : allClasses) {

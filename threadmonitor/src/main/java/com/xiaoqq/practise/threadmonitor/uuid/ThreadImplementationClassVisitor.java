@@ -3,6 +3,7 @@ package com.xiaoqq.practise.threadmonitor.uuid;
 import com.xiaoqq.practise.threadmonitor.util.MonitorUtil;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 import static com.xiaoqq.practise.threadmonitor.util.IConstant.*;
 import static org.objectweb.asm.Opcodes.*;
@@ -29,13 +30,15 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
         className = name;
         this.superName = superName;
         this.interfaces = interfaces;
+
     }
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
 
-        if (isThreadRunningMethod(superName, interfaces, name, desc)) {
+        boolean isBridge = (access & Opcodes.ACC_BRIDGE) != 0;
+        if (isThreadRunningMethod(superName, interfaces, name, desc, isBridge)) {
             System.out.println("ThreadImplementationClassVisitor: Instrumentation method: " + className + "." + name + desc);
             return new ThreadRunningAdviceAdapter(api, mv, access, name, desc, className);
         } else if (isThreadConstructMethod(superName, interfaces, name, desc)) {
@@ -126,7 +129,7 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
          String UUID = HashStorage.getByObjectHashId(thisHashId);
 
          //Submit trace performance data by UUID
-         System.out.println("Thread Hash:" + currentThreadHash + "Object Hash:" + thisHashId + ", UUID:" + UUID);
+         System.out.println("Thread Hash:" + currentThreadHash + ", Object Hash:" + thisHashId + ", UUID:" + UUID);
 
          HashStorage.remove(currentThreadHash);
          HashStorage.remove(thisHashId);
@@ -158,7 +161,7 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
         mv.visitVarInsn(ALOAD, 1);
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
-        mv.visitLdcInsn("Object Hash:");
+        mv.visitLdcInsn(", Object Hash:");
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
         mv.visitVarInsn(ALOAD, 2);
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;", false);
@@ -198,7 +201,10 @@ public class ThreadImplementationClassVisitor extends ClassVisitor {
         return false;
     }
 
-    private boolean isThreadRunningMethod(String superName, String[] interfaces, String methodName, String desc) {
+    private boolean isThreadRunningMethod(String superName, String[] interfaces, String methodName, String desc, boolean isBridge) {
+        if (isBridge) {//Ignore generic bridge method
+            return false;
+        }
         if (MonitorUtil.isAssignableFrom(MonitorUtil.THREAD_TYPE_BYTECODE_NAME, superName, classLoader)
                 && methodName.equals("run")
                 && desc.equals("()V")) { //Thread.run()

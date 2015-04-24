@@ -22,7 +22,8 @@ public class PollWebSiteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<String> urls = new ArrayList<String>();
         urls.add("http://www.163.com");
-        //urls.add("http://www.qq.com");
+        urls.add("http://www.qq.com");
+        urls.add("http://torbugs.prod.quest.corp/secure/Dashboard.jspa");
 
         Poller poller = new Poller();
         List<PollingResult> results = poller.poll(urls);
