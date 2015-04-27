@@ -9,7 +9,8 @@
   <url>http://maven.apache.org</url>
 <modules>  
         <module>asm_practise</module>  
-        <module>hadoop</module>  
+        <module>cglib_practise</module>
+        <module>hadoop</module>
 		<module>maven_practise</module>
 		<module>Barat-1.6.1</module>
         <module>java-thread-sanitizer</module>
