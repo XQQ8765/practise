@@ -1,5 +1,6 @@
 package com.xiaoqq.practise.cglib.learn1;
 
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.*;
 import org.junit.Test;
 
@@ -13,6 +14,9 @@ import static org.junit.Assert.assertNotEquals;
  * See http://mydailyjava.blogspot.no/2013/11/cglib-missing-manual.html.
  */
 public class SampleClassTest {
+    static {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "d:\\workspace\\tmp\\cglib_generatedclasses");
+    }
 
     @Test
     public void testFixedValue() {
