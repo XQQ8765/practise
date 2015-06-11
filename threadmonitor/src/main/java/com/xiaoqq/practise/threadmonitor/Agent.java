@@ -15,6 +15,7 @@
 
 package com.xiaoqq.practise.threadmonitor;
 
+import com.xiaoqq.practise.threadmonitor.relationship.LookupRelationShipClassVisitor;
 import com.xiaoqq.practise.threadmonitor.uuid.MonitoringClassVisitor;
 import com.xiaoqq.practise.threadmonitor.uuid.ThreadImplementationClassVisitor;
 import org.apache.commons.io.FileUtils;
@@ -33,10 +34,12 @@ public class Agent implements ClassFileTransformer {
             "sun",
             "java",
             "javax",
+            "org",
             "com/sun",
             "com/intellij",
             "org/objectweb",
-            "org/apache"
+            "org/apache",
+            "groovy"
     };
 
     // A list of exceptions for the ignoreList list.
@@ -79,24 +82,30 @@ public class Agent implements ClassFileTransformer {
 
     public byte[] transform(ClassLoader classLoader, String className,
                             Class clazz, java.security.ProtectionDomain domain, byte[] bytes) {
-        if (inIgnoreList(className)) {
-            return bytes;
-        }
-        ClassReader cr = new ClassReader(bytes);
-        ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
-        ClassVisitor thCV = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw, classLoader);
-        ClassVisitor cv = new MonitoringClassVisitor(Opcodes.ASM5, thCV, classLoader);
-        cr.accept(cv, ClassReader.EXPAND_FRAMES);
-
-        byte[] transformedBytes = cw.toByteArray();
-
-        //TODO: remove it
         try {
-            FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_gen.class"), transformedBytes);
-        } catch (IOException e) {
+            if (inIgnoreList(className)) {
+                return bytes;
+            }
+            ClassReader cr = new ClassReader(bytes);
+            ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
+            /*ClassVisitor thCV = new ThreadImplementationClassVisitor(Opcodes.ASM5, cw, classLoader);
+            ClassVisitor cv = new MonitoringClassVisitor(Opcodes.ASM5, thCV, classLoader);  */
+            ClassVisitor cv = new LookupRelationShipClassVisitor(Opcodes.ASM5, cw, classLoader);
+            cr.accept(cv, ClassReader.EXPAND_FRAMES);
+
+            byte[] transformedBytes = cw.toByteArray();
+
+            //TODO: remove it
+            try {
+                FileUtils.writeByteArrayToFile(new File("d:\\workspace\\tmp\\generatedclasses\\" + className + "_gen.class"), transformedBytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return transformedBytes;
+        } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return transformedBytes;
     }
 
 }

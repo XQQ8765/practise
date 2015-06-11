@@ -6,6 +6,7 @@ package com.xiaoqq.practise.threadmonitor.relationship.model;
 public class CodePosition {
     private String className;
     private String methodName;
+    private String methodDesc;
 
     public CodePosition() {
 
@@ -24,5 +25,13 @@ public class CodePosition {
 
     public void setMethodName(String methodName) {
         this.methodName = methodName;
+    }
+
+    public String getMethodDesc() {
+        return methodDesc;
+    }
+
+    public void setMethodDesc(String methodDesc) {
+        this.methodDesc = methodDesc;
     }
 }

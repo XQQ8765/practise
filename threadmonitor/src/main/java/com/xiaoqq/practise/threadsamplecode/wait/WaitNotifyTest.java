@@ -5,7 +5,9 @@ package com.xiaoqq.practise.threadsamplecode.wait;
  */
 public class WaitNotifyTest {
  
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+       /* Object obj = new Object();
+        obj.wait(10L);  */
         Message msg = new Message("process it");
         Waiter waiter = new Waiter(msg);
         new Thread(waiter,"waiter").start();
