@@ -22,14 +22,15 @@ public class Waiter2 implements Runnable
             try
             {
                 System.out.println(name + " waiting to get notified at time:" + System.currentTimeMillis());
+
+                //this.msg.wait();
+                Object localWaiter = this.msg;
                 CodePosition localCodePosition = new CodePosition();
                 localCodePosition.setClassName("com/xiaoqq/practise/threadsamplecode/wait/Waiter");
                 localCodePosition.setMethodName("run");
                 localCodePosition.setMethodDesc("()V");
-                Waiter2 localWaiter = this;
                 EventListener.beforeWait(localWaiter, localCodePosition);
-                this.msg.wait();
-
+                localWaiter.wait();
             }
             catch (InterruptedException e)
             {

@@ -20,6 +20,7 @@ import com.xiaoqq.practise.threadmonitor.uuid.MonitoringClassVisitor;
 import com.xiaoqq.practise.threadmonitor.uuid.ThreadImplementationClassVisitor;
 import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.*;
+import org.objectweb.asm.util.CheckClassAdapter;
 
 import java.io.File;
 import java.io.IOException;

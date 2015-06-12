@@ -8,10 +8,14 @@ public class Wait {
     public Object beforeWait() {
         return this;
     }
-    private static void invokeStaticMethod() {
+    private static void invokeStaticMethod() throws InterruptedException {
         Object a = new Object();
         String b = "b";
         testStaticMethod(a, b);
+
+        a.wait();
+        a.wait(10L);
+        a.wait(10L ,10);
     }
     private static void testStaticMethod(Object a, String b) {
 

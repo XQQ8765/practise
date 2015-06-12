@@ -6,8 +6,22 @@ package com.xiaoqq.practise.threadsamplecode.wait;
 public class WaitNotifyTest {
  
     public static void main(String[] args) throws InterruptedException {
-       /* Object obj = new Object();
-        obj.wait(10L);  */
+        test();
+        /*Object obj = new Object();
+        obj.wait(10L);*/
+        /*Object obj = new Object();
+        obj.wait();*/
+        /*Object obj = new Object();
+        //obj.wait(10);
+        obj.wait(10, 10);*/
+        /*
+        try{
+            Object obj = new Object();
+            obj.wait();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }*/
+        /*
         Message msg = new Message("process it");
         Waiter waiter = new Waiter(msg);
         new Thread(waiter,"waiter").start();
@@ -18,6 +32,16 @@ public class WaitNotifyTest {
         Notifier notifier = new Notifier(msg);
         new Thread(notifier, "notifier").start();
         System.out.println("All the threads are started");
+        */
+    }
+
+    private static void test()  {
+        try {
+            Object obj = new Object();
+            obj.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
  
 }
