@@ -7,21 +7,19 @@ public class WaitNotifyTest {
  
     public static void main(String[] args) {
         testMessage();
-        //test();
-        /*Object obj = new Object();
-        obj.wait(10L);*/
-        /*Object obj = new Object();
-        obj.wait();*/
-        /*Object obj = new Object();
-        //obj.wait(10);
-        obj.wait(10, 10);*/
-        /*
-        try{
-            Object obj = new Object();
-            obj.wait();
-        }catch(InterruptedException e){
-            e.printStackTrace();
-        }*/
+        //testNotify();
+    }
+
+    private static void testMultiParameters() {
+        Object obj = new Object();
+        synchronized (obj) {
+            try {
+                obj.wait(10);
+                obj.wait(10, 10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static void testMessage() {
@@ -35,6 +33,13 @@ public class WaitNotifyTest {
         Notifier notifier = new Notifier(msg);
         new Thread(notifier, "notifier").start();
         System.out.println("All the threads are started");
+    }
+
+    private static void testNotify() {
+        Object obj = new Object();
+        synchronized (obj) {
+            obj.notify();
+        }
     }
 
     private static void test() {

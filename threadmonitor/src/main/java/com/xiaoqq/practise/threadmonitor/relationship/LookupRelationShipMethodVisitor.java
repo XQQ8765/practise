@@ -2,6 +2,7 @@ package com.xiaoqq.practise.threadmonitor.relationship;
 
 import com.xiaoqq.practise.threadmonitor.relationship.model.CodePosition;
 import com.xiaoqq.practise.threadmonitor.relationship.model.EventListener;
+import com.xiaoqq.practise.threadmonitor.relationship.model.EventType;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
@@ -14,6 +15,7 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
     private CodePosition codePosition;
     private boolean isStaticMethod;
     final static String Type_CodePosition = "com/xiaoqq/practise/threadmonitor/relationship/model/CodePosition";
+    final static String Type_EventListener = "com/xiaoqq/practise/threadmonitor/relationship/model/EventListener";
 
     public LookupRelationShipMethodVisitor(MethodVisitor mv, String className, String methodName, String methodDesc, int methodAccess) {
         super(Opcodes.ASM5, methodAccess, methodDesc, mv);
@@ -33,6 +35,9 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
                 if ("java/lang/Object".equals(owner) && "wait".equals(name)) {//Object.wait(...)
                     handleWait(opcode, owner, name, desc, itf);
                     return ;
+                } else if ("java/lang/Object".equals(owner) && ("notify".equals(name) || "notifyAll".equals(name))) {//Object.notify() | Object.notifyAll()
+                    handleNotify(opcode, owner, name, desc, itf);
+                    return ;
                 }
             }
             super.visitMethodInsn(opcode, owner, name, desc, itf);
@@ -41,14 +46,54 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
         }
     }
 
-    private void handleWait(int opcode, String owner, String name, String desc, boolean itf) {
-        System.out.println("LookupRelationShipMethodVisitor.visitMethodInsn Opcodes.INVOKEVIRTUAL(opcode:"+opcode +", owner:"+owner + ", name:" + name + ", desc:" + desc);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Handle Event methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void handleNotify(int opcode, String owner, String name, String desc, boolean itf) {
+        System.out.println("LookupRelationShipMethodVisitor.handleNotify(opcode:"+opcode +", owner:"+owner + ", name:" + name + ", desc:" + desc);
 
-        //get Obj by bytecode
-        final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
         //Create CodePosition Object by bytecode.
-        final int varCodePositionindex = this.newLocal(Type.getObjectType(Type_CodePosition));
+        final int varCodePositionindex = createCodePosition();
 
+        //create local Object by bytecode
+        final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
+        //create local Object by bytecode
+        mv.visitVarInsn(ASTORE, varObjindex);//Get the wait obj from the top of stack, and store it into local variable "varObjindex".
+
+        EventType eventType = "notify".equals(name) ? EventType.BEFORE_NOTIFY : EventType.BEFORE_NOTIFY_ALL;
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.beforeNotify(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                eventType.getMethodName(),
+                getEventMethodDesc(),
+                false);
+
+        mv.visitVarInsn(ALOAD, varObjindex);//Load the notify obj from local variable to the top of stack.
+        //Call the origin method
+        super.visitMethodInsn(opcode, owner, name, desc, itf);
+
+        eventType = "notify".equals(name) ? EventType.AFTER_NOTIFY : EventType.AFTER_NOTIFY_ALL;
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.afterNotify(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                eventType.getMethodName(),
+                getEventMethodDesc(),
+                false);
+    }
+
+    private void handleWait(int opcode, String owner, String name, String desc, boolean itf) {
+        System.out.println("LookupRelationShipMethodVisitor.handleWait(opcode:"+opcode +", owner:"+owner + ", name:" + name + ", desc:" + desc);
+
+        //Create CodePosition Object by bytecode.
+        final int varCodePositionindex = createCodePosition();
+        //create local Object by bytecode
+        final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
         if ("()V".equals(desc)) {//void wait()
             insertCodeForBeforeWait(varObjindex, varCodePositionindex);
         } else if ("(J)V".equals(desc)) {//wait(long timeout)
@@ -66,14 +111,50 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
             mv.visitVarInsn(ILOAD, varNanosIndex);//Load the timeout var from local variable to the top of stack.
         }
 
+        //Call the origin method
         super.visitMethodInsn(opcode, owner, name, desc, itf);
 
         insertCodeForAfterWait(varObjindex, varCodePositionindex);
     }
 
     private void insertCodeForBeforeWait(int varObjindex, int varCodePositionindex) {
-        //get Obj by bytecode
         mv.visitVarInsn(ASTORE, varObjindex);//Get the wait obj from the top of stack, and store it into local variable "varObjindex".
+
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.beforeWait(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                EventType.BEFORE_WAIT.getMethodName(),
+                getEventMethodDesc(),
+                false);
+
+        mv.visitVarInsn(ALOAD, varObjindex);//Load the wait obj from local variable to the top of stack.
+    }
+
+    private void insertCodeForAfterWait(int varObjindex, int varCodePositionindex) {
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.afterWait(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                EventType.AFTER_WAIT.getMethodName(),
+                getEventMethodDesc(),
+                false);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Utility methods
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private String getEventMethodDesc() {
+        return "(Ljava/lang/Object;L" + Type_CodePosition + ";)V";
+    }
+
+    private int createCodePosition() {
+        //Create CodePosition Object by bytecode.
+        final int varCodePositionindex = this.newLocal(Type.getObjectType(Type_CodePosition));
 
         //Create CodePosition Object by bytecode.
         mv.visitTypeInsn(NEW, Type_CodePosition);
@@ -93,32 +174,6 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
         mv.visitLdcInsn(codePosition.getMethodDesc());
         mv.visitMethodInsn(INVOKEVIRTUAL, Type_CodePosition, "setMethodDesc", "(Ljava/lang/String;)V", false);
 
-        mv.visitVarInsn(ALOAD, varObjindex);
-        mv.visitVarInsn(ALOAD, varCodePositionindex);
-
-        //Call method EventListener.beforeWait(obj, codePosition);
-        mv.visitMethodInsn(
-                INVOKESTATIC,
-                "com/xiaoqq/practise/threadmonitor/relationship/model/EventListener",
-                "beforeWait",
-                "(Ljava/lang/Object;L" + Type_CodePosition + ";)V",
-                false);
-
-        mv.visitVarInsn(ALOAD, varObjindex);//Load the wait obj from local variable to the top of stack.
+        return varCodePositionindex;
     }
-
-    private void insertCodeForAfterWait(int varObjindex, int varCodePositionindex) {
-        mv.visitVarInsn(ALOAD, varObjindex);
-        mv.visitVarInsn(ALOAD, varCodePositionindex);
-
-        //Call method EventListener.afterWait(obj, codePosition);
-        mv.visitMethodInsn(
-                INVOKESTATIC,
-                "com/xiaoqq/practise/threadmonitor/relationship/model/EventListener",
-                "afterWait",
-                "(Ljava/lang/Object;L" + Type_CodePosition + ";)V",
-                false);
-    }
-
-
 }
