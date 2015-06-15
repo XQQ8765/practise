@@ -10,4 +10,9 @@ public class EventListener {
         Event e = new Event(EventType.BEFORE_WAIT, waitObj, codePosition);
         eventWriter.writeEvent(e);
     }
+
+    public static void afterWait(Object waitObj, CodePosition codePosition) {
+        Event e = new Event(EventType.AFTER_WAIT, waitObj, codePosition);
+        eventWriter.writeEvent(e);
+    }
 }

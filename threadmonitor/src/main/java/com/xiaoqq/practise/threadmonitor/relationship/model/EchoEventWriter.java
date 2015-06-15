@@ -7,6 +7,6 @@ package com.xiaoqq.practise.threadmonitor.relationship.model;
 public class EchoEventWriter implements EventWriter{
     @Override
     public void writeEvent(Event e) {
-
+        System.out.println("###EchoEventWriter: event:" + e);
     }
 }

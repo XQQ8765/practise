@@ -31,6 +31,7 @@ public class Waiter2 implements Runnable
                 localCodePosition.setMethodDesc("()V");
                 EventListener.beforeWait(localWaiter, localCodePosition);
                 localWaiter.wait();
+                EventListener.afterWait(localWaiter, localCodePosition);
             }
             catch (InterruptedException e)
             {
