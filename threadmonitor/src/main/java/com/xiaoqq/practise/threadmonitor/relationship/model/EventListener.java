@@ -35,4 +35,19 @@ public class EventListener {
         Event e = new Event(EventType.AFTER_NOTIFY_ALL, waitObj, codePosition);
         eventWriter.writeEvent(e);
     }
+
+    public static void beforeMonitorEnter(Object waitObj, CodePosition codePosition) {
+        Event e = new Event(EventType.BEFORE_MONITOR_ENTER, waitObj, codePosition);
+        eventWriter.writeEvent(e);
+    }
+
+    public static void afterMonitorEnter(Object waitObj, CodePosition codePosition) {
+        Event e = new Event(EventType.AFTER_MONITOR_ENTER, waitObj, codePosition);
+        eventWriter.writeEvent(e);
+    }
+
+    public static void monitorExit(Object waitObj, CodePosition codePosition) {
+        Event e = new Event(EventType.MONITOR_EXIT, waitObj, codePosition);
+        eventWriter.writeEvent(e);
+    }
 }

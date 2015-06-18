@@ -28,6 +28,17 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
     }
 
     @Override
+    public void visitInsn(int opcode) {
+        if (opcode == Opcodes.MONITORENTER) {
+            handleMonitorEnter(opcode);
+            return;
+        } else if (opcode == Opcodes.MONITOREXIT) {
+            //TODO
+        }
+        super.visitInsn(opcode);
+    }
+
+    @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
         try {
             //System.out.println("LookupRelationShipMethodVisitor.visitMethodInsn(opcode:"+opcode +", owner:"+owner + ", name:" + name + ", desc:" + desc);
@@ -49,6 +60,42 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Handle Event methods
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void handleMonitorEnter(int opcode) {
+        System.out.println("LookupRelationShipMethodVisitor.handleMonitorEnter()");
+
+        //Create CodePosition Object by bytecode.
+        final int varCodePositionindex = createCodePosition();
+
+        //create local Object by bytecode
+        final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
+        //create local Object by bytecode
+        mv.visitVarInsn(ASTORE, varObjindex);//Get the wait obj from the top of stack, and store it into local variable "varObjindex".
+
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.beforeNotify(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                EventType.BEFORE_MONITOR_ENTER.getMethodName(),
+                getEventMethodDesc(),
+                false);
+
+        mv.visitVarInsn(ALOAD, varObjindex);//Load the obj from local variable to the top of stack.
+        //Call the origin method
+        super.visitInsn(opcode);
+
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.afterNotify(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                EventType.AFTER_MONITOR_ENTER.getMethodName(),
+                getEventMethodDesc(),
+                false);
+    }
+
     private void handleNotify(int opcode, String owner, String name, String desc, boolean itf) {
         System.out.println("LookupRelationShipMethodVisitor.handleNotify(opcode:"+opcode +", owner:"+owner + ", name:" + name + ", desc:" + desc);
 

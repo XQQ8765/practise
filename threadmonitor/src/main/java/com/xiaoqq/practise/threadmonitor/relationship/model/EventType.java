@@ -6,7 +6,10 @@ public enum EventType {
     BEFORE_NOTIFY("beforeNotify"), //(obj, class_name, method_name, timestamp)
     AFTER_NOTIFY("afterNotify"), //(obj, class_name, method_name, timestamp)
     BEFORE_NOTIFY_ALL("beforeNotifyAll"), //(obj, class_name, method_name, timestamp)
-    AFTER_NOTIFY_ALL("afterNotifyAll"); //(obj, class_name, method_name, timestamp)
+    AFTER_NOTIFY_ALL("afterNotifyAll"), //(obj, class_name, method_name, timestamp)
+    BEFORE_MONITOR_ENTER("beforeMonitorEnter"),
+    AFTER_MONITOR_ENTER("afterMonitorEnter"),
+    MONITOR_EXIT("monitorExit");
 
     private String methodName;
     EventType(String methodName) {
