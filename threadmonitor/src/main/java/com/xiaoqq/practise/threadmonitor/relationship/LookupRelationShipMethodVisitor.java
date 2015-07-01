@@ -33,7 +33,8 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
             handleMonitorEnter(opcode);
             return;
         } else if (opcode == Opcodes.MONITOREXIT) {
-            //TODO
+            handleMonitorExit(opcode);
+            return;
         }
         super.visitInsn(opcode);
     }
@@ -60,6 +61,31 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Handle Event methods
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void handleMonitorExit(int opcode) {
+        System.out.println("LookupRelationShipMethodVisitor.handleMonitorExit()");
+
+        //create local Object by bytecode
+        final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
+        //create local Object by bytecode
+        mv.visitVarInsn(ASTORE, varObjindex);//Get the Synchronized obj from the top of stack, and store it into local variable "varObjindex".
+
+        mv.visitVarInsn(ALOAD, varObjindex);//Load the obj from local variable to the top of stack.
+        //Call the origin instrument
+        super.visitInsn(opcode);
+
+        //Create CodePosition Object by bytecode.
+        final int varCodePositionindex = createCodePosition();
+        mv.visitVarInsn(ALOAD, varObjindex);
+        mv.visitVarInsn(ALOAD, varCodePositionindex);
+        //Call method EventListener.monitorExit(obj, codePosition);
+        mv.visitMethodInsn(
+                INVOKESTATIC,
+                Type_EventListener,
+                EventType.MONITOR_EXIT.getMethodName(),
+                getEventMethodDesc(),
+                false);
+    }
+
     private void handleMonitorEnter(int opcode) {
         System.out.println("LookupRelationShipMethodVisitor.handleMonitorEnter()");
 
@@ -69,11 +95,11 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
         //create local Object by bytecode
         final int varObjindex = this.newLocal(Type.getObjectType("java/lang/Object"));
         //create local Object by bytecode
-        mv.visitVarInsn(ASTORE, varObjindex);//Get the wait obj from the top of stack, and store it into local variable "varObjindex".
+        mv.visitVarInsn(ASTORE, varObjindex);//Get the Synchronized obj from the top of stack, and store it into local variable "varObjindex".
 
         mv.visitVarInsn(ALOAD, varObjindex);
         mv.visitVarInsn(ALOAD, varCodePositionindex);
-        //Call method EventListener.beforeNotify(obj, codePosition);
+        //Call method EventListener.beforeMonitorEnter(obj, codePosition);
         mv.visitMethodInsn(
                 INVOKESTATIC,
                 Type_EventListener,
@@ -87,7 +113,7 @@ public class LookupRelationShipMethodVisitor extends LocalVariablesSorter implem
 
         mv.visitVarInsn(ALOAD, varObjindex);
         mv.visitVarInsn(ALOAD, varCodePositionindex);
-        //Call method EventListener.afterNotify(obj, codePosition);
+        //Call method EventListener.afterMonitorEnter(obj, codePosition);
         mv.visitMethodInsn(
                 INVOKESTATIC,
                 Type_EventListener,
