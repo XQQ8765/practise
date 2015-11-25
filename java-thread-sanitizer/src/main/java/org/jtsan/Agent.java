@@ -68,13 +68,15 @@ public class Agent implements ClassFileTransformer {
   private static final String DEFAULT_EVENTS_FILE = "jtsan.events";
 
   // Path to directory where the agent saves transformed class files when flag 'stc' is set.
-  private static final String TRANSFORMED_CLASSES_ROOT = "jtsan_transformed_classes";
+  //private static final String TRANSFORMED_CLASSES_ROOT = "jtsan_transformed_classes";
+  private static final String TRANSFORMED_CLASSES_ROOT = "d:\\workspace\\tmp\\jtsan_transformed_classes";//Hard code the debug classes folder. TODO: Remove
 
   // Ignore list to eliminate endless recursion.
   private static String[] ignore = new String[]{
       "org/jtsan/",
+      "org",
       "sun",
-      
+      "java",
       // Classes required by EventListener itself. Triggering events in these will
       // cause endless recursion.
       "java/io/PrintWriter",
@@ -104,7 +106,9 @@ public class Agent implements ClassFileTransformer {
   };
 
   // A list of exceptions for the ignore list.
-  private static String[] noignore = new String[]{};
+  private static String[] noignore = new String[]{
+    "org/xiaoqq/"
+  };
 
   // System methods to intercept.
   private static MethodMapping syncMethods = null;
@@ -118,7 +122,7 @@ public class Agent implements ClassFileTransformer {
   private boolean writeTransformedClasses;
 
   public static void premain(String arg, Instrumentation instrumentation) {
-    arg = "sys=1:cls=org";//TODO, debug purpose, we can remove it.
+    arg = "sys=1:cls=org:stc:writer=binstr";//TODO, debug purpose, we can remove it.
     System.out.println("Start to create Agent");
     Agent agent = new Agent();
     syncMethods = new MethodMapping();
@@ -160,8 +164,10 @@ public class Agent implements ClassFileTransformer {
         if (idx != -1) {
           agent.writeTransformedClasses = true;
           File f = new File(TRANSFORMED_CLASSES_ROOT);
-          if (f.mkdirs()) {
-            System.out.println("Java Agent: create " + TRANSFORMED_CLASSES_ROOT + " directory");
+          System.out.println("Transformed classes will be writen to Path:" + f.getAbsolutePath());
+          if (!f.exists()) {
+              f.mkdirs();
+              System.out.println("Java Agent: create " + TRANSFORMED_CLASSES_ROOT + " directory. Absolute Path:" + f.getAbsolutePath());
           }
         }
       }

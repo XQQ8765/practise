@@ -12,3 +12,5 @@ java -javaagent:../threadmonitor-agent-with-dependencies.jar com.xiaoqq.practise
 java -javaagent:target/threadmonitor-agent-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
 java -javaagent:target/threadmonitor-agent-with-dependencies.jar -jar target/threadmonitor-sample-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
 java -javaagent:target/threadmonitor-1.0-SNAPSHOT-jar-with-dependencies.jar com.xiaoqq.practise.threadsamplecode.RunMyThread
+
+-XX:-UseSplitVerifier -XX:+FailOverToOldVerifier -javaagent:d:\workspace\practise\threadmonitor\target\threadmonitor-agent-with-dependencies.jar
