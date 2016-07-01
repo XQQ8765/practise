@@ -11,6 +11,7 @@ public class DateUtil {
     public static Date convertToDateWithYMD(String dateStr) {
         return convertToDate(dateStr, "yyyy-MM-dd");
     }
+
     public static Date convertToDate(String dateStr, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         try {
@@ -19,5 +20,13 @@ public class DateUtil {
             System.err.println("!!!Failed to convert dateStr:" + dateStr + " to Date with format:" + format);
             return null;
         }
+    }
+
+    public static String formatDate(Date date) {
+        if (date == null) {
+            return "";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date);
     }
 }

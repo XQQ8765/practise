@@ -1,10 +1,9 @@
 package com.xiaoqq.stockwin;
 
-import com.xiaoqq.stockwin.model.AveNWeekRule;
+import com.xiaoqq.stockwin.model.AveNWeekMonthRule;
 import com.xiaoqq.stockwin.model.Rule;
 import com.xiaoqq.stockwin.model.RuleEngine;
 import com.xiaoqq.stockwin.model.StockRoot;
-import com.xiaoqq.stockwin.util.HttpVisitorUtil;
 
 /**
  * Hello world!
@@ -15,9 +14,9 @@ public class App
     public static void main( String[] args )
     {
         Integer stockCode = 2100;//000100
-        int stockNum = 100;
+        int stockNum = 900;
         RuleEngine ruleEngine = new RuleEngine();
-        Rule avgNWeekRule = new AveNWeekRule(60);
+        Rule avgNWeekRule = new AveNWeekMonthRule(60, 60);
         ruleEngine.addRule(avgNWeekRule);
 
         for (int i=0; i<stockNum; ++i) {

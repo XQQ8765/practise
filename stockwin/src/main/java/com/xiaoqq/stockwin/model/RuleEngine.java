@@ -1,6 +1,9 @@
 package com.xiaoqq.stockwin.model;
 
+import com.xiaoqq.stockwin.util.DateUtil;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +24,7 @@ public class RuleEngine {
         if (stock == null) {
             return;
         }
+
         for (Rule rule: rules) {
             if (rule.match(stock)) {
                 rule.perform(stock);

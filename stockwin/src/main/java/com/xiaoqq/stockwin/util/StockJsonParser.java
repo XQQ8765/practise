@@ -43,8 +43,9 @@ public class StockJsonParser {
         stock.setCode(getNodeValue("$.code"));
         stock.setCurPrice(getDoubleNodeValue("$.price"));
         stock.setName(getNodeValue("$.name"));
-        stock.setDailyList(parseKChartItemList("$.kcahrt.daily"));
+        //stock.setDailyList(parseKChartItemList("$.kcahrt.daily"));
         stock.setWeeklyList(parseKChartItemList("$.kcahrt.weekly"));
+        stock.setMonthlyList(parseKChartItemList("$.kcahrt.monthly"));
         return stock;
     }
 

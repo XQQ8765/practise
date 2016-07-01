@@ -25,7 +25,7 @@ public class StockVisit {
 
     private StockRoot doVisit() throws Exception {
         String url = buildURL(code);
-        System.out.println("Visit for code:" + code);
+        //System.out.println("Visit for code:" + code);
         //System.out.println("Visit url:" + url);
         String json = HttpVisitorUtil.doGet(url);
         //System.out.println("json:" + json);

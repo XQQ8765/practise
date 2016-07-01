@@ -15,6 +15,16 @@ public class StockRoot {
     private List<KChartItem> weeklyList;
     private List<KChartItem> dailyList;
 
+    public List<KChartItem> getMonthlyList() {
+        return monthlyList;
+    }
+
+    public void setMonthlyList(List<KChartItem> monthlyList) {
+        this.monthlyList = monthlyList;
+    }
+
+    private List<KChartItem> monthlyList;
+
     public String getName() {
         return name;
     }
