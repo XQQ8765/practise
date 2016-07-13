@@ -28,6 +28,10 @@ public class StockVisit {
         //System.out.println("Visit for code:" + code);
         //System.out.println("Visit url:" + url);
         String json = HttpVisitorUtil.doGet(url);
+        if (json == null || json.trim().isEmpty()) {
+            System.err.println("!!!Get a null json data to for stock code:" + code);
+            return null;
+        }
         //System.out.println("json:" + json);
         StockRoot stockRoot = StockJsonParser.getInstance(json).getStockRoot();
         if (stockRoot == null) {

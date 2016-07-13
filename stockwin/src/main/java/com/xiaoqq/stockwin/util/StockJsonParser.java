@@ -30,6 +30,9 @@ public class StockJsonParser {
     public StockRoot getStockRoot() throws Exception
     {
         try {
+            if (json == null || json.isEmpty()) {
+                return null;
+            }
            return parse();
         } catch (Exception e) {
             System.err.println("!!! Failed to parse json data." + e.getMessage());
@@ -40,7 +43,11 @@ public class StockJsonParser {
     private StockRoot parse() throws Exception {
         StockRoot stock = new StockRoot();
         stock.setUpdateDate(new Date());//TODO: fetch from Json
-        stock.setCode(getNodeValue("$.code"));
+        String code = getNodeValue("$.code");
+        if (code == null) {
+            return null;
+        }
+        stock.setCode(code);
         stock.setCurPrice(getDoubleNodeValue("$.price"));
         stock.setName(getNodeValue("$.name"));
         //stock.setDailyList(parseKChartItemList("$.kcahrt.daily"));
@@ -80,10 +87,9 @@ public class StockJsonParser {
         try {
             value = jsonPathUtil.extract(expressionString, documentString, listSeparator);
         } catch (InvalidPathException e) {
-            System.err.print("The json path [" + expressionString + "] is invalid for the json string " + documentString + e.getMessage());
+            //System.err.print("The json path [" + expressionString + "] is invalid for the json string " + documentString + e.getMessage());
         } catch (InvalidJsonException x) {
-            System.err.print("Invalid Json String." + x.getMessage());
-            throw x;
+            //System.err.print("Invalid Json String." + x.getMessage());
         }
         return value;
     }
@@ -103,10 +109,9 @@ public class StockJsonParser {
         try {
             value = jsonPathUtil.extract(expressionString, json, null);
         } catch (InvalidPathException e) {
-            System.err.println("The json path [" + expressionString + "] is invalid." + e.getMessage());
+            //System.err.println("The json path [" + expressionString + "] is invalid." + e.getMessage());
         } catch (InvalidJsonException x) {
-            System.err.println("Invalid Json String." + x.getMessage());
-            throw x;
+            //System.err.println("Invalid Json String." + x.getMessage());
         }
         return value;
     }

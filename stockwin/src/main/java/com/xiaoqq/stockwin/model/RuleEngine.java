@@ -31,4 +31,10 @@ public class RuleEngine {
             }
         }
     }
+
+    public void afterRunAll() {
+        for (Rule rule: rules) {
+            rule.afterPerformAll();
+        }
+    }
 }

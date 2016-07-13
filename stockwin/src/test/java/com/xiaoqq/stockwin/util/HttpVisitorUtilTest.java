@@ -12,7 +12,9 @@ import java.io.File;
 public class HttpVisitorUtilTest {
     @Test
     public void testDoGet() throws Exception {
-        String url = "http://gp.3g.qq.com/g/stock/wap3/ajax_server/json.jsp?action=getQuote&sid=&need_kchart=true&securities_id=share_000089.xshe";
+        //String stock = "000041";
+        String stock = "000089";
+        String url = "http://gp.3g.qq.com/g/stock/wap3/ajax_server/json.jsp?action=getQuote&sid=&need_kchart=true&securities_id=share_" + stock + ".xshe";
         String result = HttpVisitorUtil.doGet(url);
         System.out.println(result);
     }

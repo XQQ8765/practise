@@ -8,6 +8,7 @@ public abstract class Rule {
     public static final int MID = 50;
     public abstract boolean match(StockRoot stock);
     public abstract void perform(StockRoot stock);
+    public abstract void afterPerformAll();
     public abstract String getName();
     public abstract String getDescription();
     public abstract Integer priority();

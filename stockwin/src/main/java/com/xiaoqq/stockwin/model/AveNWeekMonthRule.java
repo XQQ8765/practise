@@ -18,6 +18,9 @@ public class AveNWeekMonthRule extends Rule {
     private boolean printHeader;
     private static final Double INCREASE_PERCENT = 5d;
 
+    private Integer matchedCount = 0;
+    private Integer processedCount = 0;
+
     public AveNWeekMonthRule(Integer nWeek, Integer nMonth) {
         this.nWeek = nWeek;
         this.nMonth = nMonth;
@@ -26,6 +29,7 @@ public class AveNWeekMonthRule extends Rule {
 
     @Override
     public boolean match(StockRoot stock) {
+        this.processedCount += 1;
         Double curPrice = stock.getCurPrice();
         if (curPrice == null) {
             return false;
@@ -51,7 +55,8 @@ public class AveNWeekMonthRule extends Rule {
         if (preWeekPrice == null) {
             return false;
         }
-        return 100 * ((curPrice - preWeekPrice)/preWeekPrice) > INCREASE_PERCENT;//比上周股价上涨超过5%
+        boolean matched = 100 * ((curPrice - preWeekPrice)/preWeekPrice) > INCREASE_PERCENT;//比上周股价上涨超过5%
+        return matched;
     }
 
     @Override
@@ -68,6 +73,13 @@ public class AveNWeekMonthRule extends Rule {
         Double monthDiff = 100 * (avgNMonthPrice - curPrice)/curPrice;
         String monthDiffStr = NumberUtil.formatDouble(monthDiff);
         output(new Object[]{stock.getCode(), stock.getName(), weekDiffStr, monthDiffStr});
+
+        this.matchedCount += 1;
+    }
+
+    @Override
+    public void afterPerformAll() {
+        output("Rule : " + getDescription() + " processed " + this.processedCount + " stocks, matched " + this.matchedCount + " stocks.");
     }
 
     private void output(Object[] objs) {
