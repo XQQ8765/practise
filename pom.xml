@@ -17,6 +17,7 @@
         <module>APM-Retransform</module>
         <module>commons-dbutils-1.6-src</module>
         <module>stockwin</module>
+    <module>antlr-practise</module>
   </modules>
 <build>  
     <plugins>  

@@ -1,0 +1,2 @@
+Create project:
+mvn archetype:generate -DgroupId=com.xiaoqq.antlr.practise -DartifactId=antlr-practise  -DarchetypeArtifactId=maven-archetype-quickstart
