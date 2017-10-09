@@ -1,2 +1,7 @@
 Create project:
 mvn archetype:generate -DgroupId=com.xiaoqq.antlr.practise -DartifactId=antlr-practise  -DarchetypeArtifactId=maven-archetype-quickstart
+
+How to build project:
+    d:\workspace\practise\antlr-practise>set JAVA_HOME=c:\Program Files\Java\jdk1.7.0_05
+    d:\workspace\practise\antlr-practise>mvn clean package
+The generated antlr4 java source code is in folder: target/genereated-sources/antlr4

@@ -7,20 +7,23 @@
   <version>1.0-SNAPSHOT</version>
   <name>practise</name>
   <url>http://maven.apache.org</url>
-<modules>  
+<modules>
+    <!--
         <module>asm_practise</module>  
         <module>cglib_practise</module>
-        <module>hadoop</module>
 		<module>maven_practise</module>
+
+        <module>hadoop</module>
 		<module>Barat-1.6.1</module>
         <module>java-thread-sanitizer</module>
         <module>APM-Retransform</module>
         <module>commons-dbutils-1.6-src</module>
         <module>stockwin</module>
-    <module>antlr-practise</module>
+        <module>antlr-practise</module>
+        -->
   </modules>
 <build>  
-    <plugins>  
+    <plugins>
 		<plugin>
 		    <artifactId>maven-compiler-plugin</artifactId>
 		    <version>3.0</version>
@@ -37,6 +40,6 @@
                 <testFailureIgnore>true</testFailureIgnore>
             </configuration>
         </plugin>
-    </plugins>  
+    </plugins>
 </build>  
 </project>

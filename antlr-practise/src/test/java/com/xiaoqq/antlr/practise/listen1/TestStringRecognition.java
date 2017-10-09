@@ -1,4 +1,4 @@
-package com.xiaoqq.antlr.practise;
+package com.xiaoqq.antlr.practise.listen1;
 
 import com.xiaoqq.antlr.practise.listen1.BasicDumpVisitor;
 import com.xiaoqq.antlr.practise.listen1.TextTreeDumpVisitor;

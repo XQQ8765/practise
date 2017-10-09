@@ -1,0 +1,13 @@
+The listen is taken from book "The Definitive ANTRL 4 Reference, 2nd Edition.pdf" (Chapter 3.1, page 22)
+In folder "D:\workspace\practise\antlr-practise\src\main\java\com\xiaoqq\antlr\practise\listen4\output"
+
+practise\listen4\output>java org.antlr.v4.Tool ../ArrayInit.g4
+practise\listen4\output>javac *.java
+
+practise\listen4\output>java org.antlr.v4.gui.TestRig ArrayInit init -tree
+{1, {2, 3}, 4}
+^Z   //EOF, Windows is "Ctrl+Z", Linux is "Ctrl+D"
+(init { (value 1) , (value (init { (value 2) , (value 3) })) , (value 4) })
+
+practise\listen4\output>java org.antlr.v4.gui.TestRig ArrayInit init -gui
+//See pic ArrayInit_gui.png

@@ -1,0 +1,56 @@
+PS C:\Users\rxiao> $current=pwd
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> $current
+
+Path
+----
+C:\Users\rxiao
+
+
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> $current.Path
+C:\Users\rxiao
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> $current|Get-Member
+
+
+   TypeName: System.Management.Automation.PathInfo
+
+Name         MemberType Definition
+----         ---------- ----------
+Equals       Method     bool Equals(System.Object obj)
+GetHashCode  Method     int GetHashCode()
+GetType      Method     type GetType()
+ToString     Method     string ToString()
+Drive        Property   System.Management.Automation.PSDriveInfo Drive {get;}
+Path         Property   System.String Path {get;}
+Provider     Property   System.Management.Automation.ProviderInfo Provider {get;}
+ProviderPath Property   System.String ProviderPath {get;}
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> pwd|gm -MemberType Property
+
+
+   TypeName: System.Management.Automation.PathInfo
+
+Name         MemberType Definition
+----         ---------- ----------
+Drive        Property   System.Management.Automation.PSDriveInfo Drive {get;}
+Path         Property   System.String Path {get;}
+Provider     Property   System.Management.Automation.ProviderInfo Provider {get;}
+ProviderPath Property   System.String ProviderPath {get;}
+
+
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> $current.Path.ToLower()
+c:\users\rxiao
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> Remove-Variable current
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+PS C:\Users\rxiao> $current

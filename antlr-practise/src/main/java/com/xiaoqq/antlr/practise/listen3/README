@@ -1,0 +1,20 @@
+The file is taken from book "The Definitive ANTRL 4 Reference, 2nd Edition.pdf" (Chapter 2)
+In folder "D:\workspace\practise\antlr-practise\src\main\java\com\xiaoqq\antlr\practise\listen3\output"
+practise\listen3\output> set JAVA_HOME=c:\Program Files\Java\jdk1.7.0_05
+practise\listen3\output> set PATH=%JAVA_HOME%/bin;%PATH%
+practise\listen3\output> set CLASSPATH=.;e:\open_source\Antlr\antlr-4.7-complete.jar;%CLASSPATH%
+practise\listen3\output> java org.antlr.v4.Tool %*
+
+Content in file "Hello.g4":
+grammar Hello; // Define a grammar called Hello
+r : 'hello' ID ; // match keyword hello followed by an identifier
+ID : [a-z]+ ; // match lower-case identifiers
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines, \r (Windows)
+
+practise\listen3\output>java org.antlr.v4.Tool ../Hello.g4
+practise\listen3\output>javac *.java
+
+practise\listen3\output>java org.antlr.v4.gui.TestRig Hello r -tree
+practise\listen3\output>java org.antlr.v4.gui.TestRig Hello r -gui
+
+
