@@ -1,5 +1,5 @@
 ## Chapter13 in book "Windows PowerShell Cookbook"
-## Chapter13. Internet-Enabled Scripts
+## Chapter13. User Interaction
 
 ##13.1. Read a Line of User Input
 $directory = Read-Host "Enter a directory name"
