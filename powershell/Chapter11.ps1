@@ -188,8 +188,7 @@ Get-CommandForContext Exchange
 
 
 ##Example 11-16. Finding all useful attributes
-##find all attributes that have a constructor that takes a single string as its
-argument
+##find all attributes that have a constructor that takes a single string as its argument
 $types = [Appdomain]::CurrentDomain.GetAssemblies() | Foreach-Object { $_.GetTypes() }
 foreach($type in $types)
 {
