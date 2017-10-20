@@ -38,6 +38,11 @@ $myArray[1..2 + 0]
 $items = Get-Process outlook,powershell,emacs,notepad
 $items | Format-Table -IncludeIndex
 
+#$null empty
+[array]$foo = $null
+$foo.count
+$foo -eq $null
+
 #7.4 Visit Each Element of an Array
 #Foreach-Object
 PS > $myArray = 1,2,3
