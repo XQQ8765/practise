@@ -6,6 +6,7 @@ Reference to: http://www.pstips.net/powershell-%E5%90%88%E5%B9%B6excel.html Powe
 
 $excel_folder = "d:/tmp"
 $excel_filenames = "top0_5.xlsx", "top6_10.xlsx", "top11_15.xlsx"
+$merged_filename = "merged_excel.xlsx"
 $script:merged_row_index =0
 
 function Generate-Excels()
@@ -70,7 +71,7 @@ function Merge-Excels() {
     $script:merged_row_index = ++$i
     $excel_files | %{Merge-Excel -excel_filename $_ -worksheet $objWorksheet}
 
-    $savedfilepath = Join-Path $excel_folder "merged_excel.xlsx"
+    $savedfilepath = Join-Path $excel_folder $merged_filename
 	$objWorksheet.SaveAs($savedfilepath)
     
 	$objExcel.Workbooks.close()
