@@ -3,6 +3,8 @@ Merge the excel sheets into 1 excel file
 Reference to: 
 http://www.pstips.net/powershell-%E5%90%88%E5%B9%B6excel.html PowerShell 合并excel
 https://stackoverflow.com/questions/25880652/powershell-excel-rename-worksheets-base-upon-filename
+https://social.technet.microsoft.com/Forums/scriptcenter/en-US/2a0dc55d-66c4-4228-a834-0389a32e52b0/how-can-i-use-powershell-to-copy-an-excel-worksheet-from-one-workbook-to-the-second-sheet-of-another?forum=ITCG
+http://www.lazywinadmin.com/2014/03/powershell-read-excel-file-using-com.html
 https://stackoverflow.com/questions/39044995/how-can-i-stop-excel-processes-from-running-in-the-background-after-a-powershell
 #>
 $excel_folder = "d:/tmp"
@@ -19,8 +21,8 @@ $objExcel = New-Object -comobject Excel.Application
 $objExcel.Visible = $False
 $objExcel.displayAlerts = $false # don't prompt the user
 $objWorkbook = $objExcel.Workbooks.Add()
+$originSheets = “Sheet1”, "Sheet2", "Sheet3" | %{ $objWorkbook.Sheets.Item($_) }
 
-$i = 1
 $excel_files | %{
     Write-Host "Start to copy worksheet in file " $_
     $item_path = Join-Path $excel_folder $_
@@ -31,7 +33,7 @@ $excel_files | %{
     #Renaming the sheet prior to copying, See https://stackoverflow.com/questions/25880652/powershell-excel-rename-worksheets-base-upon-filename
     $itemWorksheet.name = $destWorksheetName
 
-    $destWorksheet = $objWorkbook.Worksheets.Item($i++)
+    $destWorksheet = $objWorkbook.Worksheets.Item(1)
     $itemWorksheet.Copy($destWorksheet)
     
     $itemWorkBook.close($false)
@@ -40,6 +42,9 @@ $excel_files | %{
 
 
 Write-Host "Complete to merge sheets into excel file " $savedfilepath
+
+#Delete the origin sheets
+$originSheets.delete()
 
 $savedfilepath = Join-Path $excel_folder $merged_filename
 $objWorkbook.SaveAs($savedfilepath)
