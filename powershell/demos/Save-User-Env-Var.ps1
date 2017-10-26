@@ -31,7 +31,7 @@ switch($action) {
 
     "restore" {
         Write-Host "----------------Restore User env vars start"
-        $jsonstr = cat $backup_file | Out-String
+        $jsonstr = cat $backup_file -Encoding UTF8 | Out-String
 
         Write-Host "Restore User env variables from file:" $backup_file ", Content: " $jsonstr
 

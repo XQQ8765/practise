@@ -21,7 +21,7 @@ $objExcel = New-Object -comobject Excel.Application
 $objExcel.Visible = $False
 $objExcel.displayAlerts = $false # don't prompt the user
 $objWorkbook = $objExcel.Workbooks.Add()
-$originSheets = “Sheet1”, "Sheet2", "Sheet3" | %{ $objWorkbook.Sheets.Item($_) }
+$originSheets = "Sheet1", "Sheet2", "Sheet3" | %{ $objWorkbook.Sheets.Item($_) }
 
 $excel_files | %{
     Write-Host "Start to copy worksheet in file " $_
