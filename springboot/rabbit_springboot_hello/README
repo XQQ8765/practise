@@ -1,0 +1,10 @@
+1. Create the project
+mvn archetype:generate -DgroupId=com.rabbit.practise.springboot.hello -DartifactId=rabbit_springboot_hello
+    -DarchetypeArtifactId=maven-archetype-quickstart
+
+2. Generate idea project
+mvn idea:idea
+
+3. Run the application
+set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_66\
+mvn spring-boot:run
