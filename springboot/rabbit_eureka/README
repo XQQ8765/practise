@@ -1,0 +1,13 @@
+set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_66
+
+1. Create the root project "rabbit_eureka"
+mvn archetype:generate -DgroupId=com.rabbit.practise.eureka -DartifactId=rabbit_eureka
+    -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false
+
+2. Create the "rabbit_eureka_server" project
+rabbit_eureka> mvn archetype:generate -DgroupId=com.rabbit.practise.eureka.server -DartifactId=rabbit_eureka_server
+    -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+3. Start "rabbit_eureka_server"
+rabbit_eureka/rabbit_eureka_server> mvn springboot:run
