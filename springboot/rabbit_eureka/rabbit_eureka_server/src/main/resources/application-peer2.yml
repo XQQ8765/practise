@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: rabbit_eureka_server
+
+server:
+  port: 8752
+
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://peer1:8751/eureka/

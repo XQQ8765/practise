@@ -8,4 +8,4 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8750/eureka/
+      defaultZone: http://peer1:8751/eureka/,http://peer2:8752/eureka/
