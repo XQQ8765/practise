@@ -1,6 +1,6 @@
 spring:
   application:
-    name: rabbit_eureka_hello_service
+    name: rabbit-eureka-hello-service
 
 server:
     port: 8761

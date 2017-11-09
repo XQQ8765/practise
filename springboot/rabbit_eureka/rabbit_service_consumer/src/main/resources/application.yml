@@ -1,9 +1,9 @@
 spring:
   application:
-    name: rabbit-eureka-hello-service
+    name: rabbit-service-consumer
 
 server:
-    port: 8761
+    port: 8770
 
 eureka:
   client:

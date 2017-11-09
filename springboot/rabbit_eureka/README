@@ -1,21 +1,32 @@
 set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_66
 
 1. Create the root project "rabbit_eureka"
-mvn archetype:generate -DgroupId=com.rabbit.practise.eureka -DartifactId=rabbit_eureka
+mvn archetype:generate -DgroupId=com.rabbit.practise.eureka -DartifactId=rabbit_eureka \
     -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false
 
 2. Create the "rabbit_eureka_server" project
-rabbit_eureka> mvn archetype:generate -DgroupId=com.rabbit.practise.eureka.server -DartifactId=rabbit_eureka_server
+rabbit_eureka> mvn archetype:generate -DgroupId=com.rabbit.practise.eureka.server -DartifactId=rabbit_eureka_server \
     -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
+3. Create the "rabbit_eureka_hello_service" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.eureka.service -DartifactId=rabbit_eureka_hello_service  \
+    -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
 3. Start "rabbit_eureka_server"
 rabbit_eureka/rabbit_eureka_server> mvn springboot:run
 
-
-Start high availability "rabbit_eureka_server":
+--------------------------------------------------------------------------------------------------
+* Start high availability "rabbit_eureka_server":
 java -jar rabbit_eureka_server-1.0-SNAPSHOT.jar --spring.profiles.active=peer1
 java -jar rabbit_eureka_server-1.0-SNAPSHOT.jar --spring.profiles.active=peer2
 
 Start "rabbit_eureka_hello_service" registered withing high availability "rabbit_eureka_server":
 java -jar rabbit_eureka_hello_service-1.0-SNAPSHOT.jar --spring.profiles.active=peer
+
+--------------------------------------------------------------------------------------------------
+Create the "rabbit_service_consumer" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.eureka.service.consumer -DartifactId=rabbit_service_consumer \
+    -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+java -jar rabbit_eureka_hello_service-1.0-SNAPSHOT.jar --spring.profiles.active=peer --server.port=8761
+java -jar rabbit_eureka_hello_service-1.0-SNAPSHOT.jar --spring.profiles.active=peer --server.port=8762
