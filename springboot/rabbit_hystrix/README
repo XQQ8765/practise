@@ -14,8 +14,8 @@ d:\workspace\practise\springboot\rabbit_hystrix\rabbit_eureka_server\target>java
 mvn archetype:generate -DgroupId=com.rabbit.practise.hystrix.service -DartifactId=rabbit_hystrix_hello_service  \
     -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 Start the hello_service:
+java -jar rabbit_hystrix_hello_service-1.0-SNAPSHOT.jar --server.port=8760
 java -jar rabbit_hystrix_hello_service-1.0-SNAPSHOT.jar --server.port=8761
-java -jar rabbit_hystrix_hello_service-1.0-SNAPSHOT.jar --server.port=8762
 
 4. Create the "rabbit_service_consumer" project
 mvn archetype:generate -DgroupId=com.rabbit.practise.hystrix.service.consumer -DartifactId=rabbit_service_consumer \

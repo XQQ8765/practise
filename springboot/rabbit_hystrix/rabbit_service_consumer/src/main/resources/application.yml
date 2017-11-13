@@ -1,9 +1,9 @@
 spring:
   application:
-    name: rabbit-hystrix-hello-service
+    name: rabbit-service-consumer
 
 server:
-    port: 8760
+    port: 8770
 
 eureka:
   client:
