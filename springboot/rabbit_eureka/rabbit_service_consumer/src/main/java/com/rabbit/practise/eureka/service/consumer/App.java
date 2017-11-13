@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableHystrixDashboard
 public class App {
 
     @LoadBalanced
