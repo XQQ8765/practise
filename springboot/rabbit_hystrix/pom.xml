@@ -8,5 +8,6 @@
   <name>rabbit_hystrix</name>
   <modules>
     <module>rabbit_eureka_server</module>
+    <module>rabbit_hystrix_hello_service</module>
   </modules>
 </project>
