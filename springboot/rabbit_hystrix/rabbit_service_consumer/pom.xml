@@ -38,6 +38,12 @@
       <artifactId>spring-cloud-starter-ribbon</artifactId>
       <version>1.3.5.RELEASE</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-hystrix -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-hystrix</artifactId>
+      <version>1.3.5.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>

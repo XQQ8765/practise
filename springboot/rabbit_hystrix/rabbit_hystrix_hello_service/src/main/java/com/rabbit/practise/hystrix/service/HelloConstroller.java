@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Random;
 
 @RestController
 public class HelloConstroller {
@@ -17,10 +18,16 @@ public class HelloConstroller {
     private DiscoveryClient client;
 
     @RequestMapping(value="/hello", method = RequestMethod.GET)
-    public String hello() {
+    public String hello() throws Exception{
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/hello, host:" + instance.getHost() + ", serviceid:" +instance.getServiceId() + ", instance:" + instance);
-        String result = "Hello World. instance: " + instance +", date:" + new Date();
+
+        int sleepTime = new Random().nextInt(3000);
+        logger.info("sleepTime:" + sleepTime);
+        Thread.sleep(sleepTime);
+
+        logger.info("/hello, host:" + instance.getHost() + ", serviceid:" +instance.getServiceId()
+                + ", instance:" + instance + ", sleepTime:" + sleepTime);
+        String result = "Hello World. sleepTime: " + sleepTime +", date:" + new Date();
         return result;
     }
 }
