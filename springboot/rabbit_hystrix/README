@@ -21,5 +21,6 @@ java -jar rabbit_hystrix_hello_service-1.0-SNAPSHOT.jar --server.port=8761
 mvn archetype:generate -DgroupId=com.rabbit.practise.hystrix.service.consumer -DartifactId=rabbit_service_consumer \
     -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-http://localhost:8770/hystrix
 http://localhost:8770/ribbon-consumer
+http://localhost:8770/hystrix
+http://localhost:8770/hystrix.stream
