@@ -24,3 +24,9 @@ mvn archetype:generate -DgroupId=com.rabbit.practise.hystrix.service.consumer -D
 http://localhost:8770/ribbon-consumer
 http://localhost:8770/hystrix
 http://localhost:8770/hystrix.stream
+
+5. Create the "rabbit_turbine"
+mvn archetype:generate -DartifactId=rabbit_turbine -DgroupId=com.rabbit.practise.hystrix.turbine \
+    -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+java -jar rabbit_turbine-1.0-SNAPSHOT.jar
+http://localhost:8780/turbine.stream

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: rabbit-turbine
+
+server:
+    port: 8780
+management:
+    port: 8781
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8750/eureka/
+
+turbine:
+  app-config: rabbit-service-consumer
+#  cluster-name-expression: "default"
+  combine-host-port: true
