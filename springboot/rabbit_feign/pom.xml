@@ -9,5 +9,6 @@
   <modules>
     <module>rabbit_eureka_server</module>
     <module>rabbit_service</module>
+    <module>rabbit_feign_consumer</module>
   </modules>
 </project>
