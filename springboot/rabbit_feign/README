@@ -19,3 +19,4 @@ java -jar rabbit_service-1.0-SNAPSHOT.jar --server.port=8761
 mvn archetype:generate -DgroupId=com.rabbit.practise.feign.consumer -DartifactId=rabbit_feign_consumer  \
     -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 http://localhost:8770/feign-consumer
+http://localhost:8770/feign-consumer2
