@@ -15,6 +15,6 @@ public interface HelloService {
     @RequestMapping(value="/hello2", method= RequestMethod.GET)
     User hello(@RequestHeader("name") String name, @RequestHeader("age") Integer age);
 
-    @RequestMapping(value="/hello3", method= RequestMethod.GET)
+    @RequestMapping(value="/hello3", method= RequestMethod.POST)
     String hello(@RequestBody User user);
 }

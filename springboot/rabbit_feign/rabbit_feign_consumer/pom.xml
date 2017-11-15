@@ -33,6 +33,11 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-feign</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.rabbit.practise.feign.service.api</groupId>
+      <artifactId>rabbit_service_api</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>

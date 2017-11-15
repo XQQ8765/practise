@@ -10,5 +10,6 @@
     <module>rabbit_eureka_server</module>
     <module>rabbit_service</module>
     <module>rabbit_feign_consumer</module>
+    <module>rabbit_service_api</module>
   </modules>
 </project>
