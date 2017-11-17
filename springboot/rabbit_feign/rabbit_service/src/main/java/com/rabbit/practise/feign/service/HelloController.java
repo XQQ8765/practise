@@ -22,6 +22,11 @@ public class HelloController {
 
     @RequestMapping(value="/hello", method= RequestMethod.GET)
     public String hello() {
+        try {
+            Thread.sleep(10*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         logServiceInstance("/hello");
         String result = "Hello World. date:" + new Date();
         return result;
@@ -29,6 +34,11 @@ public class HelloController {
 
     @RequestMapping(value="/hello1", method= RequestMethod.GET)
     public String hello1(@RequestParam String name) {
+        try {
+            Thread.sleep(10*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         logServiceInstance("/hello1");
         return "Hello " + name + ", date:" + new Date();
     }

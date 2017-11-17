@@ -3,7 +3,7 @@ package com.rabbit.practise.feign.consumer;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient("rabbit-service")
+@FeignClient(name="rabbit-service", fallback = HelloServiceFallback.class)
 public interface HelloService {
 
     @RequestMapping("/hello")
