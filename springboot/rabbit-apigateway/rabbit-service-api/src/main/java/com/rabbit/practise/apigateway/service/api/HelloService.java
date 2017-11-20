@@ -1,9 +1,7 @@
-package com.rabbit.practise.feign.consumer;
-
-import org.springframework.cloud.netflix.feign.FeignClient;
+package com.rabbit.practise.apigateway.service.api;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name="rabbit-service", fallback = HelloServiceFallback.class, configuration = FullLogConfiguration.class)
+@RequestMapping("/service")
 public interface HelloService {
 
     @RequestMapping("/hello")
