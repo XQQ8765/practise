@@ -5,9 +5,28 @@ spring:
 server:
     port: 8780
 
+#Tranditional route
 #Visit url http://localhost:8780/api-a-url/hello-feign-consumer to access "hello-feign-consumer" service
+#zuul:
+#  routes:
+#    api-a-url:
+#      path: /api-a-url/**
+#      url: http://localhost:8770
+
+#Route by serviceId
+
 zuul:
   routes:
-    api-a-url:
-      path: /api-a-url/**
-      url: http://localhost:8770
+    #Visit url http://localhost:8780/api-a/service/hello to access "rabbit-service" service
+    api-a:
+      path: /api-a/**
+      serviceId: RABBIT-SERVICE
+    #Visit url http://localhost:8780/api-b/hello-feign-consumer to access "hello-feign-consumer" service
+    api-b:
+          path: /api-b/**
+          serviceId: RABBIT-FEIGN-CONSUMER
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8750/eureka/
