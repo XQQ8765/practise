@@ -1,7 +1,6 @@
 package com.rabbit.practise.apigateway.consumer;
 
 
-import com.rabbit.practise.apigateway.service.api.HelloService;
 import com.rabbit.practise.apigateway.service.api.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;

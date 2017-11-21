@@ -24,7 +24,4 @@ hystrix:
 
 logging:
   level:
-    com:
-      didispace:
-        web:
-          rabbit-service: DEBUG
+    com.rabbit.practise.apigateway.consumer.RefactorHelloService: DEBUG
