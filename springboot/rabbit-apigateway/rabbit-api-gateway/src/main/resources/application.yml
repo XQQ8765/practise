@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: rabbit-api-gateway
+
+server:
+    port: 8780
+
+#Visit url http://localhost:8780/api-a-url/hello-feign-consumer to access "hello-feign-consumer" service
+zuul:
+  routes:
+    api-a-url:
+      path: /api-a-url/**
+      url: http://localhost:8770

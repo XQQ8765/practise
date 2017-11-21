@@ -11,5 +11,6 @@
     <module>rabbit-service</module>
     <module>rabbit-service-api</module>
     <module>rabbit-feign-consumer</module>
+    <module>rabbit-api-gateway</module>
   </modules>
 </project>
