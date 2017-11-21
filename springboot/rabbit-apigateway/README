@@ -26,5 +26,5 @@ http://localhost:8770/hello-feign-consumer
 6. Create the "rabbit-api-gateway" project
 mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway -DartifactId=rabbit-api-gateway  -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 #http://localhost:8780/api-a-url/hello-feign-consumer
-http://localhost:8780/api-a/service/hello
-http://localhost:8780/api-b/hello-feign-consumer
+http://localhost:8780/api-a/service/hello?accessToken=abc
+http://localhost:8780/api-b/hello-feign-consumer?accessToken=abc
