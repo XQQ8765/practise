@@ -1,0 +1,24 @@
+set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_66
+
+1. Create the root project "rabbit-apigateway"
+mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway -DartifactId=rabbit-apigateway -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DinteractiveMode=false
+
+2. Create the "rabbit-eureka-server" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway.eureka.server -DartifactId=rabbit-eureka-server -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+http://localhost:8750/
+
+3. Create the "rabbit-service-api" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway.service.api -DartifactId=rabbit-service-api -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Modify code in "rabbit_service" and "rabbit_feign_consumer" project
+
+4. Create the "rabbit-service" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway.service -DartifactId=rabbit-service  -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Start the "rabbit_service":
+java -jar rabbit-service-1.0-SNAPSHOT.jar --server.port=8760
+java -jar rabbit-service-1.0-SNAPSHOT.jar --server.port=8761
+http://localhost:8760/service/hello
+http://localhost:8760/service/hello1?name=aaa
+
+5. Create the "rabbit-feign-consumer" project
+mvn archetype:generate -DgroupId=com.rabbit.practise.apigateway.consumer -DartifactId=rabbit-feign-consumer  -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+http://localhost:8770/hello-feign-consumer
